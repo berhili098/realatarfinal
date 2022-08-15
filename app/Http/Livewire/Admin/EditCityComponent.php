@@ -47,7 +47,6 @@ class EditCityComponent extends Component
         $this->latitude = $city->latitude;
         $this->photo = $city->photo;
         $this->idcity = $idcity;
-        $this->user_id = Auth::user()->id;
         $this->editedBy=Auth::user()->id;
     }
 

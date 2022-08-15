@@ -34,8 +34,15 @@ class CitiesConpoment extends Component
         $city = City::find($this->cid);
         $city->update([
             'delete' => 1,
-            'user_id' => Auth::user()->id,
+            'deletedBy' => Auth::user()->id,
         ]);
+        foreach($city->sites as $site){
+            $site->update([
+                'delete' => 1,
+                'deletedBy' => Auth::user()->id,
+            ]);  
+        }
+      
         $this->emit('cityDeleted');
         session()->flash('type','error');
         session()->flash('message','Well done, You have successfully deleted' . $this->city_en);

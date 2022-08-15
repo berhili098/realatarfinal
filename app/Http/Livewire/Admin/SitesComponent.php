@@ -38,10 +38,25 @@ class SitesComponent extends Component
 
     public function render()
     {
-        $title = "sites liste";
+        
+        $users = User::all();
+        $title = "sites liste"; 
 
+            if(Auth::user()->utype=='ADM')
 
-
+    {$sites = Site::where(function ($query) {
+        $query->where("status", "like", $this->searchStatus != '' ? "{$this->searchStatus}" : "%")
+            ->where("user_id", "like", $this->searchUser != '' ? "{$this->searchUser}" : "%")
+            ->where("city_id", "like", $this->searchCity != '' ? "{$this->searchCity}" : "%")
+            ->where(
+                function ($query2) {
+                    $query2->where("name_fr", "like", "%{$this->searchWord}%")->orWhere("name_en", "like", "%{$this->searchWord}%")
+                        ->orWhere("name_ar", "like", "%{$this->searchWord}%")
+                        ->orWhere("longitude", "like", "%{$this->searchWord}%")
+                        ->orWhere("latitude", "like", "%{$this->searchWord}%");
+                }
+            );
+    })->paginate(6);}else{
         $sites = Site::where("delete", 0)->where(function ($query) {
             $query->where("status", "like", $this->searchStatus != '' ? "{$this->searchStatus}" : "%")
                 ->where("user_id", "like", $this->searchUser != '' ? "{$this->searchUser}" : "%")
@@ -55,10 +70,11 @@ class SitesComponent extends Component
                     }
                 );
         })->paginate(6);
+        
+    }
 
 
-        $cities = City::all();
-        $users = User::all();
+        $cities = City::where('delete',0)->get();
 
 
 
@@ -75,10 +91,20 @@ class SitesComponent extends Component
             'delete' => 1,
             'deletedBy' => Auth::user()->id,
         ]);
-        $this->emit('confirmationDelete');
+        $this->emit('itemDeleted');
         session()->flash('type','error');
         session()->flash('message','Well done, You have successfully deleted' . $site->name_fr);
         session()->flash('title','Operation success');
 
+    }
+    public function restore($site_id){
+
+        $site = Site::find($site_id);
+        $site->update([
+            'delete' => 0,
+            'deletedBy' => NULL,
+        ]);
+        $this->emit('success');
+      
     }
 }

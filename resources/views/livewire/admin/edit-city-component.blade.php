@@ -81,8 +81,8 @@
                                                     @if($errors->any())
                                                             <a class="mytooltip" href="javascript:void(0)"> 
                                                                 <div class="notify">
-                                                                    <span class="heartbit" style="top:-23px;right:-17px;height:25px;height:25px;"></span> 
-                                                                    <span class="point" style="width:10px; height:10px; right:-10px; top:-14px"></span>
+                                                                    <span class="heartbit" style="top:-23px;right:0px;height:25px;height:25px;"></span> 
+                                                                    <span class="point" style="width:10px; height:10px; right:8px; top:-14px"></span>
                                                                     <span class="tooltip-content5">
                                                                         <span class="tooltip-text3">
                                                                             <span class="tooltip-inner2">
