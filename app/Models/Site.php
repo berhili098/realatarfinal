@@ -9,7 +9,7 @@ class Site extends Model
 {
     use HasFactory;
     protected $table = "sites";
-    protected $fillable =['name_ar','name_fr','name_en','description_ar','description_fr','description_en','openTime','duration','price','status','delete','longitude','latitude','photo','user_id','city_id'];
+    protected $fillable =['name_ar','name_fr','name_en','description_ar','description_fr','description_en','openTime','duration','price','status','delete','longitude','latitude','photo','user_id','editedBy','deletedBy','city_id'];
 
     public function user()
     {

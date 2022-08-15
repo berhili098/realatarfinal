@@ -31,6 +31,8 @@ class CreateSitesTable extends Migration
             $table->string('photo',50)->default('No_Image_Available.jpg');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('city_id')->unsigned();
+            $table->bigInteger('editedBy')->nullable();
+            $table->bigInteger('deletedBy')->nullable();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

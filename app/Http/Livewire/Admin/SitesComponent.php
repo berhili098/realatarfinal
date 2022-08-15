@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use App\Models\City;
 use App\Models\Site;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -70,9 +71,14 @@ class SitesComponent extends Component
     }
     public function deleteSite(){
         $site = Site::find($this->idSite);
-        $site->delete='1';
-        $site->save();
-        $this->emit('success'); 
+        $site->update([
+            'delete' => 1,
+            'deletedBy' => Auth::user()->id,
+        ]);
+        $this->emit('confirmationDelete');
+        session()->flash('type','error');
+        session()->flash('message','Well done, You have successfully deleted' . $site->name_fr);
+        session()->flash('title','Operation success');
 
     }
 }

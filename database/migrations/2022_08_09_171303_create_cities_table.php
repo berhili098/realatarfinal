@@ -28,6 +28,8 @@ class CreateCitiesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('status')->enum([0,1])->default(0);
             $table->boolean('delete')->enum([0,1])->default(0);
+            $table->bigInteger('editedBy')->nullable();
+            $table->bigInteger('deletedBy')->nullable();
             $table->timestamps();
         });
     }

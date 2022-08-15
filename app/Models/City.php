@@ -9,7 +9,7 @@ class City extends Model
 {
     use HasFactory;
     protected $table = "cities";
-    protected $fillable = ['city_ar','city_fr','city_en','description_ar','description_fr', 'description_en','photo','latitude','longitude','user_id','delete','status'];
+    protected $fillable = ['city_ar','city_fr','city_en','description_ar','description_fr', 'description_en','photo','latitude','longitude','user_id','delete','editedBy','deletedBy','status'];
 
 
     public function user()

@@ -17,6 +17,7 @@ class EditCityComponent extends Component
 
     public $idcity;
     public $user_id;
+    public $editedBy;
     public $city_en;
     public $city_ar;
     public $city_fr;
@@ -33,6 +34,7 @@ class EditCityComponent extends Component
 
     public function mount($idcity)
     {
+       
 
         $city = City::find($idcity);
         $this->city_en = $city->city_en;
@@ -46,6 +48,7 @@ class EditCityComponent extends Component
         $this->photo = $city->photo;
         $this->idcity = $idcity;
         $this->user_id = Auth::user()->id;
+        $this->editedBy=Auth::user()->id;
     }
 
     public function updated($fields)
@@ -60,6 +63,7 @@ class EditCityComponent extends Component
             'latitude' => 'required',
             'longitude' => 'required',
             'user_id' => 'required',
+            'editedBy'=>'required'
         ]);
     }
 
@@ -78,6 +82,7 @@ class EditCityComponent extends Component
             'latitude' => 'required',
             'longitude' => 'required',
             'user_id' => 'required',
+            'editedBy'=>'required'
         ]);
 
         $imageName ="";
@@ -92,7 +97,7 @@ class EditCityComponent extends Component
         $this->city_fr = Str::of($this->city_fr)->upper();
         $this->description_en = Str::of($this->description_en)->ucfirst();
         $this->description_fr = Str::of($this->description_fr)->ucfirst();
-
+        $city->editedBy=$this->user_id;
         $city->update($validateData);
         
 

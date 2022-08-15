@@ -148,12 +148,7 @@
         <!-- /.modal-dialog -->
     </div>
      <div class="row el-element-overlay">
-         <div class="col-md-12">
-             <h4 class="card-title">Fade-in effect</h4>
-             <h6 class="card-subtitle m-b-20 text-muted">You can use by default
-                 <code>el-overlay</code>
-             </h6>
-         </div>
+        
          @foreach ($sites as $site)
              <div class="col-lg-4 col-md-6">
 

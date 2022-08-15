@@ -310,6 +310,12 @@
         @endif
     @livewireScripts
 
+    <script>
+        windows.livewire.on('itemDeleted', function (message) {
+            $('#confirmationDelete').modal('hide');
+        });
+    </script>
+
 
     @stack('scripts')
 
