@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/first_complete_profile', [AuthController::class, 'CompleteProfile']);
     Route::post('/upload_profile_picture', [AuthController::class, 'UploadProfilePicture']);
     Route::get('/get_all_cities', [CitiesController::class, 'index']);
+    Route::get('/get_city/{id}', [CitiesController::class, 'show']);
     Route::get('/get_all_sites', [SitesController::class, 'getHomeSites']);
     Route::get('/get_all_sites_map', [SitesController::class, 'getAllSites']);
     Route::get('/get_favorised_sites/{uid}', [SitesController::class, 'getFavorised']);

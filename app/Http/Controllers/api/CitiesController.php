@@ -13,13 +13,11 @@ class CitiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index(Request $request)
     {
-        
-        $cities = city::all()->where('status', '=', 1);
-        $totalCities = city::where('status', '=', 1)->count();
-        return response(["cities" => $cities, 'total' => $totalCities], 200);
+        $cities = city::where('status', '=', 1)->where('delete','=', 0)->get();
+        return response(["cities" => $cities, 'total' => $cities->count()], 200);
     }
 
     /**
@@ -51,7 +49,12 @@ class CitiesController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $city = city::find($id);
+            return response(['sites' => $city->sites, "total"=>$city->sites->count()], 200);
+        } catch (\Exception $ex) {
+            return response(["error" => $ex->getMessage()], 400);
+        }
     }
 
     /**
