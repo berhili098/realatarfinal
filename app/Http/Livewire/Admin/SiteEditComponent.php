@@ -58,6 +58,7 @@ class SiteEditComponent extends Component
       
         $this->duration = $site->duration; 
         $this->editedBy=Auth::user()->id;
+        $this->user_id=Auth::user()->id;
     }
 
     public function updated($fields)
@@ -71,7 +72,6 @@ class SiteEditComponent extends Component
             'description_ar' => 'required|min:50',
             'latitude' => 'required|numeric|between:-180,180',
             'longitude' => 'required|numeric|between:-180,180',
-            'user_id' => 'required',
             'city_id' => 'required',
             'openTime' => 'required',
             'duration' => 'required',
@@ -103,7 +103,6 @@ class SiteEditComponent extends Component
             'description_ar' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
-            'user_id' => 'required',
             'city_id' => 'required',
             'openTime' => 'required',
             'duration' => 'required',
@@ -127,38 +126,36 @@ class SiteEditComponent extends Component
                 $media_image->type = 'image';
                 $media_image->created_at = Carbon::now();
                 $media_image->updated_at = Carbon::now();
-                $media_image->user_id = $this->user_id;
                 $site->media()->save($media_image);
                 $image->storeAs('primary/assets/images/sites/media/images', $imageName);
+                
             }
         }
-        // if ($this->audios) {
-        //     foreach ($this->audios as $audio) {
-        //         $media_audio = new Media();
-        //         $audioName = Carbon::now()->timestamp . Str::random(10) . '.' . $audio->extension();
-        //         $media_audio->name = $audioName;
-        //         $media_audio->type = 'audio';
-        //         $media_audio->created_at = Carbon::now();
-        //         $media_audio->updated_at = Carbon::now();
-        //         $media_audio->user_id = $this->user_id;
-        //         $site->media()->save($media_audio);
-        //         $audio->storeAs('primary/assets/images/sites/media/audios', $audioName);
-        //     }
-        // }
-        // if($this->videos) {
-        //     foreach($this->videos as $video) {
-        //         $media_video = new Media();
-        //         $videoName = Carbon::now()->timestamp . Str::random(10) . '.' . $video->extension();
-        //         $media_video->name = $videoName;
-        //         $media_video->type = 'video';
-        //         $media_video->created_at = Carbon::now();
-        //         $media_video->updated_at = Carbon::now();
-        //         $media_video->user_id = $this->user_id;
+        if ($this->neWaudios) {
+            foreach ($this->neWaudios as $audio) {
+                $media_audio = new Media();
+                $audioName = Carbon::now()->timestamp . Str::random(10) . '.' . $audio->extension();
+                $media_audio->name = $audioName;
+                $media_audio->type = 'audio';
+                $media_audio->created_at = Carbon::now();
+                $media_audio->updated_at = Carbon::now();
+                $site->media()->save($media_audio);
+                $audio->storeAs('primary/assets/images/sites/media/audios', $audioName);
+            }
+        }
+        if($this->neWvideos) {
+            foreach($this->neWvideos as $video) {
+                $media_video = new Media();
+                $videoName = Carbon::now()->timestamp . Str::random(10) . '.' . $video->extension();
+                $media_video->name = $videoName;
+                $media_video->type = 'video';
+                $media_video->created_at = Carbon::now();
+                $media_video->updated_at = Carbon::now();
 
-        //         $site->media()->save($media_video);
-        //         $video->storeAs('primary/assets/images/sites/media/videos', $videoName);
-        //     }
-        // }
+                $site->media()->save($media_video);
+                $video->storeAs('primary/assets/images/sites/media/videos', $videoName);
+            }
+        }
         //setup toastr
         session()->flash('type', 'success');
         session()->flash('message', 'Well done, You have successfully added new site');
@@ -170,13 +167,13 @@ class SiteEditComponent extends Component
 
     public function render()
     {
-        $sites = Site::find($this->site_id);
+        $site = Site::find($this->site_id);
         $media = Media::where('site_id',$this->site_id);
-        $countImages = $sites->media->where('type','image')->count();
-        $countAudios = $sites->media->where('type','audio')->count();
-        $countVideos = $sites->media->where('type','video')->count(); 
+        $countImages = $site->media->where('type','image')->count();
+        $countAudios = $site->media->where('type','audio')->count();
+        $countVideos = $site->media->where('type','video')->count(); 
         $cities=City::where('delete',0)->get();
         $title='edit site';
-        return view('livewire.admin.site-edit-component',compact('cities','sites','countImages','countAudios','media'))->layout("layouts.master", compact("title"));
+        return view('livewire.admin.site-edit-component',compact('cities','site','countImages','countAudios','media'))->layout("layouts.master", compact("title"));
     }
 }

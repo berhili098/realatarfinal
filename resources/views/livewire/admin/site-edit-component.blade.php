@@ -21,6 +21,17 @@
                     <div class="col-8">
 
                         <div class="card">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
+
+                            @endif
                             <div class="card-body">
                                 <h4 class="card-title">General Info </h4>
                                 <div class="row p-t-40">
@@ -210,7 +221,8 @@
                                                 <option>--Select your City--</option>
                                                 @foreach ($cities as $city)
                                                     <option value="{{ $city->id }}"
-                                                        {{ $city->id == $city_id ? 'selected' : '' }}>{{ $city->city_fr }}
+                                                        {{ $city->id == $city_id ? 'selected' : '' }}>
+                                                        {{ $city->city_fr }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -266,24 +278,26 @@
                                             file</label>
                                     </div>
 
-                                    <div wire:loading wire:target="images">Uploading...</div>
+                                    <div wire:loading wire:target="neWimages">Uploading...</div>
                                     @error('images.*')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="m-t-5 ">
-                                    @if ($countImages  > 0)
-                                        @foreach ($media->where('type', 'image') as $image)
-                                            <img class="m-t-10 m-l-5" src="{{ asset('primary/assets/images/sites/') }}/{{ $image }}"
-                                                width="110px" height="100px">
-                                        @endforeach
-                                    @elseif(count($neWimages)> 0)
+
+
+                                    @foreach ($site->media->where('type', 'image') as $image)
+                                        <img class="m-t-10 m-l-5"
+                                            src="{{ asset('primary/assets/images/sites/media/images') }}/{{ $image->name }}"
+                                            width="110px" height="100px">
+                                    @endforeach
+
+                                    @if (count($neWimages) > 0)
                                         @foreach ($neWimages as $image)
                                             <img class="m-t-10 m-l-5" src="{{ $image->temporaryUrl() }}"
                                                 width="110px" height="100px">
                                         @endforeach
-                                        @else
-                                        <p class="text-center">No images</p>
+
                                     @endif
                                 </div>
                             </div>
@@ -293,24 +307,42 @@
                             <div class="card-body">
                                 <h4 class="card-title"><i class="ti-microphone"></i> Audio</h4>
                                 <div class="m-4 text-center">
-                                    <input type="file" class="form-control" wire:model="audios" multiple
-                                        accept="audio/*">
-                                    <div wire:loading wire:target="audios">Uploading...</div>
+                                    <div class="custom-file mb-3 text-left">
+                                        <input type="file" id="audiosupload" class="custom-file-input"
+                                            class="form-control" wire:model="neWaudios" multiple accept="audio/*">
+                                        <label class="custom-file-label form-control" for="audiosupload">Choose
+                                            file</label>
+                                    </div>
+
+                                    <div wire:loading wire:target="neWaudios">Uploading...</div>
                                     @error('audios.*')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="m-t-5 text-center">
-                                    @if ($audios)
-                                        @foreach ($audios as $audio)
+                                    @foreach ($site->media as $audio)
+                                    @if ($audio->type == 'audio')
+                                        <audio controls>
+                                            <source
+                                                src="{{ asset('primary/assets/images/sites/media/audios') }}/{{ $audio->name }}"
+                                                type="audio/ogg">
+                                            <source
+                                                src="{{ asset('primary/assets/images/sites/media/audios') }}/{{ $audio->name }}"
+                                                type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    @endif
+                                    @endforeach
+                                    @if (count($neWaudios) > 0)
+                                        @foreach ($neWaudios as $audio)
                                             <audio controls>
                                                 <source src="{{ $audio->temporaryUrl() }}" type="audio/ogg">
                                                 <source src="{{ $audio->temporaryUrl() }}" type="audio/mpeg">
                                                 Your browser does not support the audio element.
                                             </audio>
+
                                         @endforeach
-                                    @else
-                                        <p class="text-muted m-2">No audios selected.</p>
+
                                     @endif
                                 </div>
                             </div>
@@ -320,25 +352,41 @@
                             <div class="card-body">
                                 <h4 class="card-title"> <i class="ti-video-clapper"></i> Video</h4>
                                 <div class="m-4 text-center">
-                                    <input type="file" class="form-control" wire:model="videos" multiple
+                                    <div class="custom-file mb-3 text-left">
+                                        <input type="file" id="videoupload" class="custom-file-input" wire:model="neWvideos" multiple
                                         accept="video/*">
-                                    <div wire:loading wire:target="videos">Uploading...</div>
+                                       
+                                        <label class="custom-file-label form-control" for="videoupload">Choose
+                                            file</label>
+                                    </div>
+                                    
+                                    <div wire:loading wire:target="neWvideos">Uploading...</div>
                                     @error('videos.*')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="m-t-5 text-center">
-                                    @if ($videos)
-                                        @foreach ($videos as $video)
-                                            <video width="300" controls>
-                                                <source src="{{ $video->temporaryUrl() }}" type="video/mp4">
-                                                <source src="{{ $video->temporaryUrl() }}" type="video/ogg">
-                                                Your browser does not support HTML video.
-                                            </video>
-                                        @endforeach
-                                    @else
-                                        <p class="text-muted m-2">No videos selected.</p>
+                                    @foreach ($site->media as $video)
+                                    @if ($video->type == 'video')
+                                    <video width="300" controls>
+                                        <source src="{{ asset('primary/assets/images/sites/media/videos') }}/{{ $video->name }}" type="video/mp4">
+                                        <source src="{{ asset('primary/assets/images/sites/media/videos') }}/{{ $video->name }}" type="video/ogg">
+                                        Your browser does not support HTML video.
+                                    </video>
                                     @endif
+                                    @endforeach
+                                    @if (count($neWvideos) > 0)
+                                        @foreach ($neWvideos as $video)
+                                        <video width="300" controls>
+                                            <source src="{{ $video->temporaryUrl() }}" type="video/mp4">
+                                            <source src="{{ $video->temporaryUrl() }}" type="video/ogg">
+                                            Your browser does not support HTML video.
+                                        </video>
+
+                                        @endforeach
+
+                                    @endif
+                                   
                                 </div>
                             </div>
                         </div>
