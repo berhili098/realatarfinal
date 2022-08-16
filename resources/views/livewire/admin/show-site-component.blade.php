@@ -104,7 +104,7 @@
                             <div class="tab-pane" id="messages8" role="tabpanel">
                                 <div class="p-20 text-right" lang="ar" dir="rtl">
                                     <h3>وصف عربي</h3>
-                                    <h4 class="pt-2"">اسم : {{ $site->name_ar }}</h4>
+                                    <h4 class="pt-2">اسم : {{ $site->name_ar }}</h4>
                                     <p class="text-dark p-t-20 pro-desc">
                                         {{ $site->description_ar }}
                                     </p>

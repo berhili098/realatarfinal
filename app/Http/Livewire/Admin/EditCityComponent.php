@@ -61,7 +61,7 @@ class EditCityComponent extends Component
             'description_ar' => 'required|unique:cities,description_ar,'.$this->idcity,
             'latitude' => 'required',
             'longitude' => 'required',
-            'user_id' => 'required',
+
             'editedBy'=>'required'
         ]);
     }
