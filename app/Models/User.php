@@ -65,4 +65,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(City::class);
     }
+    public function sites()
+    {
+        return $this->hasMany(Site::class);
+    }
 }

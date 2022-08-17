@@ -114,11 +114,11 @@
                     <ul id="sidebarnav">
                         <li class="user-pro">
                             <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                                <img src="{{ asset('primary/assets/images/users/1.jpg') }}" alt="user-img" class="img-circle">
-                                <span class="hide-menu">{{Str::of(Auth::user()->name)->before(' ')}} {{Str::of(Auth::user()->name)->after(' ')->substr(5) }}</span>
+                                <img src="{{asset('primary/assets/images/users/'.Auth::user()->photo)}}" alt="user-img" class="img-circle">
+                                <span class="hide-menu">{{  Str::of(Auth::user()->name)->before(' ')}}</span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
+                                <li><a href="{{ route('admin-profile') }}"><i class="ti-user"></i> My Profile</a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>

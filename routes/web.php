@@ -6,6 +6,7 @@ use App\Http\Livewire\Admin\AddSiteComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\CitiesConpoment;
 use App\Http\Livewire\Admin\EditCityComponent;
+use App\Http\Livewire\Admin\ProfileComponent;
 use App\Http\Livewire\Admin\ShowCityComponent;
 use App\Http\Livewire\Admin\ShowSiteComponent;
 use App\Http\Livewire\Admin\SiteEditComponent;
@@ -43,4 +44,9 @@ Route::middleware([ 'auth:sanctum',  config('jetstream.auth_session'), 'verified
     Route::get('/admin/sites/add/{city_id?}',AddSiteComponent::class)->name('admin-addsite');
     Route::get('/admin/sites/{site_id}/show',ShowSiteComponent::class)->name('admin-showsite');
     Route::get('/admin/sites/{site_id}/edit',SiteEditComponent::class)->name('admin-editsite');
+
+
+    //PROFILE
+
+    Route::get('/admin/profile',ProfileComponent::class)->name('admin-profile');
 });

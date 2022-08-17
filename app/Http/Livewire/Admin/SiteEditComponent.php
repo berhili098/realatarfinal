@@ -64,12 +64,12 @@ class SiteEditComponent extends Component
     public function updated($fields)
     {
         $this->validateOnly($fields, [
-            'name_en' => 'required|min:3',
-            'name_ar' => 'required|min:3',
-            'name_fr' => 'required|min:3',
-            'description_en' => 'required|min:50',
-            'description_fr' => 'required|min:50',
-            'description_ar' => 'required|min:50',
+            'name_en' => 'required|min:3|unique:sites,name_en, '.$this->site_id,
+            'name_ar' => 'required|min:3|unique:sites,name_ar,'.$this->site_id,
+            'name_fr' => 'required|min:3|unique:sites,name_fr,'.$this->site_id,
+            'description_en' => 'required|min:50|unique:sites,description_en,'.$this->site_id,
+            'description_fr' => 'required|min:50|unique:sites,description_fr,'.$this->site_id,
+            'description_ar' => 'required|min:50|unique:sites,description_ar,'.$this->site_id,
             'latitude' => 'required|numeric|between:-180,180',
             'longitude' => 'required|numeric|between:-180,180',
             'city_id' => 'required',
@@ -95,12 +95,12 @@ class SiteEditComponent extends Component
         }
         // dd($imageName);
         $valdiateData = $this->validate([
-            'name_en' => 'required',
-            'name_ar' => 'required',
-            'name_fr' => 'required',
-            'description_en' => 'required',
-            'description_fr' => 'required',
-            'description_ar' => 'required',
+            'name_en' => 'required|unique:sites,name_en,'.$this->site_id,
+            'name_ar' => 'required|unique:sites,name_ar,'.$this->site_id,
+            'name_fr' => 'required|unique:sites,name_fr,'.$this->site_id,
+            'description_en' => 'required|unique:sites,description_en,'.$this->site_id,
+            'description_fr' => 'required|unique:sites,description_fr,'.$this->site_id,
+            'description_ar' => 'required|unique:sites,description_ar,'.$this->site_id,
             'latitude' => 'required',
             'longitude' => 'required',
             'city_id' => 'required',

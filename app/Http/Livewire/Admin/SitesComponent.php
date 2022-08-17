@@ -103,6 +103,7 @@ class SitesComponent extends Component
         $site->update([
             'delete' => 0,
             'deletedBy' => NULL,
+            'status'=> '0',
         ]);
         $this->emit('success');
       

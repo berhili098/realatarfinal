@@ -78,8 +78,8 @@
                                                 <td>
                                                     <a href="#"
                                                         wire:click.prevent="changeStatus({{ $city->id }})"
-                                                        title="{{ $city->status == 0 ? 'turn off' : 'turn on' }}">
-                                                        <i class="fas {{ $city->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
+                                                        title="{{ $city->status == 1 ? 'turn off' : 'turn on' }}">
+                                                        <i class="fas {{ $city->status == 1 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
                                                             title=""></i>
                                                     </a>
 

@@ -178,7 +178,7 @@
                                         $count = 0;
                                     @endphp
                                     @foreach ($city->sites as $site)
-                                        {{ $count = $count + count($site->media->where('type','video')) }}
+                                        {{ $count = $count + count($site->media->where('type','audio')) }}
                                     @endforeach
                                         <td>Total audio</td>
                                         <td>{{ $count }}</td>

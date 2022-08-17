@@ -144,12 +144,12 @@
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown u-pro">
                         <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ asset('primary/assets/images/users/1.jpg') }}" alt="user" class="">
+                            <img src="{{asset('primary/assets/images/users/'.Auth::user()->photo)}}" alt="user" class="">
                             <span class="hidden-md-down">{{ Str::of(Auth::user()->name)->before(' ') }} &nbsp;<i class="fa fa-angle-down"></i></span> 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <!-- text-->
-                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                            <a href="{{ route('admin-profile') }}" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
                             <!-- text-->
                             <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
                             <!-- text-->

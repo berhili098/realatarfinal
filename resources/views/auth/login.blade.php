@@ -13,12 +13,12 @@
                     <x-jet-validation-errors class="alert alert-danger mt-5" />
                     <div class="form-group m-t-40">
                         <div class="col-xs-12">
-                            <input class="form-control" type="email"  placeholder="Email addresse" type="email" name="email" :value="old('email')" required autofocus>
+                            <input class="form-control" type="email"  placeholder="Email addresse" type="email" name="email" :value="old('email')" style="color: white!important" required autofocus>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" placeholder="Password" type="password" name="password" required autocomplete="current-password">
+                            <input class="form-control" type="password" placeholder="Password" type="password" name="password" style="color: white!important"  required autocomplete="current-password">
                         </div>
                     </div>
                     <div class="form-group row">
