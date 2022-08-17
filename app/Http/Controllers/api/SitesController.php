@@ -7,6 +7,7 @@ use App\Models\client;
 use App\Models\saved;
 use App\Models\site;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SitesController extends Controller
 {
@@ -17,14 +18,17 @@ class SitesController extends Controller
      */
     public function getHomeSites()
     {
-        $sites = site::all()->where('status', '=', 1)->take(4);
+        $sites = site::where('status', '=', 1)->get()->take(4);
         $totalSites = site::where('status', '=', 1)->count();
+        foreach ($sites as $site) {
+            $site->media;
+        }
         return response(['sites' => $sites, "total" => $totalSites], 200);
     }
 
     public function getAllSites()
     {
-        $sites = site::all()->where('status', '=', 1);
+        $sites = site::where('status', '=', 1)->get();
         $totalSites = site::where('status', '=', 1)->count();
         return response(['sites' => $sites, "total" => $totalSites], 200);
     }
@@ -34,14 +38,13 @@ class SitesController extends Controller
     {
         try {
             $client = client::find($id);
-            if($client){
+            if ($client) {
                 $list = [];
-                foreach($client->saveds as $saved){
+                foreach ($client->saveds as $saved) {
                     array_push($list, $saved->site);
                 }
                 return response(['savedSites' => $list, 'total' => $client->saveds->count()], 200);
-            }
-            else{
+            } else {
                 return response(['message' => 'usernotfound'], 404);
             }
         } catch (\Exception $ex) {
@@ -49,16 +52,16 @@ class SitesController extends Controller
         }
     }
 
-    public function favorise(Request $request, $siteId){
+    public function favorise(Request $request, $siteId)
+    {
         $request->validate([
-            'uid'=>'required',
+            'uid' => 'required',
         ]);
         $saved = saved::where('client_id', $request->uid)->where('site_id', $siteId)->first();
-        if(!is_null($saved)){
+        if (!is_null($saved)) {
             $saved->delete();
             return response(['message' => 'unfavorised'], 200);
-        }
-        else{
+        } else {
             saved::create([
                 'site_id' => $siteId,
                 'client_id' => $request->uid
@@ -97,7 +100,16 @@ class SitesController extends Controller
      */
     public function show($id)
     {
-        //
+        $site = site::find($id);
+        if ($site != null) {
+            $images = $site->media->where('type', 'image');
+            $videos = DB::table('media')->where('site_id', $id)->where('type', 'video')->get();
+            $audios = DB::table('media')->where('site_id', $id)->where('type', 'audio')->get();
+            return response(["images" => $images, "totalImages" => $images->count(),  "videos" => $videos, "totalvideos" => $videos->count(), "audios" => $audios, "totalAudios" => $audios->count()], 200);
+        }
+        else{
+            return response("notfound", 400);
+        }
     }
 
     /**

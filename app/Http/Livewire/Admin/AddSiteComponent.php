@@ -86,6 +86,7 @@ class AddSiteComponent extends Component
         if ($this->photo) {
             $imageName = Carbon::now()->timestamp . '.' . $this->photo->extension();
             $this->photo->storeAs('primary/assets/images/sites/', $imageName);
+            $this->photo->storeAs('primary/assets/images/sites/media/images', $imageName);
         } else {
             $imageName = "No_Image_Available.jpg";
         }
