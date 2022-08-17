@@ -283,11 +283,11 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="m-t-5 ">
+                                <div class="m-t-5 d-flex">
 
 
                                     @foreach ($site->media->where('type', 'image') as $image)
-                                      <div class="d-flex ">
+                                      <div>
                                         <i class="fa fa-trash" ></i>
                                         <img class="m-t-10 m-l-5"
                                         src="{{ asset('primary/assets/images/sites/media/images') }}/{{ $image->name }}"
