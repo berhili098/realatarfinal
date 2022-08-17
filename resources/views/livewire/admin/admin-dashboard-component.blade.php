@@ -138,7 +138,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex m-b-40 align-items-center">
-                            <h5 class="card-title">PROPERTIES STATS</h5>
+                            <h5 class="card-title">CLIENTS STATS</h5>
                             <div class="ml-auto">
                                 <ul class="list-inline font-12">
                                     <li><i class="fa fa-circle text-cyan"></i> For Sale</li>

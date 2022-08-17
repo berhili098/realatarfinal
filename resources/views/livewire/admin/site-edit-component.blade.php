@@ -287,9 +287,12 @@
 
 
                                     @foreach ($site->media->where('type', 'image') as $image)
+                                      <div class="d-flex ">
+                                        <i class="fa fa-trash" ></i>
                                         <img class="m-t-10 m-l-5"
-                                            src="{{ asset('primary/assets/images/sites/media/images') }}/{{ $image->name }}"
-                                            width="110px" height="100px">
+                                        src="{{ asset('primary/assets/images/sites/media/images') }}/{{ $image->name }}"
+                                        width="110px" height="100px">
+                                      </div>
                                     @endforeach
 
                                     @if (count($neWimages) > 0)

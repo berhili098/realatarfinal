@@ -14,7 +14,7 @@
                         <img src="{{ asset('primary/assets/images/Logo_atar_white.png') }}" alt="homepage" class="light-logo" />
                     </b>
                     <!--End Logo icon -->
-                    {{-- <span class="hidden-xs"><span class="font-bold">Atar</span>dashboard</span> --}}
+                    <span class="hidden-xs"><span class="font-bold">Atar</span>dashboard</span>
                 </a>
             </div>
             <!-- ============================================================== -->
