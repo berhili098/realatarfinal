@@ -84,8 +84,7 @@
 
         <!-- ============================================================== -->
         <!-- row -->
-        <div class="row" style="cursor: pointer;"
-        onclick=" window.location='{{ route('admin-sites') }}'">
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
@@ -105,7 +104,8 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($sites->sortByDesc('created_at')->take(5) as $site)
-                                    <tr>
+                                    <tr  style="cursor: pointer;"
+                                    onclick=" window.location='{{ route('admin-showsite',$site->id) }}'">
                                         <td>{{ $site->name_fr }}</td>
                                         <td> <img src="{{ asset('primary/assets/images/sites/'.$site->photo) }}" alt="iMac" width="80"> </td>
                                         <td>{{ $site->user->name }}</td>

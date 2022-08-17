@@ -283,12 +283,12 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="m-t-5 d-flex">
+                                <div class="m-t-5 d-flex" >
 
 
                                     @foreach ($site->media->where('type', 'image') as $image)
-                                      <div>
-                                        <i class="fa fa-trash" ></i>
+                                      <div class="position-relative" >
+                                      <a href=""   wire:click.prevent="deletePicture({{ $image->id }})">  <i class=" fa fa-trash position-absolute text-danger  "  style="right:10px; top:15px;font-size:20px" ></i></a>
                                         <img class="m-t-10 m-l-5"
                                         src="{{ asset('primary/assets/images/sites/media/images') }}/{{ $image->name }}"
                                         width="110px" height="100px">

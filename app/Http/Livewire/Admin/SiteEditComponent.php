@@ -176,4 +176,8 @@ class SiteEditComponent extends Component
         $title='edit site';
         return view('livewire.admin.site-edit-component',compact('cities','site','countImages','countAudios','media'))->layout("layouts.master", compact("title"));
     }
+    public function deletePicture($image_id){
+        $media=Media::find($image_id);
+        $media->delete();
+    }
 }
