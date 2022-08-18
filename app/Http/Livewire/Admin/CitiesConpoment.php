@@ -21,6 +21,10 @@ class CitiesConpoment extends Component
     {
         $this->search = '';
     }
+    public function updating()
+    {
+        $this->resetPage();
+    }
 
     public function confirmDelete($cid)
     {

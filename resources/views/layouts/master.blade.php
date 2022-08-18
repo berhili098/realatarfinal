@@ -138,9 +138,9 @@
                             <ul aria-expanded="@if(request()->routeIs('admin-addcity')) {{ 'true' }} @elseif(request()->routeIs('admin-cities')) {{ 'true' }} @elseif(request()->routeIs('admin-editcity')) {{ 'true' }} @elseif(request()->routeIs('admin-showcity')) {{ 'true' }} @endif"
                                  class="collapse @if(request()->routeIs('admin-addcity')) {{ 'in' }} @elseif(request()->routeIs('admin-cities')) {{ 'in' }} @elseif(request()->routeIs('admin-editcity')) {{ 'in' }} @elseif(request()->routeIs('admin-showcity')) {{ 'in' }} @endif">
                                 <li><a class="@if(request()->routeIs('admin-addcity')) {{ 'active' }} @elseif(request()->routeIs('admin-cities')) {{ 'active' }} @elseif(request()->routeIs('admin-editcity')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif" href="{{ route('admin-cities') }}">Villes</a></li>
-                                <li><a href="{{ route('admin-sites') }}">Repéres</a></li>
+                                <li><a class="@if(request()->routeIs('admin-addsite')) {{ 'active' }} @elseif(request()->routeIs('admin-sites')) {{ 'active' }} @elseif(request()->routeIs('admin-editsite')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif" href="{{ route('admin-sites') }}">Repéres</a></li>
                                 <li><a href="form-addons.html">Parcours</a></li>
-                                <li><a href="form-material.html">Quiz</a></li>
+                                <li><a href="{{ route('admin-quiz') }}">Quiz</a></li>
                             </ul>
                         </li>
 

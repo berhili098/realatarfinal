@@ -25,4 +25,8 @@ class Site extends Model
     {
         return $this->hasMany(Media::class);
     }
+    public function quiz()
+    {
+        return $this->hasMany(Quiz::class);
+    }
 }

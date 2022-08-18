@@ -44,7 +44,7 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
     {
         $title= 'profile';
         $users = User::find(Auth::user()->id);
-        return view('livewire.admin.profile-component',compact('users'))->layout('layouts.master', compact('title'));;
+        return view('livewire.admin.profile-component',compact('users'))->layout('layouts.master', compact('title'));
     }
 
     
@@ -61,16 +61,31 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
 
         ]);
 
-        $user->update(
-            ['name'=>$this->name,
-            'email'=>$this->email,
-            'description'=>$this->description,
-            'phoneNo'=>$this->phoneNo,
-            'birthdate'=>$this->birthdate,
-            'password' =>Hash::make($this->password)
-        
-        
-        ]);
+        if($user->password==$this->password)
+        {
+            $user->update(
+                ['name'=>$this->name,
+                'email'=>$this->email,
+                'description'=>$this->description,
+                'phoneNo'=>$this->phoneNo,
+                'birthdate'=>$this->birthdate, 
+            
+            
+            ]);
+        }
+        else{
+            $user->update(
+                ['name'=>$this->name,
+                'email'=>$this->email,
+                'description'=>$this->description,
+                'phoneNo'=>$this->phoneNo,
+                'birthdate'=>$this->birthdate,
+                'password' =>Hash::make($this->password)
+            
+            
+            ]);
+        }
+  
         return redirect(request()->header('Referer'));
     }
 }
