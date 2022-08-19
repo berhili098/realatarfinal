@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="text-themecolor">Cities</h4>
+                <h4 class="text-themecolor">Quizzes</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
@@ -63,6 +63,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($quizzes as $quiz)
+                                        
                                             <tr class="data-vertical">
                                                 <td>{{ $quiz->question_fr }}</td>
                                                 <td >
