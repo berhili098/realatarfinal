@@ -175,7 +175,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <p class="m-t-30">{{ Auth::user()->description }}</p>
+                            <p class="m-t-30">{!! html_entity_decode(nl2br(e(Auth::user()->description)))!!}</p>
 
 
 

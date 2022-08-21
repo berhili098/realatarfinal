@@ -87,7 +87,7 @@ class SiteEditComponent extends Component
     {
         $site=Site::find($this->site_id);
         if ($this->neWphoto) {
-            $imageName = Carbon::now()->timestamp . '.' . $this->neWphoto->extension();
+            $imageName = Carbon::now()->timestamp . Str::random(10) . '.' .  $this->neWphoto->extension();
             $this->neWphoto->storeAs('primary/assets/images/sites/', $imageName);
             $site->update(['photo'=>$imageName]);
         } else {

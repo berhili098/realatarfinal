@@ -84,7 +84,7 @@ class AddSiteComponent extends Component
     public function storeSite()
     {
         if ($this->photo) {
-            $imageName = Carbon::now()->timestamp . '.' . $this->photo->extension();
+            $imageName = Carbon::now()->timestamp . Str::random(10) . '.' .  $this->photo->extension();
             $this->photo->storeAs('primary/assets/images/sites/', $imageName);
             $this->photo->storeAs('primary/assets/images/sites/media/images', $imageName);
         } else {

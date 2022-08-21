@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ThemeController;
 use App\Http\Livewire\Admin\AddCityComponent;
+use App\Http\Livewire\Admin\AddPathComponent;
 use App\Http\Livewire\Admin\AddQuizComponent;
 use App\Http\Livewire\Admin\AddSiteComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
@@ -49,7 +50,6 @@ Route::middleware([ 'auth:sanctum',  config('jetstream.auth_session'), 'verified
     Route::get('/admin/sites/{site_id}/show',ShowSiteComponent::class)->name('admin-showsite');
     Route::get('/admin/sites/{site_id}/edit',SiteEditComponent::class)->name('admin-editsite');
 
-
     //PROFILE
     Route::get('/admin/profile',ProfileComponent::class)->name('admin-profile');
 
@@ -58,4 +58,8 @@ Route::middleware([ 'auth:sanctum',  config('jetstream.auth_session'), 'verified
     Route::get('/admin/quiz/add',AddQuizComponent::class)->name('admin-addquiz');
     Route::get('/admin/quiz/{quiz_id}/show',ShowQuizComponent::class)->name('admin-showquiz');
     Route::get('/admin/quiz/{quiz_id}/edit',EditQuizComponent::class)->name('admin-editquiz');
+
+    //PATH
+    
+    Route::get('/admin/path/add',AddPathComponent::class)->name('admin-addpath');
 });

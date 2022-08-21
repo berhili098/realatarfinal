@@ -36,7 +36,8 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
             'birthdate'=>'required',
             'description'=>'required',
             'phoneNo'=>'required',
-            'password'=>'required|min:8'
+            'password'=>'required|min:8',
+            'address'=>'required'
         ]);
     }
     
@@ -57,7 +58,8 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
             'birthdate'=>'required',
             'description'=>'required',
             'phoneNo'=>'required',
-            'password'=>'required|min:8'
+            'password'=>'required|min:8',
+            'address'=>'required'
 
         ]);
 
@@ -65,25 +67,27 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
         {
             $user->update(
                 ['name'=>$this->name,
-                'email'=>$this->email,
-                'description'=>$this->description,
-                'phoneNo'=>$this->phoneNo,
-                'birthdate'=>$this->birthdate, 
-            
+                'email'=>$this->email, 
             
             ]);
+            $user->description=$this->description;
+            $user->address=$this->address;
+            $user->phoneNo=$this->phoneNo;
+            $user->birthdate=$this->birthdate;
+            $user->save();
         }
         else{
             $user->update(
                 ['name'=>$this->name,
                 'email'=>$this->email,
-                'description'=>$this->description,
-                'phoneNo'=>$this->phoneNo,
-                'birthdate'=>$this->birthdate,
-                'password' =>Hash::make($this->password)
-            
-            
+                'password' =>Hash::make($this->password), 
             ]);
+            $user->description=$this->description;
+            $user->address=$this->address;
+            $user->phoneNo=$this->phoneNo;
+            $user->birthdate=$this->birthdate;
+
+            $user->save();
         }
   
         return redirect(request()->header('Referer'));

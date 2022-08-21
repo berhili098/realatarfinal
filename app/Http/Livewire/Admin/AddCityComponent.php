@@ -65,7 +65,7 @@ class AddCityComponent extends Component
     public function storeCity()
     {
         if($this->photo){
-            $imageName = Carbon::now()->timestamp . '.' . $this->photo->extension();
+            $imageName = Carbon::now()->timestamp . Str::random(10) . '.' .  $this->photo->extension();
             $this->photo->storeAs('primary/assets/images/cities/' , $imageName);
         }else{
             $imageName = "No_Image_Available.jpg";

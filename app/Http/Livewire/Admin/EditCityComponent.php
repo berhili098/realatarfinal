@@ -86,7 +86,7 @@ class EditCityComponent extends Component
         $imageName ="";
         if($this->newphoto)
         {
-            $imageName = Carbon::now()->timestamp .'.'. $this->newphoto->extension();
+            $imageName = Carbon::now()->timestamp . Str::random(10) . '.' .  $this->newphoto->extension();
             $this->newphoto->storeAs('primary/assets/images/cities', $imageName);
             $city->update(['photo'=>$imageName]);
         }

@@ -49,11 +49,11 @@
                                     <thead>
                                         <tr>
                                             <th>Question</th>
-                                            <th>Reponse 1</th>
-                                            <th>Reponse 2</th>
-                                            <th>Reponse 3</th>
-                                            <th>Reponse 4</th>
-                                            <th>Reponse</th>
+                                            <th>Answer 1</th>
+                                            <th>Answer 2</th>
+                                            <th>Answer 3</th>
+                                            <th>Answer 4</th>
+                                            <th>Correction</th>
                                             <th>Repere</th>
                                             <th>Created by</th>
                                             <th>Created at</th>
@@ -63,28 +63,28 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($quizzes as $quiz)
-                                        
+
                                             <tr class="data-vertical">
-                                                <td>{{ $quiz->question_fr }}</td>
+                                                <td>{{ $quiz->question_en }}</td>
                                                 <td >
-                                                   {{ $quiz->reponse1_fr }}
+                                                   {{ $quiz->reponse1_en }}
                                                 </td>
                                                 <td >
-                                                   {{ $quiz->reponse2_fr }}
+                                                   {{ $quiz->reponse2_en }}
                                                 </td>
                                                 <td >
-                                                   {{ $quiz->reponse3_fr }}
+                                                   {{ $quiz->reponse3_en }}
                                                 </td>
                                                 <td >
-                                                   {{ $quiz->reponse4_fr }}
+                                                   {{ $quiz->reponse4_en }}
                                                 </td>
                                                 <td>
-                                                     @if($quiz->correcte_fr==1){{$quiz->reponse1_fr }}@endif
-                                                     @if($quiz->correcte_fr==2){{$quiz->reponse2_fr }}@endif
-                                                     @if($quiz->correcte_fr==3){{$quiz->reponse3_fr }}@endif
-                                                     @if($quiz->correcte_fr==4){{$quiz->reponse4_fr }}@endif
+                                                     @if($quiz->correcte_en==1){{$quiz->reponse1_en }}@endif
+                                                     @if($quiz->correcte_en==2){{$quiz->reponse2_en }}@endif
+                                                     @if($quiz->correcte_en==3){{$quiz->reponse3_en }}@endif
+                                                     @if($quiz->correcte_en==4){{$quiz->reponse4_en }}@endif
                                                 </td>
-                                                <td><a href="{{ route('admin-showsite',$quiz->site->id) }}">{{ $quiz->site->name_fr }}</a></td>
+                                                <td><a href="{{ route('admin-showsite',$quiz->site->id) }}">{{ $quiz->site->name_en}}</a></td>
                                                 <td>{{ $quiz->user->name }}</td>
                                                 <td>{{ $quiz->created_at }}</td>
                                                 <td>

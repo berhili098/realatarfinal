@@ -29,4 +29,9 @@ class Site extends Model
     {
         return $this->hasMany(Quiz::class);
     }
+
+    public function paths()
+    {
+        return $this->belongsToMany(Path::class,'path_sites');
+    }
 }
