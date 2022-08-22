@@ -13,7 +13,19 @@ use Illuminate\Support\Str;
 class AddPathComponent extends Component
 {
     use WithFileUploads;
-    public $photo,$videos,$name_ar,$name_fr,$name_en,$user_id,$selectedSites=[],$description_ar,$description_en,$description_fr,$duration,$length,$sites;
+    public $photo,$videos,$name_ar,$name_fr,$name_en,$user_id,$selectedSites=[],$selectedSites2=[],$description_ar,$description_en,$description_fr,$duration,$length,$sites;
+    
+
+    protected $listeners = [
+         'getLatitudeForInput'
+    ];
+    //
+    public function getLatitudeForInput($value)
+    {
+        if(!is_null($value))
+            $this->selectedSites2 = $value;
+    }
+    
     public function render()
     {
         $this->sites = Site::where('delete',0)->get();
@@ -37,7 +49,7 @@ class AddPathComponent extends Component
     }
 
     public function store(){
-dd($this->selectedSites);
+        dd($this->selectedSites2);
         $validatedata= $this->validate([
             'name_ar'=>'required',
             'name_fr'=>'required',

@@ -19,7 +19,7 @@ class CreatePathsTable extends Migration
             $table->string('name_ar')->unique();
             $table->string('name_en')->unique();
             $table->longText('description_fr')->default('pas de description disponible');
-            $table->longText('description_ar')->default();
+            $table->longText('description_ar')->default('لا يوجد وصف متاح');
             $table->longText('description_en');
             $table->string('length');
             $table->string('duration');

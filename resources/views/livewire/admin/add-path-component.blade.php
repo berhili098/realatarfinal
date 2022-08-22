@@ -24,9 +24,9 @@
                             <div class="card-body">
                                 <h4 class="card-title">General Info </h4>
                                 <div class="row p-t-40">
-                               
-                                   
-                                 
+
+
+
                                     <div class="col-md-1">
                                         <div class="form-group">
                                             <label for=""> </label>
@@ -151,7 +151,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">Additional info</h4>
                                 <div class="row">
-                                    
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Length :</label>
@@ -177,51 +177,53 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Length :</label>
-                                            <select  style="width: 100%" multiple wire:model="selectedSites" data-placeholder="Choose">
-                                              @foreach ($sites->sortBy('name_en') as $site )
-                                                  
-                                           
+                                            <select  onchange='getAll()'  style="width: 100%"  multiple wire:model="selectedSites"
+                                                data-placeholder="Choose">
+                                                @foreach ($sites->sortBy('name_en') as $site)
                                                     <option value="{{ $site->id }}">{{ $site->name_en }}</option>
-                                                    @endforeach
-                                               
-                                          
+                                                @endforeach
+
+
                                             </select>
-                                        
+
                                         </div>
                                     </div>
-                                    @if($selectedSites)
+
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <div class="myadmin-dd-empty dd" id="nestable2">
-                                                
-                                                <ol class="dd-list">
-                                                    @for ( $i=0; $i < count($selectedSites); $i++)
-                                                      <li class="dd-item dd3-item"   data-id={{ $selectedSites[$i] }}  > 
-                                                            <div class="dd-handle dd3-handle"></div>
-                                                            <div class="dd3-content"> {{ $sites->find($selectedSites[$i])['name_en'] }}</div>
-                                                        </li>
+                                            <label for="price">Length :</label>
+                                            <select id="idid"   style="width: 100%" multiple size=4 wire:model="selectedSites2"
+                                                data-placeholder="Choose" >
+                                                @foreach ($selectedSites as $site)
+                                                    <option  value="{{ $site }}" >{{ $sites->find($site)['name_en']}}</option>
+                                                @endforeach
+
+
+                                            </select>
+
                                                
-                                                    @endfor
-                                                </ol>
-                                            </div>
-                                       
-                                        
+                                            
+
+
+                                          
+
+
                                         </div>
                                     </div>
-                                   @endif
+
                                 </div>
-                           
+
 
                             </div>
                         </div>
 
 
-                    </div>  
+                    </div>
                     <div class="col-4">
                         <div class="card">
                             <div class="card-body text-center">
 
-                                <button type="submit" class="btn btn-info" id="btn-submit"> <i
+                                <button type="submit" class="btn btn-info" id="btn-submit" > <i
                                         class="fa fa-check"></i> Save</button>
                                 <a href="{{ route('admin-sites') }}" class="btn btn-inverse">Cancel</a>
                             </div>
@@ -245,17 +247,19 @@
                                     accept="image/*">
                             </div>
                         </div>
-                 
 
-                 
+
+
 
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"> <i class="ti-video-clapper"></i> Video</h4>
                                 <div class="m-4 text-center">
                                     <div class="custom-file mb-3 text-left">
-                                        <input type="file" class="custom-file-input" id="videoupload"   wire:model="videos"  accept="video/*">
-                                        <label class="custom-file-label form-control" for="videoupload">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="videoupload"
+                                            wire:model="videos" accept="video/*">
+                                        <label class="custom-file-label form-control" for="videoupload">Choose
+                                            file</label>
                                     </div>
                                     <div wire:loading wire:target="videos">Uploading...</div>
                                     @error('videos.*')
@@ -264,13 +268,11 @@
                                 </div>
                                 <div class="m-t-5 text-center">
                                     @if ($videos)
-                                      
-                                                <video width="300" controls>
-                                                    <source src="{{ $videos->temporaryUrl() }}" type="video/mp4">
-                                                    <source src="{{ $videos->temporaryUrl() }}" type="video/ogg">
-                                                    Your browser does not support HTML video.
-                                                </video>
-                                 
+                                        <video width="300" controls>
+                                            <source src="{{ $videos->temporaryUrl() }}" type="video/mp4">
+                                            <source src="{{ $videos->temporaryUrl() }}" type="video/ogg">
+                                            Your browser does not support HTML video.
+                                        </video>
                                     @else
                                         <p class="text-muted m-2">No videos selected.</p>
                                     @endif
@@ -281,9 +283,7 @@
                 </div>
 
             </form>
-
         </div>
-
     </div>
 </div>
 
@@ -294,42 +294,20 @@
 @endpush
 
 @push('scripts')
+    <script src="{{ asset('primary/assets/node_modules/nestable/jquery.nestable.js') }}"></script>
+    <script src="{{ asset('primary/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js') }}"></script>
+    <script src="{{ asset('primary/assets/node_modules/sparkline/jquery.sparkline.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            var langue = 0;
-            $("#image-ville").click(function() {
-                $('#uploadfile').click();
-            });
-            $('#btn-active-tab').click(function(e) {
-                if (langue == 0) {
-
-                    $('#flag').removeClass('flag-icon-gb');
-                    $('#flag').addClass('flag-icon-fr');
-                    $('#flag').attr('title', 'Français, click to change the to arabic');
-                    $('#frenchTab').addClass('active');
-                    $('#englishTab').removeClass('active');
-                    $('#arabTab').removeClass('active');
-                    langue = 1;
-                } else if (langue == 1) {
-
-                    $('#flag').removeClass('flag-icon-fr');
-                    $('#flag').addClass('flag-icon-ma');
-                    $('#flag').attr('title', 'Arabic, click to change the to english');
-                    $('#frenchTab').removeClass('active');
-                    $('#englishTab').removeClass('active');
-                    $('#arabicTab').addClass('active');
-                    langue = 2;
-                } else {
-
-                    $('#flag').removeClass('flag-icon-ma');
-                    $('#flag').addClass('flag-icon-gb');
-                    $('#flag').attr('title', 'English, click to change the to french');
-                    $('#frenchTab').removeClass('active');
-                    $('#englishTab').addClass('active');
-                    $('#arabicTab').removeClass('active');
-                    langue = 0;
-                }
-            });
+   
+    
+     function getAll(){
+        var options2 = document.getElementById('idid'). options;
+        Livewire.emit('getLatitudeForInput',  document.getElementById('idid'). options);
+        Livewire.on('getLatitudeForInput', function(options2) {
+            console.log(options2);
         });
+  
+      }
     </script>
+  
 @endpush
