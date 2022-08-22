@@ -72,10 +72,9 @@
                                                 <td>{{ $quiz->created_at->format('Y-m-d') }}</td>
                                                 <td>
                                                     <a href="#"
-                                                        wire:click.prevent="changeStatus({{ $quiz->id }})"
-                                                        title="{{ $quiz->status == 1 ? 'turn off' : 'turn on' }}">
-                                                        <i class="fas {{ $quiz->status == 1 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
-                                                            title=""></i>
+                                                        wire:click.prevent="changeStatus({{ $quiz->id }})">
+                                                        <i class="fas {{ $quiz->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
+                                                            title="{{ $quiz->status == 0 ? 'turn off' : 'turn on' }}"></i>
                                                     </a>
 
                                                 </td>
