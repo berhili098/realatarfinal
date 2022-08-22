@@ -18,14 +18,18 @@ class UserTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach(range(1,2) as $index)
-        {
-            User::create([
-                'name' => $faker->name,
-                'email' => $faker->unique()->randomElement(['admin@atar.ma','user@atar.ma']),
-                'utype' => $faker->unique()->randomElement(['USR','ADM']),
-                'password' => Hash::make('123456789'),
-            ]);
-        }
+        User::create([
+            'name' => $faker->name,
+            'email' => 'admin@atar.ma',
+            'utype' => 'ADM',
+            'password' => Hash::make('123456789'),
+        ]);
+
+        User::create([
+            'name' => $faker->name,
+            'email' =>'user@atar.ma',
+            'utype' => 'USR',
+            'password' => Hash::make('123456789'),
+        ]);
     }
 }
