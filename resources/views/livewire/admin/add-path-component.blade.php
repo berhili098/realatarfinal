@@ -177,7 +177,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Length :</label>
-                                            <select style="width: 100%" multiple="multiple" wire:model="sites" data-placeholder="Choose">
+                                            <select  style="width: 100%" multiple wire:model="selectedSites" data-placeholder="Choose">
                                               @foreach ($sites as $site )
                                                   
                                            
@@ -189,19 +189,19 @@
                                         
                                         </div>
                                     </div>
-                                    @if($sites)
+                                    @if($selectedSites)
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="myadmin-dd-empty dd" id="nestable2">
                                                 
                                                 <ol class="dd-list">
-                                                    @foreach ($sites as $site)
-                                                      <li class="dd-item dd3-item"   data-id="{{ $site->id }}  "> 
+                                                    @for ( $i=0; $i < count($selectedSites); $i++)
+                                                      <li class="dd-item dd3-item"   data-id={{ $i }}  > 
                                                             <div class="dd-handle dd3-handle"></div>
-                                                            <div class="dd3-content"> {{ $site->name_en }}</div>
+                                                            <div class="dd3-content"> {{ $selectedSites[$i] }}</div>
                                                         </li>
                                                
-                                                    @endforeach
+                                                    @endfor
                                                 </ol>
                                             </div>
                                        
@@ -216,7 +216,7 @@
                         </div>
 
 
-                    </div>
+                    </div>  
                     <div class="col-4">
                         <div class="card">
                             <div class="card-body text-center">

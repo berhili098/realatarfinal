@@ -70,25 +70,32 @@
     <!-- page css -->
     <link href="{{ asset('primary/dist/css/pages/user-card.css') }}" rel="stylesheet">
     <!-- Popup CSS -->
-    <link href="{{ asset('primary/assets/node_modules/Magnific-Popup-master/dist/magnific-popup.css') }}" rel="stylesheet">
-   {{-- Nestable css --}}
-   <link href="{{ asset('primary/assets/node_modules/nestable/nestable.css') }}" rel="stylesheet" type="text/css" />
-   {{-- mutliselect --}}
-   <link href="{{ asset('primary/assets/node_modules/multiselect/css/multi-select.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('primary/assets/node_modules/Magnific-Popup-master/dist/magnific-popup.css') }}"
+        rel="stylesheet">
+    {{-- Nestable css --}}
+    <link href="{{ asset('primary/assets/node_modules/nestable/nestable.css') }}" rel="stylesheet" type="text/css" />
+    {{-- mutliselect --}}
+    <link href="{{ asset('primary/assets/node_modules/multiselect/css/multi-select.css') }}" rel="stylesheet"
+        type="text/css" />
 
-   <link href="{{ asset('primary/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css" />
-   <link href="{{ asset('primary/assets/node_modules/select2/dist/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
-   <link href="{{ asset('primary/assets/node_modules/switchery/dist/switchery.min.css')}}" rel="stylesheet" />
-   <link href="{{ asset('primary/assets/node_modules/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
-   <link href="{{ asset('primary/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css')}}" rel="stylesheet" />
-   <link href="{{ asset('primary/assets/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
+    <link href="{{ asset('primary/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.css') }}"
+        rel="stylesheet" type="text/css" />
+    <link href="{{ asset('primary/assets/node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('primary/assets/node_modules/switchery/dist/switchery.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('primary/assets/node_modules/bootstrap-select/bootstrap-select.min.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('primary/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('primary/assets/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css') }}"
+        rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-@stack('styles')
+    @stack('styles')
     @livewireStyles
 </head>
 
@@ -123,9 +130,11 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="user-pro">
-                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                                <img src="{{asset('primary/assets/images/users/'.Auth::user()->photo)}}" alt="user-img" class="img-circle">
-                                <span class="hide-menu">{{  Str::of(Auth::user()->name)->before(' ')}}</span>
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <img src="{{ asset('primary/assets/images/users/' . Auth::user()->photo) }}"
+                                    alt="user-img" class="img-circle">
+                                <span class="hide-menu">{{ Str::of(Auth::user()->name)->before(' ') }}</span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('admin-profile') }}"><i class="ti-user"></i> My Profile</a></li>
@@ -133,7 +142,8 @@
                                 <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
                                 <li>
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
                                         <i class="fa fa-power-off"></i> Logout
                                     </a>
                                 </li>
@@ -141,14 +151,18 @@
                         </li>
 
                         <li class="nav-small-cap pl-3"> MANAGE CONTENT </li>
-                        <li class="@if(request()->routeIs('admin-addcity')) {{ 'active' }} @elseif(request()->routeIs('admin-cities')) {{ 'active' }} @elseif(request()->routeIs('admin-editcity')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif" href="{{ route('admin-cities') }}">
-                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        <li class="@if (request()->routeIs('admin-addcity')) {{ 'active' }} @elseif(request()->routeIs('admin-cities')) {{ 'active' }} @elseif(request()->routeIs('admin-editcity')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif"
+                            href="{{ route('admin-cities') }}">
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
                                 <i class="ti-align-right"></i><span class="hide-menu">Contenu</span>
                             </a>
-                            <ul aria-expanded="@if(request()->routeIs('admin-addcity')) {{ 'true' }} @elseif(request()->routeIs('admin-cities')) {{ 'true' }} @elseif(request()->routeIs('admin-editcity')) {{ 'true' }} @elseif(request()->routeIs('admin-showcity')) {{ 'true' }} @endif"
-                                 class="collapse @if(request()->routeIs('admin-addcity')) {{ 'in' }} @elseif(request()->routeIs('admin-cities')) {{ 'in' }} @elseif(request()->routeIs('admin-editcity')) {{ 'in' }} @elseif(request()->routeIs('admin-showcity')) {{ 'in' }} @endif">
-                                <li><a class="@if(request()->routeIs('admin-addcity')) {{ 'active' }} @elseif(request()->routeIs('admin-cities')) {{ 'active' }} @elseif(request()->routeIs('admin-editcity')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif" href="{{ route('admin-cities') }}">Villes</a></li>
-                                <li><a class="@if(request()->routeIs('admin-addsite')) {{ 'active' }} @elseif(request()->routeIs('admin-sites')) {{ 'active' }} @elseif(request()->routeIs('admin-editsite')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif" href="{{ route('admin-sites') }}">Repéres</a></li>
+                            <ul aria-expanded="@if (request()->routeIs('admin-addcity')) {{ 'true' }} @elseif(request()->routeIs('admin-cities')) {{ 'true' }} @elseif(request()->routeIs('admin-editcity')) {{ 'true' }} @elseif(request()->routeIs('admin-showcity')) {{ 'true' }} @endif"
+                                class="collapse @if (request()->routeIs('admin-addcity')) {{ 'in' }} @elseif(request()->routeIs('admin-cities')) {{ 'in' }} @elseif(request()->routeIs('admin-editcity')) {{ 'in' }} @elseif(request()->routeIs('admin-showcity')) {{ 'in' }} @endif">
+                                <li><a class="@if (request()->routeIs('admin-addcity')) {{ 'active' }} @elseif(request()->routeIs('admin-cities')) {{ 'active' }} @elseif(request()->routeIs('admin-editcity')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif"
+                                        href="{{ route('admin-cities') }}">Villes</a></li>
+                                <li><a class="@if (request()->routeIs('admin-addsite')) {{ 'active' }} @elseif(request()->routeIs('admin-sites')) {{ 'active' }} @elseif(request()->routeIs('admin-editsite')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif"
+                                        href="{{ route('admin-sites') }}">Repéres</a></li>
                                 <li><a href="form-addons.html">Parcours</a></li>
                                 <li><a href="{{ route('admin-quiz') }}">Quiz</a></li>
                             </ul>
@@ -156,7 +170,8 @@
 
 
                         <li>
-                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
                                 <i class="ti-bell"></i><span class="hide-menu">Notifications</span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -166,7 +181,9 @@
                                 <li><a href="form-material.html">Quiz</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-mobile"></i><span class="hide-menu">Menus ATAR</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false"><i class="ti-mobile"></i><span class="hide-menu">Menus
+                                    ATAR</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="form-basic.html">Villes</a></li>
                                 <li><a href="form-layout.html">Repéres</a></li>
@@ -174,7 +191,9 @@
                                 <li><a href="form-material.html">Quiz</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Utilisateurs</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false"><i class="icon-people"></i><span
+                                    class="hide-menu">Utilisateurs</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="form-basic.html">Villes</a></li>
                                 <li><a href="form-layout.html">Repéres</a></li>
@@ -182,7 +201,9 @@
                                 <li><a href="form-material.html">Quiz</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-receipt"></i><span class="hide-menu">Paiments</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false"><i class="ti-receipt"></i><span
+                                    class="hide-menu">Paiments</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="form-basic.html">Villes</a></li>
                                 <li><a href="form-layout.html">Repéres</a></li>
@@ -190,7 +211,9 @@
                                 <li><a href="form-material.html">Quiz</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-briefcase"></i><span class="hide-menu">Administrateurs</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false"><i class="ti-briefcase"></i><span
+                                    class="hide-menu">Administrateurs</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="form-basic.html">Villes</a></li>
                                 <li><a href="form-layout.html">Repéres</a></li>
@@ -198,7 +221,9 @@
                                 <li><a href="form-material.html">Quiz</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-panel"></i><span class="hide-menu">Parametres</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false"><i class="ti-panel"></i><span
+                                    class="hide-menu">Parametres</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="form-basic.html">Villes</a></li>
                                 <li><a href="form-layout.html">Repéres</a></li>
@@ -227,29 +252,64 @@
             {{ $slot }}
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
-             <!-- Right sidebar -->
+            <!-- Right sidebar -->
             <!-- ============================================================== -->
             <!-- .right-sidebar -->
             <div class="right-sidebar">
                 <div class="slimscrollright">
-                    <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                    <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span>
+                    </div>
                     <div class="r-panel-body">
                         <ul id="themecolors" class="m-t-20">
                             <li><b>With Light sidebar</b></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-orange']) }}" data-skin="skin-orange" class="orange-theme {{ Auth::user()->theme =="skin-orange" ? "working" :"" }}">2</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-green']) }}" data-skin="skin-green" class="green-theme {{ Auth::user()->theme =="skin-green" ? "working" :"" }}">2</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-red']) }}" data-skin="skin-red" class="red-theme {{ Auth::user()->theme =="skin-red" ? "working" :"" }}">3</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-blue']) }}" data-skin="skin-blue" class="blue-theme {{ Auth::user()->theme =="skin-blue" ? "working" :"" }}">4</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-purple']) }}" data-skin="skin-purple" class="purple-theme {{ Auth::user()->theme =="skin-purple" ? "working" :"" }}">5</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-megna']) }}" data-skin="skin-megna" class="megna-theme {{ Auth::user()->theme =="skin-megna" ? "working" :"" }}">6</a></li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-orange']) }}"
+                                    data-skin="skin-orange"
+                                    class="orange-theme {{ Auth::user()->theme == 'skin-orange' ? 'working' : '' }}">2</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-green']) }}"
+                                    data-skin="skin-green"
+                                    class="green-theme {{ Auth::user()->theme == 'skin-green' ? 'working' : '' }}">2</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-red']) }}" data-skin="skin-red"
+                                    class="red-theme {{ Auth::user()->theme == 'skin-red' ? 'working' : '' }}">3</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-blue']) }}" data-skin="skin-blue"
+                                    class="blue-theme {{ Auth::user()->theme == 'skin-blue' ? 'working' : '' }}">4</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-purple']) }}"
+                                    data-skin="skin-purple"
+                                    class="purple-theme {{ Auth::user()->theme == 'skin-purple' ? 'working' : '' }}">5</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-megna']) }}"
+                                    data-skin="skin-megna"
+                                    class="megna-theme {{ Auth::user()->theme == 'skin-megna' ? 'working' : '' }}">6</a>
+                            </li>
 
                             <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-default-dark']) }}" data-skin="skin-default-dark" class="default-dark-theme {{ Auth::user()->theme =="skin-default-dark" ? "working" :"" }}">7</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-green-dark']) }}" data-skin="skin-green-dark" class="green-dark-theme {{ Auth::user()->theme =="skin-green-dark" ? "working" :"" }}">8</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-red-dark']) }}" data-skin="skin-red-dark" class="red-dark-theme {{ Auth::user()->theme =="skin-red-dark" ? "working" :"" }}">9</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-blue-dark']) }}" data-skin="skin-blue-dark" class="blue-dark-theme {{ Auth::user()->theme =="skin-blue-dark" ? "working" :"" }}">10</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-purple-dark']) }}" data-skin="skin-purple-dark" class="purple-dark-theme {{ Auth::user()->theme =="skin-purple-dark" ? "working" :"" }}">11</a></li>
-                            <li><a href="{{ route('change-theme',['theme'=>'skin-megna-dark']) }}" data-skin="skin-megna-dark" class="megna-dark-theme {{ Auth::user()->theme =="skin-megna-dark" ? "working" :"" }}">12</a></li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-default-dark']) }}"
+                                    data-skin="skin-default-dark"
+                                    class="default-dark-theme {{ Auth::user()->theme == 'skin-default-dark' ? 'working' : '' }}">7</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-green-dark']) }}"
+                                    data-skin="skin-green-dark"
+                                    class="green-dark-theme {{ Auth::user()->theme == 'skin-green-dark' ? 'working' : '' }}">8</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-red-dark']) }}"
+                                    data-skin="skin-red-dark"
+                                    class="red-dark-theme {{ Auth::user()->theme == 'skin-red-dark' ? 'working' : '' }}">9</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-blue-dark']) }}"
+                                    data-skin="skin-blue-dark"
+                                    class="blue-dark-theme {{ Auth::user()->theme == 'skin-blue-dark' ? 'working' : '' }}">10</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-purple-dark']) }}"
+                                    data-skin="skin-purple-dark"
+                                    class="purple-dark-theme {{ Auth::user()->theme == 'skin-purple-dark' ? 'working' : '' }}">11</a>
+                            </li>
+                            <li><a href="{{ route('change-theme', ['theme' => 'skin-megna-dark']) }}"
+                                    data-skin="skin-megna-dark"
+                                    class="megna-dark-theme {{ Auth::user()->theme == 'skin-megna-dark' ? 'working' : '' }}">12</a>
+                            </li>
                         </ul>
 
                     </div>
@@ -279,10 +339,10 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="{{ asset('primary/assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{ asset('primary/assets/node_modules/jquery/jquery-3.2.1.min.js') }}"></script>
     <!-- Bootstrap popper Core JavaScript -->
-    <script src="{{ asset('primary/assets/node_modules/popper/popper.min.js')}}"></script>
-    <script src="{{ asset('primary/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('primary/assets/node_modules/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('primary/assets/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="{{ asset('primary/dist/js/perfect-scrollbar.jquery.min.js') }}"></script>
     <!--Wave Effects -->
@@ -295,185 +355,196 @@
     <!-- This page plugins -->
     <!-- ============================================================== -->
     <!--morris JavaScript -->
-    <script src="{{ asset('primary/assets/node_modules/raphael/raphael-min.js')}}"></script>
-    <script src="{{ asset('primary/assets/node_modules/morrisjs/morris.min.js')}}"></script>
-    <script src="{{ asset('primary/assets/node_modules/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
+    <script src="{{ asset('primary/assets/node_modules/raphael/raphael-min.js') }}"></script>
+    <script src="{{ asset('primary/assets/node_modules/morrisjs/morris.min.js') }}"></script>
+    <script src="{{ asset('primary/assets/node_modules/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
     <!-- Popup message jquery -->
-    <script src="{{ asset('primary/assets/node_modules/toast-master/js/jquery.toast.js')}}"></script>
-    <script src="{{ asset('primary/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{ asset('primary/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script> 
-    <script src="{{ asset('primary/assets/node_modules/nestable/jquery.nestable.js') }}"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        // Nestable
-        var updateOutput = function(e) {
-            var list = e.length ? e : $(e.target),
-                output = list.data('output');
-            if (window.JSON) {
-                output.val(window.JSON.stringify(list.nestable('serialize'))); //, null, 2));
-            } else {
-                output.val('JSON browser support required for this demo.');
-            }
-        };
-
-        $('#nestable').nestable({
-            group: 1
-        }).on('change', updateOutput);
-
-        $('#nestable2').nestable({
-            group: 1
-        }).on('change', updateOutput);
-
-        updateOutput($('#nestable').data('output', $('#nestable-output')));
-        updateOutput($('#nestable2').data('output', $('#nestable2-output')));
-
-        $('#nestable-menu').on('click', function(e) {
-            var target = $(e.target),
-                action = target.data('action');
-            if (action === 'expand-all') {
-                $('.dd').nestable('expandAll');
-            }
-            if (action === 'collapse-all') {
-                $('.dd').nestable('collapseAll');
-            }
-        });
-
-        $('#nestable-menu').nestable();
-    });
+    <script src="{{ asset('primary/assets/node_modules/toast-master/js/jquery.toast.js') }}"></script>
+    <script src="{{ asset('primary/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup.min.js') }}">
     </script>
+    <script src="{{ asset('primary/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup-init.js') }}">
+    </script>
+    <script src="{{ asset('primary/assets/node_modules/nestable/jquery.nestable.js') }}"></script>
+
     <!-- Chart JS -->
 
 
-        @if (Session::has('message'))
-            <script>
-                $.toast({
-                heading: '{!! Session::get("title") !!}',
-                text: '{!! Session::get("message") !!}',
+    @if (Session::has('message'))
+        <script>
+            $.toast({
+                heading: '{!! Session::get('title') !!}',
+                text: '{!! Session::get('message') !!}',
                 position: 'bottom-right',
                 loaderBg: '#ff6849',
-                icon: '{!! Session::get("type") !!}',
+                icon: '{!! Session::get('type') !!}',
                 hideAfter: 3500,
                 stack: 6
             });
-            </script>
-        @endif
-
-        <script src="{{ asset('primary/assets/node_modules/switchery/dist/switchery.min.js')  }}"></script>
-        <script src="{{ asset('primary/assets/node_modules/select2/dist/js/select2.full.min.js" type="text/javascript')  }}"></script>
-        <script src="{{ asset('primary/assets/node_modules/bootstrap-select/bootstrap-select.min.js" type="text/javascript')  }}"></script>
-        <script src="{{ asset('primary/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js')  }}"></script>
-        <script src="{{ asset('primary/assets/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js" type="text/javascript')  }}"></script>
-        <script src="{{ asset('primary/assets/node_modules/dff/dff.js" type="text/javascript')  }}"></script>
-        <script type="text/javascript" src="{{ asset('primary/assets/node_modules/multiselect/js/jquery.multi-select.js') }}"></script>
-        <script>
-            $(function () {
-                // Switchery
-                var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-                $('.js-switch').each(function () {
-                    new Switchery($(this)[0], $(this).data());
-                });
-                // For select 2
-                $(".select2").select2();
-                $('.selectpicker').selectpicker();
-                //Bootstrap-TouchSpin
-                $(".vertical-spin").TouchSpin({
-                    verticalbuttons: true
-                });
-                var vspinTrue = $(".vertical-spin").TouchSpin({
-                    verticalbuttons: true
-                });
-                if (vspinTrue) {
-                    $('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove();
-                }
-                $("input[name='tch1']").TouchSpin({
-                    min: 0,
-                    max: 100,
-                    step: 0.1,
-                    decimals: 2,
-                    boostat: 5,
-                    maxboostedstep: 10,
-                    postfix: '%'
-                });
-                $("input[name='tch2']").TouchSpin({
-                    min: -1000000000,
-                    max: 1000000000,
-                    stepinterval: 50,
-                    maxboostedstep: 10000000,
-                    prefix: '$'
-                });
-                $("input[name='tch3']").TouchSpin();
-                $("input[name='tch3_22']").TouchSpin({
-                    initval: 40
-                });
-                $("input[name='tch5']").TouchSpin({
-                    prefix: "pre",
-                    postfix: "post"
-                });
-                // For multiselect
-                $('#pre-selected-options').multiSelect();
-                $('#optgroup').multiSelect({
-                    selectableOptgroup: true
-                });
-                $('#public-methods').multiSelect();
-                $('#select-all').click(function () {
-                    $('#public-methods').multiSelect('select_all');
-                    return false;
-                });
-                $('#deselect-all').click(function () {
-                    $('#public-methods').multiSelect('deselect_all');
-                    return false;
-                });
-                $('#refresh').on('click', function () {
-                    $('#public-methods').multiSelect('refresh');
-                    return false;
-                });
-                $('#add-option').on('click', function () {
-                    $('#public-methods').multiSelect('addOption', {
-                        value: 42,
-                        text: 'test 42',
-                        index: 0
-                    });
-                    return false;
-                });
-                $(".ajax").select2({
-                    ajax: {
-                        url: "https://api.github.com/search/repositories",
-                        dataType: 'json',
-                        delay: 250,
-                        data: function (params) {
-                            return {
-                                q: params.term, // search term
-                                page: params.page
-                            };
-                        },
-                        processResults: function (data, params) {
-                            // parse the results into the format expected by Select2
-                            // since we are using custom formatting functions we do not need to
-                            // alter the remote JSON data, except to indicate that infinite
-                            // scrolling can be used
-                            params.page = params.page || 1;
-                            return {
-                                results: data.items,
-                                pagination: {
-                                    more: (params.page * 30) < data.total_count
-                                }
-                            };
-                        },
-                        cache: true
-                    },
-                    escapeMarkup: function (markup) {
-                        return markup;
-                    }, // let our custom formatter work
-                    minimumInputLength: 1,
-                    //templateResult: formatRepo, // omitted for brevity, see the source of this page
-                    //templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
-                });
-            });
         </script>
+    @endif
+
+    <script src="{{ asset('primary/assets/node_modules/switchery/dist/switchery.min.js') }}"></script>
+    <script src="{{ asset('primary/assets/node_modules/select2/dist/js/select2.full.min.js" type="text/javascript') }}">
+    </script>
+    <script
+        src="{{ asset('primary/assets/node_modules/bootstrap-select/bootstrap-select.min.js" type="text/javascript') }}">
+    </script>
+    <script src="{{ asset('primary/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script
+        src="{{ asset('primary/assets/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js" type="text/javascript') }}">
+    </script>
+    <script src="{{ asset('primary/assets/node_modules/dff/dff.js" type="text/javascript') }}"></script>
+    <script type="text/javascript" src="{{ asset('primary/assets/node_modules/multiselect/js/jquery.multi-select.js') }}">
+    </script>
+    <script>
+        $(function() {
+            // Switchery
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+            $('.js-switch').each(function() {
+                new Switchery($(this)[0], $(this).data());
+            });
+            // For select 2
+            $(".select2").select2();
+            $('.selectpicker').selectpicker();
+            //Bootstrap-TouchSpin
+            $(".vertical-spin").TouchSpin({
+                verticalbuttons: true
+            });
+            var vspinTrue = $(".vertical-spin").TouchSpin({
+                verticalbuttons: true
+            });
+            if (vspinTrue) {
+                $('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove();
+            }
+            $("input[name='tch1']").TouchSpin({
+                min: 0,
+                max: 100,
+                step: 0.1,
+                decimals: 2,
+                boostat: 5,
+                maxboostedstep: 10,
+                postfix: '%'
+            });
+            $("input[name='tch2']").TouchSpin({
+                min: -1000000000,
+                max: 1000000000,
+                stepinterval: 50,
+                maxboostedstep: 10000000,
+                prefix: '$'
+            });
+            $("input[name='tch3']").TouchSpin();
+            $("input[name='tch3_22']").TouchSpin({
+                initval: 40
+            });
+            $("input[name='tch5']").TouchSpin({
+                prefix: "pre",
+                postfix: "post"
+            });
+            // For multiselect
+            $('#pre-selected-options').multiSelect();
+            $('#optgroup').multiSelect({
+                selectableOptgroup: true
+            });
+            $('#public-methods').multiSelect();
+            $('#select-all').click(function() {
+                $('#public-methods').multiSelect('select_all');
+                return false;
+            });
+            $('#deselect-all').click(function() {
+                $('#public-methods').multiSelect('deselect_all');
+                return false;
+            });
+            $('#refresh').on('click', function() {
+                $('#public-methods').multiSelect('refresh');
+                return false;
+            });
+            $('#add-option').on('click', function() {
+                $('#public-methods').multiSelect('addOption', {
+                    value: 42,
+                    text: 'test 42',
+                    index: 0
+                });
+                return false;
+            });
+            $(".ajax").select2({
+                ajax: {
+                    url: "https://api.github.com/search/repositories",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            q: params.term, // search term
+                            page: params.page
+                        };
+                    },
+                    processResults: function(data, params) {
+                        // parse the results into the format expected by Select2
+                        // since we are using custom formatting functions we do not need to
+                        // alter the remote JSON data, except to indicate that infinite
+                        // scrolling can be used
+                        params.page = params.page || 1;
+                        return {
+                            results: data.items,
+                            pagination: {
+                                more: (params.page * 30) < data.total_count
+                            }
+                        };
+                    },
+                    cache: true
+                },
+                escapeMarkup: function(markup) {
+                    return markup;
+                }, // let our custom formatter work
+                minimumInputLength: 1,
+                //templateResult: formatRepo, // omitted for brevity, see the source of this page
+                //templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+            });
+        });
+    </script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Nestable
+    var updateOutput = function(e) {
+        var list = e.length ? e : $(e.target),
+            output = list.data('output');
+        if (window.JSON) {
+            output.val(window.JSON.stringify(list.nestable('serialize'))); //, null, 2));
+        } else {
+            output.val('JSON browser support required for this demo.');
+        }
+    };
+
+    $('#nestable').nestable({
+        group: 1
+    }).on('change', updateOutput);
+
+    $('#nestable2').nestable({
+        group: 1
+    }).on('change', updateOutput);
+
+    updateOutput($('#nestable').data('output', $('#nestable-output')));
+    updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+    $('#nestable-menu').on('click', function(e) {
+        var target = $(e.target),
+            action = target.data('action');
+        if (action === 'expand-all') {
+            $('.dd').nestable('expandAll');
+        }
+        if (action === 'collapse-all') {
+            $('.dd').nestable('collapseAll');
+        }
+    });
+
+    $('#nestable-menu').nestable();
+});
+</script>
+
     @livewireScripts
 
 
-            
+
 
     @stack('scripts')
     @stack('scripts2')
