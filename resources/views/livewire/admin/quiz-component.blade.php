@@ -49,10 +49,6 @@
                                     <thead>
                                         <tr>
                                             <th>Question</th>
-                                            <th>Answer 1</th>
-                                            <th>Answer 2</th>
-                                            <th>Answer 3</th>
-                                            <th>Answer 4</th>
                                             <th>Correction</th>
                                             <th>Repere</th>
                                             <th>Created by</th>
@@ -66,27 +62,14 @@
 
                                             <tr class="data-vertical">
                                                 <td>{{ $quiz->question_en }}</td>
-                                                <td >
-                                                   {{ $quiz->reponse1_en }}
-                                                </td>
-                                                <td >
-                                                   {{ $quiz->reponse2_en }}
-                                                </td>
-                                                <td >
-                                                   {{ $quiz->reponse3_en }}
-                                                </td>
-                                                <td >
-                                                   {{ $quiz->reponse4_en }}
-                                                </td>
-                                                <td>
-                                                     @if($quiz->correcte_en==1){{$quiz->reponse1_en }}@endif
-                                                     @if($quiz->correcte_en==2){{$quiz->reponse2_en }}@endif
-                                                     @if($quiz->correcte_en==3){{$quiz->reponse3_en }}@endif
-                                                     @if($quiz->correcte_en==4){{$quiz->reponse4_en }}@endif
+                                                <td  style="vertical-align : middle; text-align:center">
+                                                    <a  data-toggle="modal" data-target="#show-answer-modal"  href="#" wire:click.prevent="getAnswer({{ $quiz->id }})" class="text-info">
+                                                        <i class="ti-bookmark-alt" title="show correct answer"></i>
+                                                    </a>
                                                 </td>
                                                 <td><a href="{{ route('admin-showsite',$quiz->site->id) }}">{{ $quiz->site->name_en}}</a></td>
                                                 <td>{{ $quiz->user->name }}</td>
-                                                <td>{{ $quiz->created_at }}</td>
+                                                <td>{{ $quiz->created_at->format('Y-m-d') }}</td>
                                                 <td>
                                                     <a href="#"
                                                         wire:click.prevent="changeStatus({{ $quiz->id }})"
@@ -136,6 +119,34 @@
                 <div class="modal-body">
                     <div class="alert alert-info">
                         Are you sure you wanna delete all the record for the quiz
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger waves-effect waves-light" wire:click.prevent="deleteQuiz()">confrim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div wire:ignore.self id="show-answer-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-info"><i class="fa fa-exclamation-circle"></i> Correct Answer</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <h6>correct answer : </h6>
+                    <div class="alert alert-info">
+                        <p>1. {{ $quizanswer1 }}</p>
+                    </div>
+                    <h6>wrong anwser: </h6>
+                    <div class="alert alert-danger">
+                        <p>1. {{ $quizanswer2 }}</p>
+                        <p>2. {{ $quizanswer3 }}</p>
+                        <p>3. {{ $quizanswer4 }}</p>
                     </div>
                 </div>
                 <div class="modal-footer">
