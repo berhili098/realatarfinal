@@ -163,7 +163,7 @@
                                         href="{{ route('admin-cities') }}">Villes</a></li>
                                 <li><a class="@if (request()->routeIs('admin-addsite')) {{ 'active' }} @elseif(request()->routeIs('admin-sites')) {{ 'active' }} @elseif(request()->routeIs('admin-editsite')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif"
                                         href="{{ route('admin-sites') }}">Repéres</a></li>
-                                <li><a href="form-addons.html">Parcours</a></li>
+                                <li><a href="{{ route('admin-addpath') }}">Parcours</a></li>
                                 <li><a href="{{ route('admin-quiz') }}">Quiz</a></li>
                             </ul>
                         </li>
