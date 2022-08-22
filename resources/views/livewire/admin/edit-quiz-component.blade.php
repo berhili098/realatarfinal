@@ -39,7 +39,7 @@
                                 <div class="row p-t-20">
 
                              
-                                    <div class="col-md-12">
+                                    <div class="col-md-12  px-5">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-2 mt-3">
                                                 <div class="form-group has-info">
@@ -261,7 +261,7 @@
 
                                             {{-- Arabic Tab --}}
                                             <div class="tab-pane " id="arabicTab" role="tabpanel" wire:ignore.self>
-                                                <section class="text-right" dir="rtl" lang="ar">
+                                                <section  lang="ar">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">

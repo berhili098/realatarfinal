@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form wire:submit.prevent="storeQuiz()">
+                        <form  wire:submit.prevent="storeQuiz()">
                             <input type="hidden" wire:model.lazy="user_id" value="{{ Auth::user()->id }}">
                             <div class="form-body">
                                 <h3 class="card-title">Quiz info</h3>
@@ -39,7 +39,7 @@
                                 <div class="row p-t-20">
 
                              
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 px-5">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-2 mt-3">
                                                 <div class="form-group has-info">
@@ -261,12 +261,12 @@
 
                                             {{-- Arabic Tab --}}
                                             <div class="tab-pane " id="arabicTab" role="tabpanel" wire:ignore.self>
-                                                <section class="text-right" dir="rtl" lang="ar">
+                                                <section   lang="ar">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <label for="city_ar">  السؤال </label>
-                                                                <input type="text" class="form-control" id="question_ar"
+                                                                <input    type="text" class="form-control " id="question_ar"
                                                                     wire:model="question_ar" placeholder="أدخل  السؤال هنا">
                                                            
                                                             </div>
@@ -279,12 +279,12 @@
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-text">
                                                                         <div class="custom-control custom-radio">
-                                                                            <input type="radio" id="correcte_ar" name="correcte_ar" class="custom-control-input" value="1" wire:model="correcte_ar" >
+                                                                            <input type="radio"  id="correcte_ar" name="correcte_ar" class="custom-control-input" value="1" wire:model="correcte_ar" >
                                                                             <label class="custom-control-label" for="correcte_ar"></label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <input type="text" class="form-control" placeholder="أدخل  الجواب 1 هنا" wire:model="reponse1_ar" aria-label="Text input with radio button" >
+                                                                <input type="text" class="form-control"  placeholder="أدخل  الجواب 1 هنا" wire:model="reponse1_ar" aria-label="Text input with radio button" >
                                                        
                                                                 
                                                             </div>
