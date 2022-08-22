@@ -34,6 +34,14 @@
                             @endif
                             <div class="card-body">
                                 <h4 class="card-title">General Info </h4>
+                                <div class="row p-t-40 ">
+                                    <a href="#"
+                                    wire:click.prevent="changeStatus({{ $site->id }})"
+                                    title="{{ $site->status == 1 ? 'turn off' : 'turn on' }}">
+                                    <i class="fas {{ $site->status == 1 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
+                                        title=""></i>
+                                </a>
+                                </div>
                                 <div class="row p-t-40">
                                     <div class="col-md-5">
                                         <div class="form-group">

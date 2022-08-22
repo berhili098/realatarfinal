@@ -57,9 +57,9 @@ class CitiesConpoment extends Component
     public function changeStatus($cid)
     {
         $city = City::find($cid);
-        $city->update([
+       $city->update([
             'status' => $city->status == 0 ? 1 : 0, 
-        ]);
+        ]); 
     }
 
     

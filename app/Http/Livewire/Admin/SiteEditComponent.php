@@ -83,6 +83,16 @@ class SiteEditComponent extends Component
 
         // ]);
     }
+
+    public function changeStatus($site_id){
+        $this->site_id=$site_id;
+        $site= Site::find($site_id);
+        $site->update([
+            'status' => $site->status == 0 ? 1 : 0, 
+        ]);
+
+    }
+
     public function updateSite()
     {
         $site=Site::find($this->site_id);
