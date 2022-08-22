@@ -96,7 +96,7 @@
                                                     </a>
 
                                                 </td>
-                                                <td>
+                                                <td class="d-flex">
                                                     <a href="{{ route('admin-showquiz',$quiz->id) }}"
                                                         class="text-dark p-r-10" data-toggle="tooltip" title="Show details">
                                                         <i class="ti-eye fa-2x"></i>
