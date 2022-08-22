@@ -24,7 +24,6 @@ class UserTableSeeder extends Seeder
             'utype' => 'ADM',
             'password' => Hash::make('123456789'),
         ]);
-
         User::create([
             'name' => $faker->name,
             'email' =>'user@atar.ma',

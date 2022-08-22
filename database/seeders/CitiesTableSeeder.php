@@ -21,16 +21,19 @@ class CitiesTableSeeder extends Seeder
         foreach(range(1,20) as $index)
         {
             City::create([
-                'city_ar' => $faker_ar->name,
-                'city_fr' => $faker_fr->name,
-                'city_en' => $faker_en->name,
+
+                'city_ar' => $faker_ar->unique()->sentence(2),
+                'city_fr' => $faker_fr->unique()->sentence(2),
+                'city_en' => $faker_en->unique()->sentence(2),
+
                 'description_ar' => $faker_ar->text(500),
-                'description_fr' => $faker_fr->paragraph(3),
-                'description_en' => $faker_en->paragraph(3),
+                'description_fr' => $faker_fr->text(500),
+                'description_en' => $faker_en->text(500),
                 'user_id' => 1,
+
                 'longitude'=> $faker_fr->longitude,
                 'latitude'=> $faker_fr->latitude,
-                
+
             ]);
         }
         

@@ -21,28 +21,26 @@ class QuizTableSeeder extends Seeder
         foreach(range(1,20) as $index)
         {
             Quiz::create([
-                'question_ar' => $faker_ar->name,
-                'question_fr' => $faker_fr->name,
-                'question_en' => $faker_en->name,
-                'reponse1_ar' => $faker_ar->text(30),
-                'reponse1_fr' => $faker_fr->text(30),
-                'reponse1_en' => $faker_en->text(30),
-                'reponse2_ar' => $faker_ar->text(30),
-                'reponse2_fr' => $faker_fr->text(30),
-                'reponse2_en' => $faker_en->text(30),
-                'reponse3_ar' => $faker_ar->text(30),
-                'reponse3_fr' => $faker_fr->text(30),
-                'reponse3_en' => $faker_en->text(30),
-                'reponse4_ar' => $faker_ar->text(30),
-                'reponse4_fr' => $faker_fr->text(30),
-                'reponse4_en' => $faker_en->text(30),
+                'question_ar' => $faker_ar->unique()->sentence(10),
+                'question_fr' => $faker_fr->unique()->sentence(10),
+                'question_en' => $faker_en->unique()->sentence(10),
+                'reponse1_ar' => $faker_ar->unique()->sentence(10),
+                'reponse1_fr' => $faker_fr->unique()->sentence(10),
+                'reponse1_en' => $faker_en->unique()->sentence(10),
+                'reponse2_ar' => $faker_ar->unique()->sentence(10),
+                'reponse2_fr' => $faker_fr->unique()->sentence(10),
+                'reponse2_en' => $faker_en->unique()->sentence(10),
+                'reponse3_ar' => $faker_ar->unique()->sentence(10),
+                'reponse3_fr' => $faker_fr->unique()->sentence(10),
+                'reponse3_en' => $faker_en->unique()->sentence(10),
+                'reponse4_ar' => $faker_ar->unique()->sentence(10),
+                'reponse4_fr' => $faker_fr->unique()->sentence(10),
+                'reponse4_en' => $faker_en->unique()->sentence(10),
                 'correcte_ar' => $faker_ar->numberBetween(1,4),
                 'correcte_fr' => $faker_fr->numberBetween(1,4),
                 'correcte_en' => $faker_en->numberBetween(1,4),
-                'user_id' => 1,
-                'site_id'=> $faker_fr->numberBetween(1,10),
-                
-                
+                'user_id' => $faker_en->numberBetween(1,2),
+                'site_id'=> $faker_fr->numberBetween(1,20),
             ]);
         }
         
