@@ -178,7 +178,7 @@
                                         <div class="form-group">
                                             <label for="price">Length :</label>
                                             <select  style="width: 100%" multiple wire:model="selectedSites" data-placeholder="Choose">
-                                              @foreach ($sites as $site )
+                                              @foreach ($sites->sortBy('name_en') as $site )
                                                   
                                            
                                                     <option value="{{ $site->id }}">{{ $site->name_en }}</option>
@@ -196,9 +196,9 @@
                                                 
                                                 <ol class="dd-list">
                                                     @for ( $i=0; $i < count($selectedSites); $i++)
-                                                      <li class="dd-item dd3-item"   data-id={{ $i }}  > 
+                                                      <li class="dd-item dd3-item"   data-id={{ $selectedSites[$i] }}  > 
                                                             <div class="dd-handle dd3-handle"></div>
-                                                            <div class="dd3-content"> {{ $selectedSites[$i] }}</div>
+                                                            <div class="dd3-content"> {{ $sites->find($selectedSites[$i])['name_en'] }}</div>
                                                         </li>
                                                
                                                     @endfor
@@ -253,7 +253,10 @@
                             <div class="card-body">
                                 <h4 class="card-title"> <i class="ti-video-clapper"></i> Video</h4>
                                 <div class="m-4 text-center">
-                                    <input type="file" class="form-control" wire:model="videos"  accept="video/*">
+                                    <div class="custom-file mb-3 text-left">
+                                        <input type="file" class="custom-file-input" id="videoupload"   wire:model="videos"  accept="video/*">
+                                        <label class="custom-file-label form-control" for="videoupload">Choose file</label>
+                                    </div>
                                     <div wire:loading wire:target="videos">Uploading...</div>
                                     @error('videos.*')
                                         <span class="error">{{ $message }}</span>

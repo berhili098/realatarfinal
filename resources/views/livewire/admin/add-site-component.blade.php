@@ -283,7 +283,12 @@
                             <div class="card-body">
                                 <h4 class="card-title"><i class="ti-microphone"></i> Audio</h4>
                                 <div class="m-4 text-center">
-                                    <input type="file" class="form-control" wire:model="audios" multiple accept="audio/*">
+                                    <div class="custom-file mb-3 text-left">
+                                        <input type="file" class="custom-file-input" id="audioupload"  wire:model="audios" multiple accept="audio/*">
+                                        <label class="custom-file-label form-control" for="audioupload">Choose file</label>
+                                    </div>
+                                  
+
                                     <div wire:loading wire:target="audios">Uploading...</div>
                                     @error('audios.*')
                                         <span class="error">{{ $message }}</span>
@@ -309,7 +314,11 @@
                             <div class="card-body">
                                 <h4 class="card-title"> <i class="ti-video-clapper"></i> Video</h4>
                                 <div class="m-4 text-center">
-                                    <input type="file" class="form-control" wire:model="videos" multiple accept="video/*">
+                                    <div class="custom-file mb-3 text-left">
+                                        <input type="file" class="custom-file-input" id="videoupload"  wire:model="videos" multiple accept="video/*">
+                                        <label class="custom-file-label form-control" for="videoupload">Choose file</label>
+                                    </div>
+                                   
                                     <div wire:loading wire:target="videos">Uploading...</div>
                                     @error('videos.*')
                                         <span class="error">{{ $message }}</span>
