@@ -174,7 +174,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Length :</label>
-                                            <select  id="sites" style="width: 100%"  multiple wire:model="selectedSites"
+                                            <select  id="sites" style="width: 100%"  multiple wire:model.lazy="sitesIds"
                                                 data-placeholder="Choose">
                                                 @foreach ($sites->sortBy('name_en') as $site)
                                                     <option value="{{ $site->id }}">{{ $site->name_en }}</option>
@@ -188,8 +188,8 @@
                                             <label for="price">Length :</label>
                                             <select style="width: 100%" multiple size=4 wire:model="selectedSites2"
                                                 data-placeholder="Choose" id="sites2" >
-                                                @foreach ($selectedSites as $key=>$site)
-                                                    <option  value="{{ $site }}" >{{ $key+1 }}. {{ $sites->find($site)['name_en']}}</option>
+                                                @foreach ($selectedSites2 as $key=>$site)
+                                                    <option value="{{ $site }}">{{ $key+1 }} . {{ $site }}</option>
                                                 @endforeach
                                             </select>
                                             <button class="btn btn-success" id="button1" wire:click.prevent="check" type="button">select all</button>
@@ -289,12 +289,15 @@
   
     //   }
 
-      $('#sites').on('change',function(){
-        setTimeout(
-        function() {
-            $('#sites2 option').prop('selected', true);
-        }, 1000);
-      });
+    //   $('#sites').on('change',function(){
+
+            
+
+    //         //select all
+    //         $('#sites2 option').prop('selected', true);
+            
+
+    //   });
     </script>
   
 @endpush

@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 class AddPathComponent extends Component
 {
     use WithFileUploads;
-    public $photo,$videos,$name_ar,$name_fr,$name_en,$user_id,$selectedSites=[],$selectedSites2=[],$description_ar,$description_en,$description_fr,$duration,$length,$sites;
+    public $photo,$videos,$name_ar,$name_fr,$name_en,$user_id,$sitesIds=[],$selectedSites2=[],$description_ar,$description_en,$description_fr,$duration,$length,$sites;
     
 
     protected $listeners = [
@@ -51,6 +51,11 @@ class AddPathComponent extends Component
     public function check()
     {
         dd($this->selectedSites2);
+    }
+
+    public function updatedsitesIds()
+    {
+        $this->selectedSites2 = $this->sitesIds;
     }
 
     public function store(){
