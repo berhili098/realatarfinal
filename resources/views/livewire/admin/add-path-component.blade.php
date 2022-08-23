@@ -187,7 +187,7 @@
                                         <div class="form-group">
                                             <label for="price">Length :</label>
                                             <select style="width: 100%" multiple size=4 wire:model="selectedSites2"
-                                                data-placeholder="Choose" id="sites2" >
+                                                data-placeholder="Choose" id="sites2" disabled>
                                                 @foreach ($selectedSites2 as $key=>$site)
                                                     <option value="{{ $site }}">{{ $key+1 }} . {{ $site }}</option>
                                                 @endforeach
@@ -270,34 +270,11 @@
 
 
 @push('styles')
-    <link href="{{ asset('primary/dist/css/pages/stylish-tooltip.css') }}" rel="stylesheet">
 @endpush
 
 @push('scripts')
-    <script src="{{ asset('primary/assets/node_modules/nestable/jquery.nestable.js') }}"></script>
-    <script src="{{ asset('primary/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js') }}"></script>
-    <script src="{{ asset('primary/assets/node_modules/sparkline/jquery.sparkline.min.js') }}"></script>
     <script>
-   
-    
-    //  function getAll(){
-    //     var options2 = document.getElementById('idid'). options;
-    //     Livewire.emit('getLatitudeForInput',  document.getElementById('idid'). options);
-    //     Livewire.on('getLatitudeForInput', function(options2) {
-    //         console.log(options2);
-    //     });
-  
-    //   }
-
-    //   $('#sites').on('change',function(){
-
-            
-
-    //         //select all
-    //         $('#sites2 option').prop('selected', true);
-            
-
-    //   });
+        
     </script>
   
 @endpush
