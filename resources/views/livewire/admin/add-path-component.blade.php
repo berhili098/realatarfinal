@@ -174,8 +174,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Length :</label>
-                                            <select  id="sites" style="width: 100%"  multiple wire:model.lazy="sitesIds"
-                                                data-placeholder="Choose">
+                                            <select id="sites" style="width: 100%" size="4"
+                                                 data-placeholder="Choose" wire:ignore>
                                                 @foreach ($sites->sortBy('name_en') as $site)
                                                     <option value="{{ $site->id }}">{{ $site->name_en }}</option>
                                                 @endforeach
@@ -186,13 +186,12 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Length :</label>
-                                            <select style="width: 100%" multiple size=4 wire:model="selectedSites2"
-                                                data-placeholder="Choose" id="sites2" disabled>
-                                                @foreach ($selectedSites2 as $key=>$site)
-                                                    <option value="{{ $site }}">{{ $key+1 }} . {{ $site }}</option>
-                                                @endforeach
+                                            <select style="width: 100%" size=4 
+                                                data-placeholder="Choose" id="sites2"  wire:model="selectedSites2" wire:ignore>
+                                                
                                             </select>
-                                            <button class="btn btn-success" id="button1" wire:click.prevent="check" type="button">select all</button>
+                                            <button class="btn btn-success" id="button1" wire:click.prevent="check"
+                                                type="button">select all</button>
                                         </div>
                                     </div>
                                 </div>
@@ -203,7 +202,7 @@
                         <div class="card">
                             <div class="card-body text-center">
 
-                                <button type="submit" class="btn btn-info" id="btn-submit" > <i
+                                <button type="submit" class="btn btn-info" id="btn-submit"> <i
                                         class="fa fa-check"></i> Save</button>
                                 <a href="{{ route('admin-sites') }}" class="btn btn-inverse">Cancel</a>
                             </div>
@@ -274,7 +273,32 @@
 
 @push('scripts')
     <script>
-        
+        var index = 1;
+        $("#sites").change(function() {
+            var itemText = $('#sites option:selected').text();
+            var itemVal = $('#sites option:selected').val();
+            var option = new Option(itemText,itemVal);
+            $("#sites2").append(option);
+            $(this).find('option:selected').remove();
+            $('#sites2').focus();
+            index++;
+        });
+
+        $("#sites2 ").click(function() {
+            var itemText = $('#sites2 option:selected').text();
+            var itemVal = $('#sites2 option:selected').val();
+            var option = new Option(itemText,itemVal);
+            $("#sites").append(option);
+            $(this).find('option:selected').remove();
+            index++;
+        });
+
+        $('#button1').click(function(){
+            $('#sites2').attr('multiple','multiple');
+            $('#sites2').attr('disbaled');
+        });
+
+
+
     </script>
-  
 @endpush

@@ -28,14 +28,6 @@ class AddPathComponent extends Component
         ]);
     }
 
-    public function updatedsitesIds()
-    {
-        $arraynew  = array_diff( $this->sitesIds,$this->selectedSites2);
-        foreach($arraynew as $item)
-        {
-            array_push($this->arraythird,$item);
-        }
-    }
 
     public function store(){
         $validatedata= $this->validate([
@@ -78,7 +70,6 @@ class AddPathComponent extends Component
     {
         dd($this->selectedSites2);
     }
-
 
     public function render()
     {
