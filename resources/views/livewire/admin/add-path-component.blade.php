@@ -24,9 +24,6 @@
                             <div class="card-body">
                                 <h4 class="card-title">General Info </h4>
                                 <div class="row p-t-40">
-
-
-
                                     <div class="col-md-1">
                                         <div class="form-group">
                                             <label for=""> </label>
@@ -177,47 +174,30 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Length :</label>
-                                            <select  onchange='getAll()'  style="width: 100%"  multiple wire:model="selectedSites"
+                                            <select  id="sites" style="width: 100%"  multiple wire:model="selectedSites"
                                                 data-placeholder="Choose">
                                                 @foreach ($sites->sortBy('name_en') as $site)
                                                     <option value="{{ $site->id }}">{{ $site->name_en }}</option>
                                                 @endforeach
-
-
                                             </select>
-
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Length :</label>
-                                            <select id="idid"   style="width: 100%" multiple size=4 wire:model="selectedSites2"
-                                                data-placeholder="Choose" >
-                                                @foreach ($selectedSites as $site)
-                                                    <option  value="{{ $site }}" >{{ $sites->find($site)['name_en']}}</option>
+                                            <select style="width: 100%" multiple size=4 wire:model="selectedSites2"
+                                                data-placeholder="Choose" id="sites2" >
+                                                @foreach ($selectedSites as $key=>$site)
+                                                    <option  value="{{ $site }}" >{{ $key+1 }}. {{ $sites->find($site)['name_en']}}</option>
                                                 @endforeach
-
-
                                             </select>
-
-                                               
-                                            
-
-
-                                          
-
-
+                                            <button class="btn btn-success" id="button1" wire:click.prevent="check" type="button">select all</button>
                                         </div>
                                     </div>
-
                                 </div>
-
-
                             </div>
                         </div>
-
-
                     </div>
                     <div class="col-4">
                         <div class="card">
@@ -300,14 +280,21 @@
     <script>
    
     
-     function getAll(){
-        var options2 = document.getElementById('idid'). options;
-        Livewire.emit('getLatitudeForInput',  document.getElementById('idid'). options);
-        Livewire.on('getLatitudeForInput', function(options2) {
-            console.log(options2);
-        });
+    //  function getAll(){
+    //     var options2 = document.getElementById('idid'). options;
+    //     Livewire.emit('getLatitudeForInput',  document.getElementById('idid'). options);
+    //     Livewire.on('getLatitudeForInput', function(options2) {
+    //         console.log(options2);
+    //     });
   
-      }
+    //   }
+
+      $('#sites').on('change',function(){
+        setTimeout(
+        function() {
+            $('#sites2 option').prop('selected', true);
+        }, 1000);
+      });
     </script>
   
 @endpush

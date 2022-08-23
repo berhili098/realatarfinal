@@ -48,8 +48,13 @@ class AddPathComponent extends Component
         ]);
     }
 
-    public function store(){
+    public function check()
+    {
         dd($this->selectedSites2);
+    }
+
+    public function store(){
+        // dd($this->selectedSites2);
         $validatedata= $this->validate([
             'name_ar'=>'required',
             'name_fr'=>'required',

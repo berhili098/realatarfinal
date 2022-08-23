@@ -88,7 +88,6 @@
                                                                 <label for="city_en">Question</label>
                                                                 <input type="text" class="form-control" id="question_en"
                                                                     wire:model="question_en" placeholder="Enter question here "><br>
-                                                             
                                                             </div>
                                                         </div>
                                                     </div>
@@ -105,11 +104,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Enter answer 1  here "  wire:model="reponse1_en" aria-label="Text input with radio button" ><br>
-                                                            
-                                                                
                                                             </div>
-                                                        
-
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="reponse2_en">Answer 2</label>
@@ -124,7 +119,6 @@
                                                                     </div>
                                                                 </div>
                                                                 <input type="text" placeholder="Enter answer 2  here " wire:model="reponse2_en" class="form-control" aria-label="Text input with radio button">
-                                                          
                                                             </div>
                                                         </div>
                                                     </div>
@@ -142,11 +136,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Enter answer 3  here " wire:model="reponse3_en" aria-label="Text input with radio button" >
-                                                            
-                                                                
                                                             </div>
-                                                        
-
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="reponse4_en">Answer 4</label>
@@ -161,14 +151,11 @@
                                                                     </div>
                                                                 </div>
                                                                 <input type="text" placeholder="Enter answer 4  here " wire:model="reponse4_en" class="form-control" aria-label="Text input with radio button">
-                                                          
                                                             </div>
                                                         </div>
                                                     </div>
-                                              
                                                 </section>
                                             </div>
-
                                             {{-- français Tab --}}
                                             <div class="tab-pane  " id="frenchTab" role="tabpanel" wire:ignore.self>
                                                 <section>
@@ -195,11 +182,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Entrez la reponse 1 ici "  wire:model="reponse1_fr" aria-label="Text input with radio button" >
-                                                            
-                                                                
                                                             </div>
-                                                        
-
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="reponse2_fr">Reponse 2</label>
@@ -214,7 +197,6 @@
                                                                     </div>
                                                                 </div>
                                                                 <input type="text" placeholder="Entrez la reponse 2 ici  " wire:model="reponse2_fr" class="form-control" aria-label="Text input with radio button">
-                                                        
                                                             </div>
                                                         </div>
                                                     </div>
@@ -232,16 +214,11 @@
                                                                     </div>
                                                                 </div>
                                                                 <input type="text" class="form-control" placeholder="Entrez la reponse 3 ici " wire:model="reponse3_fr" aria-label="Text input with radio button" >
-                                                          
-                                                                
                                                             </div>
-                                                        
-
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="reponse4_fr">Reponse 4</label>
                                                             <div class="input-group">
-                                                              
                                                                 <div class="input-group-prepend">
                                                                     <div class="input-group-text">
                                                                         <div class="custom-control custom-radio">
@@ -251,7 +228,6 @@
                                                                     </div>
                                                                 </div>
                                                                 <input type="text" placeholder="Entrez la reponse 4 ici  " wire:model="reponse4_fr" class="form-control" aria-label="Text input with radio button">
-                                                             
                                                             </div>
                                                         </div>
                                                     </div>
