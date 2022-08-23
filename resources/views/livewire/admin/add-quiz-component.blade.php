@@ -15,11 +15,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div class="card">
-                    <div class="card-header bg-info">
-                        <h4 class="m-b-0 text-white">Add Quiz</h4>
-                    </div>
+                
                     <div class="card-body">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -33,7 +31,8 @@
                         @endif
                         <form  wire:submit.prevent="storeQuiz()">
                             <input type="hidden" wire:model.lazy="user_id" value="{{ Auth::user()->id }}">
-                            <div class="form-body">
+                         <div class="row">
+                            <div class="form-body col-12">
                                 <h3 class="card-title">Quiz info</h3>
                                 <hr>
                                 <div class="row p-t-20">
@@ -41,8 +40,9 @@
                              
                                     <div class="col-md-12 px-5">
                                         <div class="row">
-                                            <div class="col-sm-6 col-md-2 mt-3">
+                                            <div class="col-sm-6 col-md-6 mt-3">
                                                 <div class="form-group has-info">
+                                                    <label for="sites33"> Choose one site</label>
                                                     <select class="form-control custom-select" wire:model="site_id">
                                                         <option value=""  selected>--Selectionnez site--</option>
                    
@@ -83,7 +83,7 @@
                                             <div class="tab-pane  active" id="englishTab" role="tabpanel" wire:ignore.self>
                                                 <section>
                                                     <div class="row">
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="city_en">Question</label>
                                                                 <input type="text" class="form-control" id="question_en"
@@ -160,7 +160,7 @@
                                             <div class="tab-pane  " id="frenchTab" role="tabpanel" wire:ignore.self>
                                                 <section>
                                                     <div class="row">
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="city_en">Question</label>
                                                                 <input type="text" class="form-control" id="question_fr"
@@ -239,7 +239,7 @@
                                             <div class="tab-pane " id="arabicTab" role="tabpanel" wire:ignore.self>
                                                 <section   lang="ar">
                                                     <div class="row">
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="city_ar">  السؤال </label>
                                                                 <input    type="text" class="form-control " id="question_ar"
@@ -330,17 +330,30 @@
                                     </div>
                                 </div>
                             </div>
+                           
+                         </div>
                             <br>
-                            <div class="form-actions float-right">
-                                <button type="submit" class="btn btn-success" id="btn-submit"> <i
-                                        class="fa fa-check"></i> Save</button>
-                                <a href="{{ route('admin-cities') }}" class="btn btn-inverse">Cancel</a>
-                            </div>
+                         
                         </form>
+                    </div>
+                </div>
+              
+            </div>
+            <div class=" col-4">
+                <div class="card">
+                    <div class="card-body d-flex justify-content-center">
+                        <div class="form-actions float-right">
+                            <button type="submit" class="btn btn-success" id="btn-submit"> <i
+                                    class="fa fa-check"></i> Save</button>
+                            <a href="{{ route('admin-cities') }}" class="btn btn-inverse">Cancel</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+     
+          
+       
     </div>
 </div>
 
