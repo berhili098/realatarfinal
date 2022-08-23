@@ -275,7 +275,7 @@
     <script>
         var index = 1;
         $("#sites").change(function() {
-            var itemText = $('#sites option:selected').text();
+            var itemText = index + ' - ' +$('#sites option:selected').text();
             var itemVal = $('#sites option:selected').val();
             var option = new Option(itemText,itemVal);
             $("#sites2").append(option);
@@ -285,7 +285,8 @@
         });
 
         $("#sites2 ").click(function() {
-            var itemText = $('#sites2 option:selected').text();
+            
+            var itemText = $('#sites2 option:selected').text().split('- ').pop();
             var itemVal = $('#sites2 option:selected').val();
             var option = new Option(itemText,itemVal);
             $("#sites").append(option);
@@ -295,7 +296,8 @@
 
         $('#button1').click(function(){
             $('#sites2').attr('multiple','multiple');
-            $('#sites2').attr('disbaled');
+            $('#sites2').attr('disabled','disabled');
+            $('#sites2 option').prop('selected', true);
         });
 
 
