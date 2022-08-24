@@ -55,6 +55,9 @@ class EditPathComponent extends Component
         $this->user_id = $path->user_id;
         $this->editedBy=Auth::user()->id;
         
+    
+  
+
     }
     public function store($value){ 
         $path=Path::find($this->path_id);
