@@ -90,6 +90,7 @@ class SitesComponent extends Component
         $site->update([
             'delete' => 1,
             'deletedBy' => Auth::user()->id,
+            'status'=> '1',
         ]);
         $this->emit('itemDeleted');
         session()->flash('type','error');

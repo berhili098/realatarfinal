@@ -89,67 +89,34 @@
                     <div class="tab-pane active" id="home" role="tabpanel">
                         <div class="card-body ">
                             <div class="profiletimeline">
-                                <div class="bg-secondary p-3 d-flex justify-content-between align-items-center has-arrow waves-effect waves-dark"
-                                    data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
-                                    aria-controls="collapseExample">
-                                    <h4 class="m-0">Les Villes</h4>
-                                    <i class="ti-arrow-down"></i>
-                                </div>
+                                @foreach ($all as $city)
+                                <div class="sl-item">
 
-                                <i class="arrow"></i>
-                                <div class="collapse p-3" id="collapseExample">
-                                    @foreach ($users->cities->sortByDesc('created_at') as $city)
-                                        <div class="sl-item">
+                                    <div class="sl-right">
+                                        <div><span
+                                                class="sl-date">{{ $city->created_at->diffForHumans() }}</span>
+                                            <p>Creation de  @if($city->type=='cities') la ville @else  repere @endif <a
+                                                @if($city->type=='cities') href="{{ route('admin-showcity', $city->id) }}" @else  href="{{ route('admin-showsite', $city->id) }}" @endif          > @if($city->type=='cities') {{ $city->city_en }} @else  {{ $city->name_en }} @endif</a>
+                                            </p>
+                                            <div class="row">
 
-                                            <div class="sl-right">
-                                                <div><span
-                                                        class="sl-date">{{ $city->created_at->diffForHumans() }}</span>
-                                                    <p>Creation de la ville <a
-                                                            href="{{ route('admin-showcity', $city->id) }}">{{ $city->city_fr }}</a>
-                                                    </p>
-                                                    <div class="row">
+                                                <div class="col-lg-3 col-md-6 m-b-20"><img
 
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img
-                                                                src="{{ asset('primary/assets/images/cities/' . $city->photo) }}"
-                                                                class="img-responsive radius" /></div>
+                                                    @if($city->type=='cities')   src="{{ asset('primary/assets/images/cities/' . $city->photo) }}"  @else   src="{{ asset('primary/assets/images/sites/' . $city->photo) }}" @endif
+                                                       
+                                                        class="img-responsive radius" /></div>
 
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
-                                        <hr>
-                                    @endforeach
+                                    </div>
                                 </div>
-                                <br>
-                                <div class="bg-secondary p-3 d-flex justify-content-between align-items-center has-arrow waves-effect waves-dark"
-                                    data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false"
-                                    aria-controls="collapseExample2">
-                                    <h4 class="m0">Les Reperes</h4>
-                                    <i class="ti-arrow-down"></i>
-                                </div>
-                                <div class="collapse p-3" id="collapseExample2">
-                                    @foreach ($users->sites->sortByDesc('created_at') as $site)
-                                        <div class="sl-item">
+                                <hr>
+                            @endforeach
 
-                                            <div class="sl-right">
-                                                <div><span
-                                                        class="sl-date">{{ $site->created_at->diffForHumans() }}</span>
-                                                    <p>Creation du repere <a
-                                                            href="{{ route('admin-showsite', $site->id) }}">{{ $site->name_fr }}</a>
-                                                    </p>
-                                                    <div class="row">
-
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img
-                                                                src="{{ asset('primary/assets/images/sites/' . $site->photo) }}"
-                                                                class="img-responsive radius" /></div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                    @endforeach
-                                </div>
+                               
+                             
+                               
+                        
                             </div>
                         </div>
                     </div>

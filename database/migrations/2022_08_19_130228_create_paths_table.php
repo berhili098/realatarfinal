@@ -26,6 +26,7 @@ class CreatePathsTable extends Migration
             $table->string('photo')->default('No_Image_Available.jpg');
             $table->string('video')->nullable();
             $table->boolean('delete')->enum([0,1])->default(0);  
+            $table->boolean('status')->enum([0,1])->default(0);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('editedBy')->unsigned()->nullable();

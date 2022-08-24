@@ -40,10 +40,10 @@
 
                                     <div class="col-md-4 offset-md-1   text-center ">
                                         @if ($photo)
-                                            <img id="image-ville" src="{{ $photo->temporaryUrl() }}" width="100%" height="90%">
+                                            <img id="image-ville" src="{{ $photo->temporaryUrl() }}" style="border-radius: 15px" width="100%" height="90%">
                                         @else
                                             <img id="image-ville"
-                                                src="{{ asset('primary/assets/images/cities/No_Image_Available.jpg') }}"
+                                                src="{{ asset('primary/assets/images/cities/No_Image_Available.jpg') }}"  style="border-radius: 15px"
                                                 width="100%" height="90%">
                                             @error('photo')
                                                 {{ $message }}

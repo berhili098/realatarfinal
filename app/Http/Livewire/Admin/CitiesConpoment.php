@@ -39,7 +39,7 @@ class CitiesConpoment extends Component
         $city->update([
             'delete' => 1,
             'deletedBy' => Auth::user()->id,
-            'status'=> '0',
+            'status'=> '1',
         ]);
         foreach($city->sites as $site){
             $site->update([

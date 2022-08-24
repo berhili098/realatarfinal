@@ -126,8 +126,8 @@
                                         <td>Status</td>
                                         <td>
                                             <span
-                                                class="{{ $site->status == 1 ? 'bg-success' : 'bg-danger' }} text-white rounded p-1">
-                                                {{ $site->status == 1 ? 'active' : 'inactive' }}
+                                                class="{{ $site->status == 0 ? 'bg-success' : 'bg-danger' }} text-white rounded p-1">
+                                                {{ $site->status == 0 ? 'active' : 'inactive' }}
                                             </span>
                                         </td>
                                     </tr>

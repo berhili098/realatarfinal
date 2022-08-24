@@ -16,39 +16,35 @@
             </div>
         </div>
         <div class="row">
-            <form class="form-material" wire:submit.prevent="store()">
+            <form class="form-material">
                 <div class="row">
                     <div class="col-8">
 
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">General Info </h4>
+                                                       
+                        
+                        
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <h3>please fix the follow error :</h3>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                                 <div class="row p-t-40">
-                                    <div class="col-md-1">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for=""> </label>
                                             <button class="btn align-middle" id="btn-active-tab" wire:ignore
                                                 type="button">
                                                 <i id="flag" class="flag-icon flag-icon-gb fa-2x"></i>
                                             </button>
-                                            @if ($errors->any())
-                                                <a class="mytooltip" href="javascript:void(0)">
-                                                    <div class="notify">
-                                                        <span class="heartbit"
-                                                            style="top:-23px;right:-17px;height:25px;height:25px;"></span>
-                                                        <span class="point"
-                                                            style="width:10px; height:10px; right:-10px; top:-14px"></span>
-                                                        <span class="tooltip-content5">
-                                                            <span class="tooltip-text3">
-                                                                <span class="tooltip-inner2">
-                                                                    Please check the other language fields as
-                                                                    well<br /> Thank you.
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </div>
-                                                </a>
-                                            @endif
+                                      
                                         </div>
                                     </div>
                                 </div>
@@ -173,9 +169,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="price">Length :</label>
-                                            <select id="sites" style="width: 100%" size="4"
-                                                 data-placeholder="Choose" wire:ignore>
+                                            <label for="sites">Length :</label>
+                                            <select id="sites" style="width: 100%" size="4" wire:ignore >
                                                 @foreach ($sites->sortBy('name_en') as $site)
                                                     <option value="{{ $site->id }}">{{ $site->name_en }}</option>
                                                 @endforeach
@@ -185,13 +180,11 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="price">Length :</label>
-                                            <select style="width: 100%" size=4 
-                                                data-placeholder="Choose" id="sites2"  wire:model="selectedSites2" wire:ignore>
-                                                
+                                            <label for="sites2">Length :</label>
+                                            <select id="sites2" style="width: 100%" size="4" multiple wire:change="change" wire:ignore>
+
                                             </select>
-                                            <button class="btn btn-success" id="button1" wire:click.prevent="check"
-                                                type="button">select all</button>
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -201,21 +194,28 @@
                     <div class="col-4">
                         <div class="card">
                             <div class="card-body text-center">
-
-                                <button type="submit" class="btn btn-info" id="btn-submit"> <i
-                                        class="fa fa-check"></i> Save</button>
-                                <a href="{{ route('admin-sites') }}" class="btn btn-inverse">Cancel</a>
+                                <div class="row button-group">
+                                    <div class="col-lg-6 col-md-4">
+                                        <button   id="btn-submit"class="btn waves-effect waves-light btn-block btn-success"><i
+                                                class="fa fa-save"></i> Save</button>
+                                    </div>
+                                    <div class="col-lg-6 col-md-4">
+                                        <a type="button"  href="{{ route('admin-sites') }}"
+                                            class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
+                                    </div>
+                                </div>
+                           
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><i class=" ti-image"></i> Default Image Site</h4>
                                 @if ($photo)
-                                    <img id="image-ville" src="{{ $photo->temporaryUrl() }}" width="100%"
+                                    <img id="image-ville" src="{{ $photo->temporaryUrl() }}" width="100%" style="border-radius: 15px"
                                         height="90%">
                                 @else
                                     <img id="image-ville"
-                                        src="{{ asset('primary/assets/images/cities/No_Image_Available.jpg') }}"
+                                        src="{{ asset('primary/assets/images/cities/No_Image_Available.jpg') }}"  style="border-radius: 15px"
                                         width="100%" height="90%">
                                     @error('photo')
                                         {{ $message }}
@@ -233,6 +233,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"> <i class="ti-video-clapper"></i> Video</h4>
+                           
                                 <div class="m-4 text-center">
                                     <div class="custom-file mb-3 text-left">
                                         <input type="file" class="custom-file-input" id="videoupload"
@@ -272,35 +273,85 @@
 @endpush
 
 @push('scripts')
+<script>
+    $(document).ready(function() {
+        var langue = 0;
+        $("#image-ville").click(function() {
+            $('#uploadfile').click();
+        });
+        $('#btn-active-tab').click(function(e) {
+            if (langue == 0) {
+
+                $('#flag').removeClass('flag-icon-gb');
+                $('#flag').addClass('flag-icon-fr');
+                $('#flag').attr('title', 'Français, click to change the to arabic');
+                $('#frenchTab').addClass('active');
+                $('#englishTab').removeClass('active');
+                $('#arabTab').removeClass('active');
+                langue = 1;
+            } else if (langue == 1) {
+
+                $('#flag').removeClass('flag-icon-fr');
+                $('#flag').addClass('flag-icon-ma');
+                $('#flag').attr('title', 'Arabic, click to change the to english');
+                $('#frenchTab').removeClass('active');
+                $('#englishTab').removeClass('active');
+                $('#arabicTab').addClass('active');
+                langue = 2;
+            } else {
+
+                $('#flag').removeClass('flag-icon-ma');
+                $('#flag').addClass('flag-icon-gb');
+                $('#flag').attr('title', 'English, click to change the to french');
+                $('#frenchTab').removeClass('active');
+                $('#englishTab').addClass('active');
+                $('#arabicTab').removeClass('active');
+                langue = 0;
+            }
+        });
+    });
+</script>
     <script>
-        var index = 1;
-        $("#sites").change(function() {
-            var itemText = index + ' - ' +$('#sites option:selected').text();
+        
+        $("#sites").dblclick(function() {
+            var index = 1;
+            var itemText = $('#sites option:selected').text();
             var itemVal = $('#sites option:selected').val();
             var option = new Option(itemText,itemVal);
             $("#sites2").append(option);
             $(this).find('option:selected').remove();
             $('#sites2').focus();
-            index++;
+            $('#sites2 option').each(function(e){
+                this.text = index + " - " + this.text.split(' -').pop();
+                index++;
+            });
         });
 
-        $("#sites2 ").click(function() {
-            
+        $("#sites2").dblclick(function(e){
             var itemText = $('#sites2 option:selected').text().split('- ').pop();
             var itemVal = $('#sites2 option:selected').val();
             var option = new Option(itemText,itemVal);
             $("#sites").append(option);
             $(this).find('option:selected').remove();
-            index++;
+            var index = 1;
+            $('#sites2 option').each(function(e){
+                this.text = index + " - " + this.text.split(' -').pop();
+                index++;
+            });
         });
 
-        $('#button1').click(function(){
-            $('#sites2').attr('multiple','multiple');
-            $('#sites2').attr('disabled','disabled');
-            $('#sites2 option').prop('selected', true);
+        $("#btn-submit").click(function(event) {
+            event.preventDefault();
+
+            var test=[];
+          
+                $('#sites2 option').each(function(e){
+                    test.push($(this).val());
+                  
+                });
+                console.log(test);
+               
+                Livewire.emit('store', test);
         });
-
-
-
     </script>
 @endpush

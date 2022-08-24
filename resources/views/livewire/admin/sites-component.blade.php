@@ -31,9 +31,9 @@
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group has-info">
                                     <select class="form-control custom-select" wire:model="searchStatus">
-                                        <option value="" selected>Tous --- Status</option>
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
+                                        <option value="" selected >Status</option>
+                                        <option value="0">Active</option>
+                                        <option value="1">Inactive</option>
                                     </select>
    
                                 </div>
@@ -41,7 +41,7 @@
                             <div class="col-sm-6 col-md-2">
                                 <div class="form-group has-info">
                                     <select class="form-control custom-select" wire:model="searchCity">
-                                        <option value="" selected>Tous --- City</option>
+                                        <option value="" selected>Cities</option>
    
                                         @foreach ($cities->sortByDesc('created_at') as $city)
                                             <option value="{{ $city->id }}">{{ $city->city_fr }}</option>
@@ -52,7 +52,7 @@
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group has-info">
                                     <select wire:model="searchUser" class="form-control custom-select">
-                                        <option value="" selected>Tous --- Created By</option>
+                                        <option value="" selected> Created By</option>
                                         @foreach ($users->sortByDesc('created_at') as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach

@@ -112,7 +112,7 @@
                                         <td>{{ $site->created_at }}</td>
                                         <td>{{ $site->openTime }}</td>
                                         <td>{{ $site->price }} MAD</td>
-                                        <td> <span class="label @if ($site->status == 1) label-success @else label-danger @endif label-success font-weight-100">{{ $site->status == 1 ? 'Actif' : 'Inactif' }}</span> </td>
+                                        <td> <span class="label @if ($site->status == 0) label-success @else label-danger @endif label-success font-weight-100">{{ $site->status == 0 ? 'Actif' : 'Inactif' }}</span> </td>
                                             
                                     
 

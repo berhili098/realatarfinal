@@ -37,8 +37,8 @@
                                 <div class="row p-t-40 ">
                                     <a href="#"
                                     wire:click.prevent="changeStatus({{ $site->id }})"
-                                    title="{{ $site->status == 1 ? 'turn off' : 'turn on' }}">
-                                    <i class="fas {{ $site->status == 1 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
+                                    title="{{ $site->status == 0 ? 'turn off' : 'turn on' }}">
+                                    <i class="fas {{ $site->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
                                         title=""></i>
                                 </a>
                                 </div>
@@ -260,11 +260,11 @@
                             <div class="card-body">
                                 <h4 class="card-title"><i class=" ti-image"></i> Default Image Site</h4>
                                 @if ($neWphoto)
-                                    <img id="image-ville" src="{{ $neWphoto->temporaryUrl() }}" width="100%"
+                                    <img id="image-ville" src="{{ $neWphoto->temporaryUrl() }}"  style="border-radius: 15px" width="100%"
                                         height="90%">
                                 @else
                                     <img id="image-ville"
-                                        src="{{ asset('primary/assets/images/sites/') }}/{{ $photo }}"
+                                        src="{{ asset('primary/assets/images/sites/') }}/{{ $photo }}"  style="border-radius: 15px" 
                                         width="100%" height="90%">
                                     @error('photo')
                                         {{ $message }}

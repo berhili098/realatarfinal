@@ -37,8 +37,10 @@ class CreateQuizzesTable extends Migration
             $table->foreign('site_id')->references('id')->on('sites')->onDelete('cascade');
             $table->boolean('status')->enum([0,1])->default(0);
             $table->boolean('delete')->enum([0,1])->default(0);  
-            $table->bigInteger('editedBy')->nullable();
-            $table->bigInteger('deletedBy')->nullable();
+            $table->bigInteger('editedBy')->unsigned()->nullable();
+            $table->foreign('editedBy')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('deletedBy')->unsigned()->nullable();
+            $table->foreign('deletedBy')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -8,10 +8,13 @@ use App\Http\Livewire\Admin\AddSiteComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\CitiesConpoment;
 use App\Http\Livewire\Admin\EditCityComponent;
+use App\Http\Livewire\Admin\EditPathComponent;
 use App\Http\Livewire\Admin\EditQuizComponent;
+use App\Http\Livewire\Admin\PathComponent;
 use App\Http\Livewire\Admin\ProfileComponent;
 use App\Http\Livewire\Admin\QuizComponent;
 use App\Http\Livewire\Admin\ShowCityComponent;
+use App\Http\Livewire\Admin\ShowPathComponent;
 use App\Http\Livewire\Admin\ShowQuizComponent;
 use App\Http\Livewire\Admin\ShowSiteComponent;
 use App\Http\Livewire\Admin\SiteEditComponent;
@@ -60,6 +63,8 @@ Route::middleware([ 'auth:sanctum',  config('jetstream.auth_session'), 'verified
     Route::get('/admin/quiz/{quiz_id}/edit',EditQuizComponent::class)->name('admin-editquiz');
 
     //PATH
-    
+    Route::get('/admin/path',PathComponent::class)->name('admin-path');
     Route::get('/admin/path/add',AddPathComponent::class)->name('admin-addpath');
+    Route::get('/admin/path/{path_id}/show',ShowPathComponent::class)->name('admin-showpath');
+    Route::get('/admin/path/{path_id}/edit',EditPathComponent::class)->name('admin-editpath');
 });

@@ -3,12 +3,12 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\City;
+use App\Models\Site;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Laravel\Fortify\Contracts\UpdatesUserPasswords;
 
 class ProfileComponent extends Component
 {
@@ -45,7 +45,26 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
     {
         $title= 'profile';
         $users = User::find(Auth::user()->id);
-        return view('livewire.admin.profile-component',compact('users'))->layout('layouts.master', compact('title'));
+        $sites=Site::where('user_id',Auth::user()->id)->get();
+        $cities=City::where('user_id',Auth::user()->id)->get();
+        
+        
+   
+       
+
+    
+ 
+   
+    $all = $cities->merge($sites)->sortByDesc('created_at');
+ foreach ($all as $key => $value) {
+     $all[$key]['type'] = $value->getTable();
+
+ 
+    // $all = array_reverse(array_sort($all, function ($value) {
+    //   return $value['created_at'];
+    // }));
+ }
+        return view('livewire.admin.profile-component',compact('users','all'))->layout('layouts.master', compact('title'));
     }
 
     

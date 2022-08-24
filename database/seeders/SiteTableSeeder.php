@@ -28,7 +28,7 @@ class SiteTableSeeder extends Seeder
                 'description_fr' => $faker_fr->text(500),
                 'description_en' => $faker_en->text(500),
                 'user_id' => $faker_fr->numberBetween(1,2),
-                'openTime' => $faker_fr->time('H:i:s'),
+                'openTime' => $faker_fr->time('H:i'),
                 'duration'=> $faker_fr->numberBetween(1,10),
                 'price'=> $faker_fr->numberBetween(0,10000),
                 'longitude'=> $faker_fr->longitude,

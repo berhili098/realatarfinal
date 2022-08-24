@@ -227,11 +227,21 @@
                     </div>
                     <div class="col-4">
                         <div class="card">
-                            <div class="card-body text-center">
+                        
 
-                                <button type="submit" class="btn btn-info" id="btn-submit"> <i
-                                        class="fa fa-check"></i> Save</button>
-                                <a href="{{ route('admin-sites') }}" class="btn btn-inverse">Cancel</a>
+                           
+                            <div class="card-body text-center">
+                                <div class="row button-group">
+                                    <div class="col-lg-6 col-md-4">
+                                        <button class="btn waves-effect waves-light btn-block btn-success"><i
+                                                class="fa fa-save"></i> Save</button>
+                                    </div>
+                                    <div class="col-lg-6 col-md-4">
+                                        <a type="button"
+                                        href="{{ route('admin-sites') }}"   class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="card">
