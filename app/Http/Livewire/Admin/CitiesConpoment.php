@@ -16,6 +16,8 @@ class CitiesConpoment extends Component
     public $satuts;
     public $cid;
     public $city_en;
+    public $sites =[];
+
 
     public function mount()
     {
@@ -31,6 +33,13 @@ class CitiesConpoment extends Component
         $this->cid = $cid;
         $city = City::find($cid);
         $this->city_en = $city->city_en;
+    }
+
+
+    public function showSite($id)
+    {
+        $city = City::find($id);
+        $this->sites = $city->sites;
     }
 
     public function deleteCity()

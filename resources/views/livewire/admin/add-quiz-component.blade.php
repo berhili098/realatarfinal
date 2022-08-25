@@ -22,7 +22,7 @@
         </div>
         <form wire:submit.prevent="storeQuiz()">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="card">
 
                         <div class="card-body">
@@ -471,7 +471,7 @@
                     </div>
 
                 </div>
-                <div class=" col-4">
+                <div class=" col-3">
                     <div class="card">
                         <div class="card-body text-center">
                             <div class="row button-group">
@@ -496,19 +496,10 @@
 </div>
 
 
-@push('styles')
-    <link href="{{ asset('primary/dist/css/pages/stylish-tooltip.css') }}" rel="stylesheet">
-@endpush
-
 @push('scripts')
     <script>
         $(document).ready(function() {
             var langue = 0;
-
-
-            $("#image-ville").click(function() {
-                $('#uploadfile').click();
-            });
             $('#question_fr').hide();
             $('#question_ar').hide();
             $('#label_fr').hide();

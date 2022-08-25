@@ -7,11 +7,11 @@
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Home</a></li> 
+                        <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item active">Cities</li>
                     </ol>
-                    <a type="button" href="{{ route('admin-addcity') }}" class="btn btn-info d-none d-lg-block m-l-15"><i
-                            class="fa fa-plus-circle"></i>
+                    <a type="button" href="{{ route('admin-addcity') }}"
+                        class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i>
                         Create New</a>
                 </div>
             </div>
@@ -65,12 +65,16 @@
                                                     <img src="{{ asset('primary/assets/images/cities') }}/{{ $city->photo }}"
                                                         width="70">
                                                 </td>
-                                                <td>
+                                                <td class="text-center  ">
                                                     @if (count($city->sites) == 0)
-                                                        <a href="{{ route('admin-addsite',['city_id'=>$city->id]) }}"><i class="icon-plus text-info fa-2x"></i></a>
+                                                        <a
+                                                            href="{{ route('admin-addsite', ['city_id' => $city->id]) }}"><i
+                                                                class="icon-plus text-info "></i></a>
                                                         <br>
                                                     @else
-                                                        <span>{{ count($city->sites) }}</span>
+                                                        <a href="#" data-toggle="modal" title="{{ count($city->sites) }} site(s)" data-target="#show-sites-modal" wire:click.prevent="showSite({{ $city->id }})">
+                                                            <i class="ti-layers-alt"></i>
+                                                        </a>
                                                     @endif
                                                 </td>
                                                 <td>{{ $city->user->name }}</td>
@@ -85,16 +89,19 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('admin-showcity', ['idcity' => $city->id]) }}"
-                                                        class="text-dark p-r-10" data-toggle="tooltip" title="Show details">
+                                                        class="text-dark p-r-10" data-toggle="tooltip"
+                                                        title="Show details">
                                                         <i class="ti-eye fa-2x"></i>
                                                     </a>
                                                     <a href="{{ route('admin-editcity', ['idcity' => $city->id]) }}"
                                                         class="text-dark p-r-10" data-toggle="tooltip" title="Edit">
                                                         <i class="ti-marker-alt fa-2x"></i>
                                                     </a>
-                                                    <a href="#" data-toggle="modal" data-target="#delete-confirmation-modal"  class="text-dark" title="Delete"
-                                                        data-toggle="tooltip" wire:click.prevent="confirmDelete({{ $city->id }})">
-                                                        <i class="ti-trash fa-2x" ></i>
+                                                    <a href="#" data-toggle="modal"
+                                                        data-target="#delete-confirmation-modal" class="text-dark"
+                                                        title="Delete" data-toggle="tooltip"
+                                                        wire:click.prevent="confirmDelete({{ $city->id }})">
+                                                        <i class="ti-trash fa-2x"></i>
                                                     </a>
 
                                                 </td>
@@ -113,7 +120,8 @@
         </div>
     </div>
 
-    <div wire:ignore.self id="delete-confirmation-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div wire:ignore.self id="delete-confirmation-modal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -127,7 +135,36 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger waves-effect waves-light" wire:click.prevent="deleteCity()">confrim</button>
+                    <button type="button" class="btn btn-danger waves-effect waves-light"
+                        wire:click.prevent="deleteCity()">confrim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div wire:ignore.self id="show-sites-modal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-info"><i class="fas fa-book"></i> 
+                        City sites
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        @foreach($sites as $key=>$site)
+                            <div>
+                                <p>
+                                    {{ $key+1 }}. <a href="{{ route('admin-showsite',['site_id'=> $site->id]) }}">{{ $site->name_en }}</a>
+                                </p>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -141,7 +178,7 @@
         <script src="{{ asset('primary/assets/node_modules/bootstrap-select/bootstrap-select.min.js') }}"></script>
         <script src="{{ asset('primary/dist/js/pages/jasny-bootstrap.js') }}"></script>
         <script>
-            window.livewire.on('cityDeleted',function(){
+            window.livewire.on('cityDeleted', function() {
                 $("#delete-confirmation-modal").modal('hide');
             });
         </script>
