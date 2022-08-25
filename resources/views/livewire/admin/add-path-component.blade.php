@@ -2,14 +2,14 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="text-themecolor">Manage Site</h4>
+                <h4 class="text-themecolor">Manage Path</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin-sites') }}">Sites</a></li>
-                        <li class="breadcrumb-item active">Add Site</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin-path') }}">Paths</a></li>
+                        <li class="breadcrumb-item active">Add Path</li>
                     </ol>
 
                 </div>
