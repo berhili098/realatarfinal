@@ -96,24 +96,26 @@
                                                     </div>
                                                 </div> --}}
                                                 <div id='enquest' class="col-sm-6 col-md-6 mt-3">
-                                                    <div class="form-group" wire:ignore>
+                                                    <div class="form-group text-right" class="text-right" wire:ignore >
                                                         <label id='label_en' for=""> Question</label>
                                                         <label id="label_fr" for=""> Question</label>
-                                                        <label id="label_ar" for="city_ar"> السؤال </label>
+                                                        <label id="label_ar" for="city_ar" > السؤال </label>
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control"
-                                                            id="question_en" wire:model="question_en"
-                                                            placeholder="Enter question here ">
-                                                            <input type="text" class="form-control"
-                                                            id="question_fr" wire:model="question_fr"
-                                                            placeholder="Entrez la question ici ">
-                                                            <input type="text" class="form-control "
-                                                            id="question_ar" wire:model="question_ar"
-                                                            placeholder="أدخل  السؤال هنا">
+                                                            <input type="text" class="form-control" id="question_en"
+                                                                wire:model="question_en"
+                                                                placeholder="Enter question here ">
+                                                            <input type="text" class="form-control" id="question_fr"
+                                                                wire:model="question_fr"
+                                                                placeholder="Entrez la question ici ">
+                                                            <input type="text" class="form-control text-right" id="question_ar"
+                                                                wire:model="question_ar" placeholder="أدخل  السؤال هنا">
                                                             <div class="input-group-append">
-                                                                <a  style="border-color: grey" id="btn-active-tab" wire:ignore type="button">    <i id="flag" class="flag-icon flag-icon-gb " style="border-radius:0 5px 5px  0; font-size:38px" ></i></a>
+                                                                <a style="border-color: grey" id="btn-active-tab"
+                                                                    wire:ignore type="button"> <i id="flag"
+                                                                        class="flag-icon flag-icon-gb "
+                                                                        style="border-radius:0 5px 5px  0; font-size:38px"></i></a>
                                                             </div>
-                                                           
+
                                                         </div>
                                                         @if ($errors->any())
                                                             <a class="mytooltip" href="javascript:void(0)">
@@ -135,7 +137,7 @@
                                                         @endif
                                                     </div>
                                                 </div>
-                                          
+
 
 
                                             </div>
@@ -144,7 +146,7 @@
                                                 <div class="tab-pane  active" id="englishTab" role="tabpanel"
                                                     wire:ignore.self>
                                                     <section>
-                                                 
+
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label for="reponse1_en">Answer 1</label>
@@ -242,7 +244,7 @@
                                                 <div class="tab-pane  " id="frenchTab" role="tabpanel"
                                                     wire:ignore.self>
                                                     <section>
-                                                   
+
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label for="reponse1_fr">Reponse 1</label>
@@ -340,18 +342,20 @@
                                                 {{-- Arabic Tab --}}
                                                 <div class="tab-pane " id="arabicTab" role="tabpanel"
                                                     wire:ignore.self>
-                                                    <section lang="ar">
-                                                      
+                                                    <section lang="ar" class="text-right">
+
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label for="reponse1_ar">الجواب 1</label>
                                                                 <div class="input-group">
+                                                                    <input type="text" class="form-control text-right"  placeholder="أدخل  الجواب 1 هنا" wire:model="reponse1_ar"
+                                                                        aria-label="Text input with radio button">
                                                                     <div class="input-group-prepend">
                                                                         <div class="input-group-text">
                                                                             <div class="custom-control custom-radio">
                                                                                 <input type="radio" id="correcte_ar"
                                                                                     name="correcte_ar"
-                                                                                    class="custom-control-input"
+                                                                                    class="custom-control-input "
                                                                                     value="1"
                                                                                     wire:model="correcte_ar">
                                                                                 <label class="custom-control-label"
@@ -359,12 +363,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="أدخل  الجواب 1 هنا"
-                                                                        wire:model="reponse1_ar"
-                                                                        aria-label="Text input with radio button">
-
-
+                                                                    
                                                                 </div>
 
 
@@ -372,6 +371,10 @@
                                                             <div class="col-md-6">
                                                                 <label for="reponse2_en">الجواب 2</label>
                                                                 <div class="input-group">
+                                                                    <input type="text"
+                                                                        placeholder="أدخل  الجواب 2 هنا"
+                                                                        wire:model="reponse2_ar" class="form-control text-right"
+                                                                        aria-label="Text input with radio button">
 
                                                                     <div class="input-group-prepend">
                                                                         <div class="input-group-text">
@@ -387,10 +390,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input type="text"
-                                                                        placeholder="أدخل  الجواب 2 هنا"
-                                                                        wire:model="reponse2_ar" class="form-control"
-                                                                        aria-label="Text input with radio button">
+                                                                    
 
                                                                 </div>
                                                             </div>
@@ -399,7 +399,12 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label for="reponse3_en">الجواب 3</label>
+                                                                
                                                                 <div class="input-group">
+                                                                    <input type="text" class="form-control text-right"
+                                                                        placeholder="أدخل  الجواب 3 هنا"
+                                                                        wire:model="reponse3_ar"
+                                                                        aria-label="Text input with radio button">
                                                                     <div class="input-group-prepend">
                                                                         <div class="input-group-text">
                                                                             <div class="custom-control custom-radio">
@@ -414,10 +419,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="أدخل  الجواب 3 هنا"
-                                                                        wire:model="reponse3_ar"
-                                                                        aria-label="Text input with radio button">
+                                                                    
 
 
                                                                 </div>
@@ -426,8 +428,12 @@
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="reponse4_en">الجواب 4</label>
+                                                                
                                                                 <div class="input-group">
-
+                                                                    <input type="text"
+                                                                        placeholder="أدخل  الجواب 4 هنا"
+                                                                        wire:model="reponse4_ar" class="form-control text-right"
+                                                                        aria-label="Text input with radio button">
                                                                     <div class="input-group-prepend">
                                                                         <div class="input-group-text">
                                                                             <div class="custom-control custom-radio">
@@ -442,10 +448,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <input type="text"
-                                                                        placeholder="أدخل  الجواب 4 هنا"
-                                                                        wire:model="reponse4_ar" class="form-control"
-                                                                        aria-label="Text input with radio button">
+                                                                    
 
                                                                 </div>
                                                             </div>
@@ -501,8 +504,8 @@
     <script>
         $(document).ready(function() {
             var langue = 0;
-            
-            
+
+
             $("#image-ville").click(function() {
                 $('#uploadfile').click();
             });
