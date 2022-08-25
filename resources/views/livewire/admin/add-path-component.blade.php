@@ -23,19 +23,16 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">General Info </h4>
-                                                       
-                        
-                        
                                 @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <h3>please fix the follow error :</h3>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
+                                    <div class="alert alert-danger">
+                                        <h3>please fix the follow error :</h3>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="row p-t-40 " style="display: none">
                                     <div class="col-md-12  text-right">
                                         <div class="form-group">
@@ -44,7 +41,7 @@
                                                 type="button">
                                                 <i id="flag" class="flag-icon flag-icon-gb fa-2x"></i>
                                             </button>
-                                      
+
                                         </div>
                                     </div>
                                 </div>
@@ -64,17 +61,17 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                              
-                                                    <div class="col-md-5">
-                                                        <div class="form-group text-right">
-                                                            <label for=""> </label>
-                                                            <button class="btn align-middle" id="faker" wire:ignore
-                                                                type="button">
-                                                                <i class="flag-icon flag-icon-gb fa-2x"></i>
-                                                            </button>
-                                                      
-                                                        </div>
-                                              
+
+                                                <div class="col-md-5">
+                                                    <div class="form-group text-right">
+                                                        <label for=""> </label>
+                                                        <button class="btn align-middle" id="faker" wire:ignore
+                                                            type="button">
+                                                            <i class="flag-icon flag-icon-gb fa-2x"></i>
+                                                        </button>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -112,16 +109,16 @@
                                                             type="button">
                                                             <i class="flag-icon flag-icon-fr fa-2x"></i>
                                                         </button>
-                                                  
+
                                                     </div>
-                                          
-                                            </div>
+
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="description_fr">Description Parcours
-                                                            </label>
+                                                        </label>
                                                         <textarea id="description_fr" rows="7" class="form-control" wire:model.lazy="description_fr"></textarea>
                                                         @error('description_fr')
                                                             <span class="text-danger">{{ $message }}</span>
@@ -153,10 +150,10 @@
                                                             type="button">
                                                             <i class="flag-icon flag-icon-ma fa-2x"></i>
                                                         </button>
-                                                  
+
                                                     </div>
-                                          
-                                            </div>
+
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -204,21 +201,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="sites">Sites </label>
-                                            <select class="form-control" id="sites" style="width: 100%" size="4" wire:ignore >
+                                            <select class="form-control" id="sites" style="width: 100%"
+                                                size="4" wire:ignore>
                                                 @foreach ($sites->sortBy('name_en') as $site)
                                                     <option value="{{ $site->id }}">{{ $site->name_en }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="sites2">Selected sites</label>
-                                            <select class="form-control" id="sites2" style="width: 100%" size="4" multiple wire:change="change" wire:ignore>
+                                            <select class="form-control d-none" id="sites2" style="width: 100%"
+                                                size="4" multiple wire:change="change" wire:ignore>
 
                                             </select>
-                                          
                                         </div>
                                     </div>
                                 </div>
@@ -230,27 +227,28 @@
                             <div class="card-body text-center">
                                 <div class="row button-group">
                                     <div class="col-lg-6 col-md-4">
-                                        <button   id="btn-submit"class="btn waves-effect waves-light btn-block btn-success"><i
+                                        <button
+                                            id="btn-submit"class="btn waves-effect waves-light btn-block btn-success"><i
                                                 class="fa fa-save"></i> Save</button>
                                     </div>
                                     <div class="col-lg-6 col-md-4">
-                                        <a type="button"  href="{{ route('admin-path') }}"
+                                        <a type="button" href="{{ route('admin-path') }}"
                                             class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
                                     </div>
                                 </div>
-                           
+
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><i class=" ti-image"></i> Default Image Site</h4>
                                 @if ($photo)
-                                    <img id="image-ville" src="{{ $photo->temporaryUrl() }}" width="100%" style="border-radius: 15px"
-                                        height="90%">
+                                    <img id="image-ville" src="{{ $photo->temporaryUrl() }}" width="100%"
+                                        style="border-radius: 15px" height="90%">
                                 @else
                                     <img id="image-ville"
-                                        src="{{ asset('primary/assets/images/cities/No_Image_Available.jpg') }}"  style="border-radius: 15px"
-                                        width="100%" height="90%">
+                                        src="{{ asset('primary/assets/images/cities/No_Image_Available.jpg') }}"
+                                        style="border-radius: 15px" width="100%" height="90%">
                                     @error('photo')
                                         {{ $message }}
                                     @enderror
@@ -267,7 +265,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"> <i class="ti-video-clapper"></i> Video</h4>
-                           
+
                                 <div class="m-4 text-center">
                                     <div class="custom-file mb-3 text-left">
                                         <input type="file" class="custom-file-input" id="videoupload"
@@ -307,95 +305,105 @@
 @endpush
 
 @push('scripts')
-<script>
-    $(document).ready(function() {
-        var langue = 0;
-
-        $('#faker').click(function(){
-            $('#btn-active-tab').click();
-        });
-        $('#faker2').click(function(){
-            $('#btn-active-tab').click();
-        });
-        $('#faker3').click(function(){
-            $('#btn-active-tab').click();
-        });
-        $("#image-ville").click(function() {
-            $('#uploadfile').click();
-        });
-        $('#btn-active-tab').click(function(e) {
-            if (langue == 0) {
-
-                $('#flag').removeClass('flag-icon-gb');
-                $('#flag').addClass('flag-icon-fr');
-                $('#flag').attr('title', 'Français, click to change the to arabic');
-                $('#frenchTab').addClass('active');
-                $('#englishTab').removeClass('active');
-                $('#arabTab').removeClass('active');
-                langue = 1;
-            } else if (langue == 1) {
-
-                $('#flag').removeClass('flag-icon-fr');
-                $('#flag').addClass('flag-icon-ma');
-                $('#flag').attr('title', 'Arabic, click to change the to english');
-                $('#frenchTab').removeClass('active');
-                $('#englishTab').removeClass('active');
-                $('#arabicTab').addClass('active');
-                langue = 2;
-            } else {
-
-                $('#flag').removeClass('flag-icon-ma');
-                $('#flag').addClass('flag-icon-gb');
-                $('#flag').attr('title', 'English, click to change the to french');
-                $('#frenchTab').removeClass('active');
-                $('#englishTab').addClass('active');
-                $('#arabicTab').removeClass('active');
-                langue = 0;
-            }
-        });
-    });
-</script>
     <script>
+        $(document).ready(function() {
+            var langue = 0;
+
+            $('#faker').click(function() {
+                $('#btn-active-tab').click();
+            });
+            $('#faker2').click(function() {
+                $('#btn-active-tab').click();
+            });
+            $('#faker3').click(function() {
+                $('#btn-active-tab').click();
+            });
+            $("#image-ville").click(function() {
+                $('#uploadfile').click();
+            });
+            $('#btn-active-tab').click(function(e) {
+                if (langue == 0) {
+
+                    $('#flag').removeClass('flag-icon-gb');
+                    $('#flag').addClass('flag-icon-fr');
+                    $('#flag').attr('title', 'Français, click to change the to arabic');
+                    $('#frenchTab').addClass('active');
+                    $('#englishTab').removeClass('active');
+                    $('#arabTab').removeClass('active');
+                    langue = 1;
+                } else if (langue == 1) {
+
+                    $('#flag').removeClass('flag-icon-fr');
+                    $('#flag').addClass('flag-icon-ma');
+                    $('#flag').attr('title', 'Arabic, click to change the to english');
+                    $('#frenchTab').removeClass('active');
+                    $('#englishTab').removeClass('active');
+                    $('#arabicTab').addClass('active');
+                    langue = 2;
+                } else {
+
+                    $('#flag').removeClass('flag-icon-ma');
+                    $('#flag').addClass('flag-icon-gb');
+                    $('#flag').attr('title', 'English, click to change the to french');
+                    $('#frenchTab').removeClass('active');
+                    $('#englishTab').addClass('active');
+                    $('#arabicTab').removeClass('active');
+                    langue = 0;
+                }
+            });
+        });
+    </script>
+    <script>
+
         
+
         $("#sites").dblclick(function() {
             var index = 1;
             var itemText = $('#sites option:selected').text();
             var itemVal = $('#sites option:selected').val();
-            var option = new Option(itemText,itemVal);
+            var option = new Option(itemText, itemVal);
             $("#sites2").append(option);
             $(this).find('option:selected').remove();
             $('#sites2').focus();
-            $('#sites2 option').each(function(e){
+            $('#sites2 option').each(function(e) {
                 this.text = index + " - " + this.text.split(' -').pop();
                 index++;
             });
         });
 
-        $("#sites2").dblclick(function(e){
+        $("#sites2").dblclick(function(e) {
             var itemText = $('#sites2 option:selected').text().split('- ').pop();
             var itemVal = $('#sites2 option:selected').val();
-            var option = new Option(itemText,itemVal);
+            var option = new Option(itemText, itemVal);
             $("#sites").append(option);
             $(this).find('option:selected').remove();
             var index = 1;
-            $('#sites2 option').each(function(e){
+            $('#sites2 option').each(function(e) {
                 this.text = index + " - " + this.text.split(' -').pop();
                 index++;
             });
+            var countoption = $('#sites2 option').length;
+            if( countoption === 0 ) {
+                $('#sites2').addClass('d-none');
+            }
         });
 
         $("#btn-submit").click(function(event) {
             event.preventDefault();
+            var test = [];
+            $('#sites2 option').each(function(e) {
+                test.push($(this).val());
+            });
+            // console.log(test);
+            Livewire.emit('store', test);
+        });
+        
 
-            var test=[];
-          
-                $('#sites2 option').each(function(e){
-                    test.push($(this).val());
-                  
-                });
-                console.log(test);
-               
-                Livewire.emit('store', test);
+        $("#sites2").bind("DOMSubtreeModified", function() {
+            var countoption = $('#sites2 option').length;
+            if (countoption > 0) {
+                $('#sites2').removeClass('d-none');
+            }
         });
     </script>
 @endpush

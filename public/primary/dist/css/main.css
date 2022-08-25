@@ -15,3 +15,7 @@
 #image-ville:hover {
     cursor: pointer;
 }
+
+.fa-customized{
+    font-size: 1.3em;
+}

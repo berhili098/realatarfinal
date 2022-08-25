@@ -73,7 +73,7 @@
                                                 <td>
                                                     <a href="#"
                                                         wire:click.prevent="changeStatus({{ $quiz->id }})">
-                                                        <i class="fas {{ $quiz->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
+                                                        <i class="fas {{ $quiz->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-customized"
                                                             title="{{ $quiz->status == 0 ? 'turn off' : 'turn on' }}"></i>
                                                     </a>
 
@@ -81,17 +81,16 @@
                                                 <td class="d-flex">
                                                     <a href="{{ route('admin-showquiz',$quiz->id) }}"
                                                         class="text-dark p-r-10" data-toggle="tooltip" title="Show details">
-                                                        <i class="ti-eye fa-2x"></i>
+                                                        <i class="ti-eye fa-customized"></i>
                                                     </a>
                                                     <a href="{{ route('admin-editquiz',$quiz->id) }}"
                                                         class="text-dark p-r-10" data-toggle="tooltip" title="Edit">
-                                                        <i class="ti-marker-alt fa-2x"></i>
+                                                        <i class="ti-marker-alt fa-customized"></i>
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#delete-confirmation-modal"  class="text-dark" title="Delete"
                                                         data-toggle="tooltip" wire:click.prevent="confirmDelete({{ $quiz->id }})">
-                                                        <i class="ti-trash fa-2x" ></i>
+                                                        <i class="ti-trash fa-customized" ></i>
                                                     </a>
-
                                                 </td>
                                             </tr>
                                         @endforeach

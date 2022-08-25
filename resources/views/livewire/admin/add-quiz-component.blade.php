@@ -24,7 +24,6 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="card">
-
                         <div class="card-body">
                             @if ($errors->any())
                                 <div class="alert alert-danger">
