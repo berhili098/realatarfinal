@@ -49,7 +49,7 @@
                                     <thead>
                                         <tr>
                                             <th>Question</th>
-                                            <th>Correction</th>
+                                            <th>Answers</th>
                                             <th>Repere</th>
                                             <th>Created by</th>
                                             <th>Created at</th>
