@@ -66,6 +66,13 @@
                     <h6>{{ $users->cities->count() == 0 ? 'Aucun Repere ajouté' : $users->cities->count() }}</h6> <small
                         class="text-muted p-t-30 db">Reperes ajouté(s)</small>
                     <h6>{{ $users->sites->count() == 0 ? 'Aucun Repere ajouté' : $users->sites->count() }}</h6>
+                    <div class="map-box">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div> <small class="text-muted p-t-30 db">Social Profile</small>
+                    <br/>
+                    <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>
+                    <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
+                    <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
 
                 </div>
             </div>
@@ -136,15 +143,14 @@
                                     <br>
                                     <p class="text-muted">{{ Auth::user()->email }}</p>
                                 </div>
-                                <div class="col-md-3 col-xs-6"> <strong>city</strong>
-                                    <br>
-                                    <p class="text-muted">{{ explode(' ', Auth::user()->address)[0] }}</p>
-                                </div>
+                              
                             </div>
                             <hr>
+                            @if(Auth::user()->description)
                             <p class="m-t-30">{!! html_entity_decode(nl2br(e(Auth::user()->description)))!!}</p>
-
-
+                            @else
+                            <p class="m-t-30 text-center">No description</p>
+                            @endif
 
                         </div>
                     </div>
@@ -299,3 +305,8 @@
 <!-- End Container fluid  -->
 
 </div>
+
+@push('scripts')
+    <script src="{{ asset('primary/assets/node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
+    <script src="{{ asset('primary/dist/js/pages/mask.init.js') }}"></script>
+@endpush

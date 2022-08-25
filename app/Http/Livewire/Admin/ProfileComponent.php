@@ -21,7 +21,7 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
         $this->user_id=Auth::user()->id;
         $this->name=$users->name;
         $this->email=$users->email;
-        $this->phoneNo='0'.$users->phoneNo;
+        $this->phoneNo=$users->phoneNo;
         $this->description=$users->description;
         $this->birthdate=$users->birthdate;
         $this->address=$users->address;

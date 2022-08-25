@@ -182,9 +182,11 @@
             @endforeach
         </div>
    
-        <div class="justify-content-between color-success">
-            {{ $sites->links('livewire-pagination') }}
-        </div>
+       @if (count($countrecord)>6)
+       <div class="justify-content-between color-success ">
+        {{ $sites->links('livewire-pagination') }}
+    </div>
+       @endif
     </div>
    
     @push('scripts2')

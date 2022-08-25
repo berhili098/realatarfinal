@@ -34,7 +34,7 @@ class QuizComponent extends Component
             $query->where('question_ar', 'like', "%{$this->search}%")
                 ->orwhere('question_fr', 'like', "%{$this->search}%")
                 ->orwhere('question_en', 'like', "%{$this->search}%");
-        })->paginate(6);
+        })->orderBy('id','DESC')->paginate(6);
 
 
         $countsrecord = Quiz::where('delete', 0)->where(function ($query) {

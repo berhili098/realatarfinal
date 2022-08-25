@@ -17,9 +17,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header bg-info">
-                        <h4 class="m-b-0 text-white">Add city</h4>
-                    </div>
+                
                     <div class="card-body">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -55,7 +53,7 @@
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group">
-                                                    <label for="latitude">City latitude</label>
+                                                    <label  for="latitude">City latitude</label>
                                                     <div class="input-group mb-3">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="icon-location-pin"></i></span>

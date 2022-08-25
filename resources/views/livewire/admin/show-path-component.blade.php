@@ -179,20 +179,20 @@
 
                 
                 <div class="card">
-                    {{-- <div class="card-body">
-                        <h5 class="card-title">Sites {{ $city->city_en }}</h5>
-                        @if (count($city->sites) == 0)
+                    <div class="card-body">
+                        <h5 class="card-title">Path {{ $path->name_en }}</h5>
+                        @if (count($sites) == 0)
                             <div class="text-center">
                                 <p>0 records found.</p>
-                                <p>use the bottom bellow to add new site to {{ $city->city_en }}</p>
-                                <a href="" class="btn btn-info"><i class="fa fa-plus"></i></a>
+                                <p>use the bottom bellow to add new site to {{ $path->name_en }}</p>
+                                <a href="{{ route('admin-editpath',$path->id )}}" class="btn btn-info"><i class="fa fa-plus"></i></a>
                             </div>
                         @else
                             <div class="row">
-                                @foreach ($city->sites as $site)
+                                @foreach ($sites as $site)
                                     <div class="col-md-4 text-center">
                                         <div class="card">
-                                            <a href="#" class="p-b-10">
+                                            <a href="{{ route('admin-showsite',['site_id'=>$site->id]) }}" class="p-b-10">
                                                 <img width="100px" src="{{ asset('primary/assets/images/sites/') }}/{{ $site->photo }}">
                                             </a>
                                             <h6><a href="#">{{ $site->name_en }}</a></h6>
@@ -200,10 +200,19 @@
                                     </div>
                                 @endforeach
                             </div>
+                            
+                                <div class="text-center">
+                                    <hr>
+                                    <a href="{{ route('admin-editpath',$path->id) }}" class="btn btn-info"><i class="fa fa-plus"></i></a>
+                                </div>
+                            
                         @endif
 
-                    </div> --}}
+                    </div>
                 </div>
+         
+                </div>
+         
             </div>
         </div>
 

@@ -20,8 +20,8 @@ class ShowPathComponent extends Component
     {
         $title = 'Show Path';
         $path = Path::find($this->path_id);
+        $sites= $path->sites;
 
-
-        return view('livewire.admin.show-path-component',compact('path'))->layout('layouts.master',compact('title'));
+        return view('livewire.admin.show-path-component',compact('path','sites'))->layout('layouts.master',compact('title'));
     }
 }

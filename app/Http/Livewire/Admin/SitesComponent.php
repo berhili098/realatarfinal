@@ -56,7 +56,23 @@ class SitesComponent extends Component
                         ->orWhere("latitude", "like", "%{$this->searchWord}%");
                 }
             );
-    })->paginate(6);}else{
+    })->paginate(6);
+    $countrecord = Site::where(function ($query) {
+        $query->where("status", "like", $this->searchStatus != '' ? "{$this->searchStatus}" : "%")
+            ->where("user_id", "like", $this->searchUser != '' ? "{$this->searchUser}" : "%")
+            ->where("city_id", "like", $this->searchCity != '' ? "{$this->searchCity}" : "%")
+            ->where(
+                function ($query2) {
+                    $query2->where("name_fr", "like", "%{$this->searchWord}%")->orWhere("name_en", "like", "%{$this->searchWord}%")
+                        ->orWhere("name_ar", "like", "%{$this->searchWord}%")
+                        ->orWhere("longitude", "like", "%{$this->searchWord}%")
+                        ->orWhere("latitude", "like", "%{$this->searchWord}%");
+                }
+            );
+    })->get();
+
+
+}else{
         $sites = Site::where("delete", 0)->where(function ($query) {
             $query->where("status", "like", $this->searchStatus != '' ? "{$this->searchStatus}" : "%")
                 ->where("user_id", "like", $this->searchUser != '' ? "{$this->searchUser}" : "%")
@@ -70,6 +86,21 @@ class SitesComponent extends Component
                     }
                 );
         })->paginate(6);
+
+
+        $countrecord = Site::where(function ($query) {
+            $query->where("status", "like", $this->searchStatus != '' ? "{$this->searchStatus}" : "%")
+                ->where("user_id", "like", $this->searchUser != '' ? "{$this->searchUser}" : "%")
+                ->where("city_id", "like", $this->searchCity != '' ? "{$this->searchCity}" : "%")
+                ->where(
+                    function ($query2) {
+                        $query2->where("name_fr", "like", "%{$this->searchWord}%")->orWhere("name_en", "like", "%{$this->searchWord}%")
+                            ->orWhere("name_ar", "like", "%{$this->searchWord}%")
+                            ->orWhere("longitude", "like", "%{$this->searchWord}%")
+                            ->orWhere("latitude", "like", "%{$this->searchWord}%");
+                    }
+                );
+        })->get();
         
     }
 
@@ -78,7 +109,7 @@ class SitesComponent extends Component
 
 
 
-        return view("livewire.admin.sites-component", compact("sites", "cities", "users"))->layout("layouts.master", compact("title"));
+        return view("livewire.admin.sites-component", compact("sites", "cities", "users","countrecord"))->layout("layouts.master", compact("title"));
     }
 
     public function confirmDeleteSite($id)

@@ -36,8 +36,8 @@
                                     </ul>
                                 </div>
                             @endif
-                                <div class="row p-t-40">
-                                    <div class="col-md-4">
+                                <div class="row p-t-40 " style="display: none">
+                                    <div class="col-md-12  text-right">
                                         <div class="form-group">
                                             <label for=""> </label>
                                             <button class="btn align-middle" id="btn-active-tab" wire:ignore
@@ -48,15 +48,15 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <br><br>
                                 <div class="tab-content tabcontent-border ">
                                     {{-- english Tab --}}
                                     <div class="tab-pane  active" id="englishTab" role="tabpanel" wire:ignore.self>
                                         <section>
                                             <div class="row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <label for="name_en">Path name :</label>
+                                                        <label for="name_en">Path name </label>
                                                         <input type="text" class="form-control" id="name_en"
                                                             wire:model.lazy="name_en">
                                                         @error('name_en')
@@ -64,11 +64,23 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                              
+                                                    <div class="col-md-5">
+                                                        <div class="form-group text-right">
+                                                            <label for=""> </label>
+                                                            <button class="btn align-middle" id="faker" wire:ignore
+                                                                type="button">
+                                                                <i class="flag-icon flag-icon-gb fa-2x"></i>
+                                                            </button>
+                                                      
+                                                        </div>
+                                              
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="description_en">Path description :</label>
+                                                        <label for="description_en">Path description </label>
                                                         <textarea id="description_en" rows="7" class="form-control" wire:model.lazy="description_en"></textarea>
                                                         @error('description_en')
                                                             <span class="text-danger">{{ $message }}</span>
@@ -83,9 +95,9 @@
                                     <div class="tab-pane  " id="frenchTab" role="tabpanel" wire:ignore.self>
                                         <section>
                                             <div class="row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-7">
                                                     <div class="form-group">
-                                                        <label for="name_fr">Nom Parcours :</label>
+                                                        <label for="name_fr">Nom Parcours </label>
                                                         <input type="text" class="form-control" id="name_fr"
                                                             wire:model.lazy="name_fr">
                                                         @error('name_fr')
@@ -93,12 +105,23 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group text-right">
+                                                        <label for=""> </label>
+                                                        <button class="btn align-middle" id="faker2" wire:ignore
+                                                            type="button">
+                                                            <i class="flag-icon flag-icon-fr fa-2x"></i>
+                                                        </button>
+                                                  
+                                                    </div>
+                                          
+                                            </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="description_fr">Description Parcours
-                                                            :</label>
+                                                            </label>
                                                         <textarea id="description_fr" rows="7" class="form-control" wire:model.lazy="description_fr"></textarea>
                                                         @error('description_fr')
                                                             <span class="text-danger">{{ $message }}</span>
@@ -110,10 +133,10 @@
                                     </div>
 
                                     {{-- Arabic Tab --}}
-                                    <div class="tab-pane " id="arabicTab" role="tabpanel" wire:ignore.self>
+                                    <div class="tab-pane  " id="arabicTab" role="tabpanel" wire:ignore.self>
                                         <section class="text-right" dir="rtl" lang="ar">
                                             <div class="row ">
-                                                <div class="col-md-12">
+                                                <div class="col-md-7">
                                                     <div class="form-group">
                                                         <label for="name_ar">اسم مسار</label>
                                                         <input type="text" class="form-control" id="name_ar"
@@ -123,6 +146,17 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group text-left">
+                                                        <label for=""> </label>
+                                                        <button class="btn align-middle" id="faker3" wire:ignore
+                                                            type="button">
+                                                            <i class="flag-icon flag-icon-ma fa-2x"></i>
+                                                        </button>
+                                                  
+                                                    </div>
+                                          
+                                            </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -147,7 +181,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="price">Length :</label>
+                                            <label for="price">Length </label>
                                             <input type="text" class="form-control" id="length"
                                                 wire:model.lazy="length">
                                             @error('length')
@@ -157,7 +191,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="name_fr">Duration :</label>
+                                            <label for="name_fr">Duration </label>
                                             <input type="text" class="form-control" id="duration"
                                                 wire:model.lazy="duration">
                                             @error('duration')
@@ -169,8 +203,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="sites">Length :</label>
-                                            <select id="sites" style="width: 100%" size="4" wire:ignore >
+                                            <label for="sites">Sites </label>
+                                            <select class="form-control" id="sites" style="width: 100%" size="4" wire:ignore >
                                                 @foreach ($sites->sortBy('name_en') as $site)
                                                     <option value="{{ $site->id }}">{{ $site->name_en }}</option>
                                                 @endforeach
@@ -180,8 +214,8 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="sites2">Length :</label>
-                                            <select id="sites2" style="width: 100%" size="4" multiple wire:change="change" wire:ignore>
+                                            <label for="sites2">Selected sites</label>
+                                            <select class="form-control" id="sites2" style="width: 100%" size="4" multiple wire:change="change" wire:ignore>
 
                                             </select>
                                           
@@ -200,7 +234,7 @@
                                                 class="fa fa-save"></i> Save</button>
                                     </div>
                                     <div class="col-lg-6 col-md-4">
-                                        <a type="button"  href="{{ route('admin-sites') }}"
+                                        <a type="button"  href="{{ route('admin-path') }}"
                                             class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
                                     </div>
                                 </div>
@@ -276,6 +310,16 @@
 <script>
     $(document).ready(function() {
         var langue = 0;
+
+        $('#faker').click(function(){
+            $('#btn-active-tab').click();
+        });
+        $('#faker2').click(function(){
+            $('#btn-active-tab').click();
+        });
+        $('#faker3').click(function(){
+            $('#btn-active-tab').click();
+        });
         $("#image-ville").click(function() {
             $('#uploadfile').click();
         });

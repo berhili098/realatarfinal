@@ -1,3 +1,9 @@
+@push('styles')
+    <link href="{{ asset('primary/assets/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css') }}"
+        rel="stylesheet" />
+@endpush
+
+
 <div>
     <div class="container-fluid">
         <div class="row page-titles">
@@ -44,22 +50,25 @@
                                                 <div class="col-sm-6 col-md-6 mt-3">
                                                     <div class="form-group has-info">
                                                         <label for="sites33"> Choose one site</label>
-                                                        <select class="form-control custom-select" wire:model="site_id">
-                                                            <option value="" selected>--Selectionnez site--
+                                                        <select class="form-control custom-select "
+                                                            wire:model="site_id">
+                                                            <option class="text-center" value="" selected>choose
+                                                                one site
                                                             </option>
 
                                                             @foreach ($sites->sortByDesc('created_at') as $site)
-                                                                <option value="{{ $site->id }}">{{ $site->name_fr }}
+                                                                <option class="text-center" value="{{ $site->id }}">
+                                                                    {{ $site->name_en }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
+
                                                 </div>
 
 
 
-
-                                                <div class="col-md-1">
+                                                {{-- <div class="col-md-1">
                                                     <div class="form-group pt-2">
                                                         <label for=""> </label>
                                                         <button class="btn align-middle" id="btn-active-tab" wire:ignore
@@ -85,7 +94,49 @@
                                                             </a>
                                                         @endif
                                                     </div>
+                                                </div> --}}
+                                                <div id='enquest' class="col-sm-6 col-md-6 mt-3">
+                                                    <div class="form-group" wire:ignore>
+                                                        <label id='label_en' for=""> Question</label>
+                                                        <label id="label_fr" for=""> Question</label>
+                                                        <label id="label_ar" for="city_ar"> السؤال </label>
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control"
+                                                            id="question_en" wire:model="question_en"
+                                                            placeholder="Enter question here ">
+                                                            <input type="text" class="form-control"
+                                                            id="question_fr" wire:model="question_fr"
+                                                            placeholder="Entrez la question ici ">
+                                                            <input type="text" class="form-control "
+                                                            id="question_ar" wire:model="question_ar"
+                                                            placeholder="أدخل  السؤال هنا">
+                                                            <div class="input-group-append">
+                                                                <a  style="border-color: grey" id="btn-active-tab" wire:ignore type="button">    <i id="flag" class="flag-icon flag-icon-gb " style="border-radius:0 5px 5px  0; font-size:38px" ></i></a>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        @if ($errors->any())
+                                                            <a class="mytooltip" href="javascript:void(0)">
+                                                                <div class="notify">
+                                                                    <span class="heartbit"
+                                                                        style="top:-23px;right:-17px;height:25px;height:25px;"></span>
+                                                                    <span class="point"
+                                                                        style="width:10px; height:10px; right:-10px; top:-14px"></span>
+                                                                    <span class="tooltip-content5">
+                                                                        <span class="tooltip-text3">
+                                                                            <span class="tooltip-inner2">
+                                                                                Please check the other language fields
+                                                                                as well<br /> Thank you.
+                                                                            </span>
+                                                                        </span>
+                                                                    </span>
+                                                                </div>
+                                                            </a>
+                                                        @endif
+                                                    </div>
                                                 </div>
+                                          
+
 
                                             </div>
                                             {{-- english Tab --}}
@@ -93,16 +144,7 @@
                                                 <div class="tab-pane  active" id="englishTab" role="tabpanel"
                                                     wire:ignore.self>
                                                     <section>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="city_en">Question</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="question_en" wire:model="question_en"
-                                                                        placeholder="Enter question here "><br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                 
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label for="reponse1_en">Answer 1</label>
@@ -200,17 +242,7 @@
                                                 <div class="tab-pane  " id="frenchTab" role="tabpanel"
                                                     wire:ignore.self>
                                                     <section>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="city_en">Question</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="question_fr" wire:model="question_fr"
-                                                                        placeholder="Entrez la question ici ">
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                   
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label for="reponse1_fr">Reponse 1</label>
@@ -309,17 +341,7 @@
                                                 <div class="tab-pane " id="arabicTab" role="tabpanel"
                                                     wire:ignore.self>
                                                     <section lang="ar">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="city_ar"> السؤال </label>
-                                                                    <input type="text" class="form-control "
-                                                                        id="question_ar" wire:model="question_ar"
-                                                                        placeholder="أدخل  السؤال هنا">
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                      
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label for="reponse1_ar">الجواب 1</label>
@@ -479,12 +501,21 @@
     <script>
         $(document).ready(function() {
             var langue = 0;
+            
+            
             $("#image-ville").click(function() {
                 $('#uploadfile').click();
             });
+            $('#question_fr').hide();
+            $('#question_ar').hide();
+            $('#label_fr').hide();
+            $('#label_ar').hide();
             $('#btn-active-tab').click(function(e) {
                 if (langue == 0) {
-
+                    $('#question_fr').show();
+                    $('#question_en').hide();
+                    $('#label_fr').show();
+                    $('#label_en').hide();
                     $('#flag').removeClass('flag-icon-gb');
                     $('#flag').addClass('flag-icon-fr');
                     $('#flag').attr('title', 'Français, click to change the to arabic');
@@ -493,7 +524,10 @@
                     $('#arabTab').removeClass('active');
                     langue = 1;
                 } else if (langue == 1) {
-
+                    $('#question_ar').show();
+                    $('#question_fr').hide();
+                    $('#label_ar').show();
+                    $('#label_fr').hide();
                     $('#flag').removeClass('flag-icon-fr');
                     $('#flag').addClass('flag-icon-ma');
                     $('#flag').attr('title', 'Arabic, click to change the to english');
@@ -502,7 +536,10 @@
                     $('#arabicTab').addClass('active');
                     langue = 2;
                 } else {
-
+                    $('#question_en').show();
+                    $('#question_ar').hide();
+                    $('#label_en').show();
+                    $('#label_ar').hide();
                     $('#flag').removeClass('flag-icon-ma');
                     $('#flag').addClass('flag-icon-gb');
                     $('#flag').attr('title', 'English, click to change the to french');

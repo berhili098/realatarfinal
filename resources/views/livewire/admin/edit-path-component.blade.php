@@ -255,31 +255,32 @@
                                     @enderror
                                 </div>
                                 <div class="m-t-5 text-center">
-                                    
-                                      @if ($newvideo)
-                                      
+
+                                    @if ($newvideo)
+                                        <div wire:ignore>
+                                            <video width="100%" height="100%" controls>
+                                                <source src="{{ $newvideo->temporaryUrl() }}" type="video/mp4">
+                                                <source src="{{ $newvideo->temporaryUrl() }}" type="video/ogg">
+                                            </video>
+                                        </div>
+                                    @endif
+
+
+                                    <div id="videot" wire:ignore>
                                         <video width="100%" height="100%" controls>
-                                            <source src="{{ $newvideo->temporaryUrl() }}" type="video/mp4">
-                                            <source src="{{ $newvideo->temporaryUrl() }}" type="video/ogg">
+                                            <source src="{{ asset('primary/assets/images/paths/' . $video) }}"
+                                                type="video/mp4">
+                                            <source src="{{ asset('primary/assets/images/paths/' . $video) }}"
+                                                type="video/ogg">
                                         </video>
-                                        
-                                      @endif
+                                    </div>
 
-                               
-                                    
-                                    <video width="100%" height="100%" controls>
-                                        <source src="{{ asset('primary/assets/images/paths/' . $video) }}"
-                                            type="video/mp4">
-                                        <source src="{{ asset('primary/assets/images/paths/' . $video) }}"
-                                            type="video/ogg">
-                                    </video>   
-                                   
-                                      
 
-                                   
-                                   
-                                    
-                                   
+
+
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -299,6 +300,11 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
+
+            $('#videoupload').on('change', function() {
+                $('#videot').hide();
+            });
+
             var langue = 0;
             $("#image-ville").click(function() {
                 $('#uploadfile').click();
