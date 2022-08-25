@@ -21,7 +21,7 @@ class CreateClientsTable extends Migration
             $table->string('birthday')->nullable();
             $table->string('city')->nullable();
             $table->string('phone')->nullable();
-            $table->string('gender')->enum(['male','female']);
+            $table->string('gender')->nullable();
             $table->string('avatar')->nullable();
             $table->integer('level')->nullable();
             $table->integer('points')->nullable();
