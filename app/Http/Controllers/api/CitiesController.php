@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\city;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class CitiesController extends Controller
@@ -16,7 +16,7 @@ class CitiesController extends Controller
 
     public function index(Request $request)
     {
-        $cities = city::where('status', '=', 1)->where('delete','=', 0)->get();
+        $cities = City::where('status', '=', 1)->where('delete','=', 0)->get();
         return response(["cities" => $cities, 'total' => $cities->count()], 200);
     }
 
@@ -50,7 +50,7 @@ class CitiesController extends Controller
     public function show($id)
     {
         try {
-            $city = city::find($id);
+            $city = City::find($id);
             return response(['sites' => $city->sites, "total"=>$city->sites->count()], 200);
         } catch (\Exception $ex) {
             return response(["error" => $ex->getMessage()], 400);

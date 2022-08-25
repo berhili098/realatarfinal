@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\AuthController;
 use App\Http\Controllers\api\CitiesController;
+use App\Http\Controllers\api\QuizController;
 use App\Http\Controllers\api\SitesController;
 
 /*
@@ -38,4 +39,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/favorise/{id}', [SitesController::class, 'favorise']);
     Route::get('/get_site_media/{id}', [SitesController::class, 'show']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::get('/get_quiz/{id}', [QuizController::class, 'show']);
+    Route::post('/updates_points/{id}', [QuizController::class, 'updatePoints']);
 });

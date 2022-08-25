@@ -16,6 +16,10 @@ class Site extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function saveds(){
+        return $this->hasMany(Saved::class);
+    }
+
     public function city()
     {
         return $this->belongsTo(City::class);

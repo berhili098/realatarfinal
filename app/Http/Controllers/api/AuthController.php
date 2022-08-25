@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\client;
+use App\Models\Client;
 use App\Models\Token;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +18,7 @@ class AuthController extends Controller
                 'email' => 'required',
                 'password' => 'required'
             ]);
-            $user = client::Where('email', 'like', $fields['email'])->first();
+            $user = Client::Where('email', 'like', $fields['email'])->first();
             if (!$user) {
                 return response([
                     'response' => 'usernotfound'
@@ -70,7 +70,7 @@ class AuthController extends Controller
                 'city' => 'required|string',
             ]);
             if ($fields['gender'] == 'Male' || $fields['gender'] == 'Female') {
-                $client = client::find($fields['uid']);
+                $client = Client::find($fields['uid']);
                 if($client != null){
                     $client->update([
                         'birthday' => $fields['birthday'],
@@ -98,7 +98,7 @@ class AuthController extends Controller
             $image = $request->file('image');
             $image_name = time().'_profile_picture_'.$request->uid.$image->getClientOriginalName();
             $path = $request->file('image')->move($destination_path, $image_name);
-            $client = client::find($request->uid);
+            $client = Client::find($request->uid);
             $client->update([
                 "avatar"=>"$destination_path/$image_name"
             ]);

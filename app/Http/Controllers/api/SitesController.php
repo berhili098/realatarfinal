@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\client;
-use App\Models\saved;
-use App\Models\site;
+use App\Models\Client;
+use App\Models\Saved;
+use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,8 +18,8 @@ class SitesController extends Controller
      */
     public function getHomeSites()
     {
-        $sites = site::where('status', '=', 1)->get()->take(4);
-        $totalSites = site::where('status', '=', 1)->count();
+        $sites = Site::where('status', '=', 1)->get()->take(4);
+        $totalSites = Site::where('status', '=', 1)->count();
         foreach ($sites as $site) {
             $site->media;
         }
@@ -28,8 +28,11 @@ class SitesController extends Controller
 
     public function getAllSites()
     {
-        $sites = site::where('status', '=', 1)->get();
-        $totalSites = site::where('status', '=', 1)->count();
+        $sites = Site::where('status', '=', 1)->get();
+        $totalSites = Site::where('status', '=', 1)->count();
+        foreach($sites as $site){
+            $site->saveds;
+        }
         return response(['sites' => $sites, "total" => $totalSites], 200);
     }
 
@@ -37,7 +40,7 @@ class SitesController extends Controller
     public function getFavorised($id)
     {
         try {
-            $client = client::find($id);
+            $client = Client::find($id);
             if ($client) {
                 $list = [];
                 foreach ($client->saveds as $saved) {
@@ -57,12 +60,12 @@ class SitesController extends Controller
         $request->validate([
             'uid' => 'required',
         ]);
-        $saved = saved::where('client_id', $request->uid)->where('site_id', $siteId)->first();
+        $saved = Saved::where('client_id', $request->uid)->where('site_id', $siteId)->first();
         if (!is_null($saved)) {
             $saved->delete();
             return response(['message' => 'unfavorised'], 200);
         } else {
-            saved::create([
+            Saved::create([
                 'site_id' => $siteId,
                 'client_id' => $request->uid
             ]);
@@ -100,7 +103,7 @@ class SitesController extends Controller
      */
     public function show($id)
     {
-        $site = site::find($id);
+        $site = Site::find($id);
         if ($site != null) {
             $images = $site->media->where('type', 'image');
             $videos = DB::table('media')->where('site_id', $id)->where('type', 'video')->get();
