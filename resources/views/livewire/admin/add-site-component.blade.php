@@ -19,14 +19,13 @@
             <form class="form-material" wire:submit.prevent="storeSite()">
                 <div class="row">
                     <div class="col-8">
-
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">General Info </h4>
                                 <div class="row p-t-40">
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <label for="latitude">Site latitude :</label>
+                                            <label for="latitude">Site latitude </label>
                                             <input type="text" id="latitude" class="form-control"
                                                 wire:model.lazy="latitude">
                                             @error('latitude')
@@ -37,7 +36,7 @@
                                     <div class="col-md-1"></div>
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <label for="longitude">Site longitude :</label>
+                                            <label for="longitude">Site longitude </label>
                                             <input type="text" class="form-control" id="longitude"
                                                 wire:model.lazy="longitude">
                                             @error('longitude')
@@ -81,7 +80,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="name_en">Site name :</label>
+                                                        <label for="name_en">Site name </label>
                                                         <input type="text" class="form-control" id="name_en"
                                                             wire:model.lazy="name_en">
                                                         @error('name_en')
@@ -93,7 +92,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="description_en">Site description :</label>
+                                                        <label for="description_en">Site description </label>
                                                         <textarea id="description_en" rows="7" class="form-control" wire:model.lazy="description_en"></textarea>
                                                         @error('description_en')
                                                             <span class="text-danger">{{ $message }}</span>
@@ -110,7 +109,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="name_fr">Nom repere :</label>
+                                                        <label for="name_fr">Nom repere </label>
                                                         <input type="text" class="form-control" id="name_fr"
                                                             wire:model.lazy="name_fr">
                                                         @error('name_fr')
@@ -123,7 +122,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="description_fr">Repere Description
-                                                            :</label>
+                                                            </label>
                                                         <textarea id="description_fr" rows="7" class="form-control" wire:model.lazy="description_fr"></textarea>
                                                         @error('description_fr')
                                                             <span class="text-danger">{{ $message }}</span>
@@ -169,7 +168,6 @@
                             <div class="card-body">
                                 <h4 class="card-title">Additional info</h4>
                                 <div class="row">
-                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Price :</label>
@@ -182,7 +180,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="name_fr">Duration :</label>
+                                            <label for="name_fr">Duration </label>
                                             <input type="text" class="form-control" id="duration"
                                                 wire:model.lazy="duration">
                                             @error('duration')
@@ -194,7 +192,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="openTime">Open Time :</label>
+                                            <label for="openTime">Open Time </label>
                                             <input type="time" class="form-control" id="openTime"
                                                 wire:model.lazy="openTime">
 
@@ -205,7 +203,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group" wire:ignore>
-                                            <label for="openTime">City :</label>
+                                            <label for="openTime">City </label>
                                             <select class="form-control custom-select" wire:model.lazy="city_id">
                                                 <option>--Select your City--</option>
                                                 @foreach ($cities as $city)
@@ -227,11 +225,21 @@
                     </div>
                     <div class="col-4">
                         <div class="card">
-                            <div class="card-body text-center">
+                        
 
-                                <button type="submit" class="btn btn-info" id="btn-submit"> <i
-                                        class="fa fa-check"></i> Save</button>
-                                <a href="{{ route('admin-sites') }}" class="btn btn-inverse">Cancel</a>
+                           
+                            <div class="card-body text-center">
+                                <div class="row button-group">
+                                    <div class="col-lg-6 col-md-4">
+                                        <button class="btn waves-effect waves-light btn-block btn-success"><i
+                                                class="fa fa-save"></i> Save</button>
+                                    </div>
+                                    <div class="col-lg-6 col-md-4">
+                                        <a type="button"
+                                        href="{{ route('admin-sites') }}"   class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="card">

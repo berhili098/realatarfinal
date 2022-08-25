@@ -16,6 +16,8 @@ class CitiesConpoment extends Component
     public $satuts;
     public $cid;
     public $city_en;
+    public $sites =[];
+
 
     public function mount()
     {
@@ -33,13 +35,20 @@ class CitiesConpoment extends Component
         $this->city_en = $city->city_en;
     }
 
+
+    public function showSite($id)
+    {
+        $city = City::find($id);
+        $this->sites = $city->sites;
+    }
+
     public function deleteCity()
     {
         $city = City::find($this->cid);
         $city->update([
             'delete' => 1,
             'deletedBy' => Auth::user()->id,
-            'status'=> '0',
+            'status'=> '1',
         ]);
         foreach($city->sites as $site){
             $site->update([
@@ -57,9 +66,9 @@ class CitiesConpoment extends Component
     public function changeStatus($cid)
     {
         $city = City::find($cid);
-        $city->update([
+       $city->update([
             'status' => $city->status == 0 ? 1 : 0, 
-        ]);
+        ]); 
     }
 
     
@@ -75,7 +84,7 @@ class CitiesConpoment extends Component
             ->orwhere('description_ar','like',"%{$this->search}%")
             ->orwhere('description_fr','like',"%{$this->search}%")
             ->orwhere('description_en','like',"%{$this->search}%");
-        })->paginate(6);
+        })->orderBy('id','DESC')->paginate(6);
         
         $countsrecord = City::where('delete',0)->where(function($query){
             $query->where('city_ar','like',"%{$this->search}%")

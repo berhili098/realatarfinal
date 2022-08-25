@@ -58,6 +58,7 @@ class ShowQuizComponent extends Component
     {
         $title='show quiz';
         $sites=Site::where('delete',0)->get();
-        return view('livewire.admin.show-quiz-component',compact('sites'))->layout('layouts.master',compact('title'));
+        $quiz=Quiz::find($this->quiz_id);
+        return view('livewire.admin.show-quiz-component',compact('sites','quiz'))->layout('layouts.master',compact('title'));
     }
 }

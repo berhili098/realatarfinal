@@ -6,8 +6,8 @@ use App\Models\City;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Livewire\WithFileUploads;
-use Illuminate\Support\Str;
+    use Livewire\WithFileUploads;
+    use Illuminate\Support\Str;
 
 class AddCityComponent extends Component
 {

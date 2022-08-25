@@ -27,31 +27,18 @@
         <!-- .row -->
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <div class="card">
+                <div class="card h-97" >
                     <div class="card-body">
                         <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item active">
+                                <div class="carousel-item active text-center">
                                     <img class="img-responsive"
                                         src="{{ asset('primary/assets/images/cities') }}/{{ $city->photo }}"
-                                        alt="First slide">
+                                        title="{{ $city->city_en }}" alt="{{ $city->city_en }}" width="70%" height="70%">
                                 </div>
-                                <div class="carousel-item">
-                                    <img class="img-responsive"
-                                        src="{{ asset('primary/assets/images/cities') }}/{{ $city->photo }}"
-                                        alt="First slide">
-                                </div>
-                                <div class="carousel-item ">
-                                    <img class="img-responsive"
-                                        src="{{ asset('primary/assets/images/cities') }}/{{ $city->photo }}"
-                                        alt="First slide">
-                                </div>
-
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button"
                                 data-slide="prev">
@@ -117,7 +104,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="row">
@@ -137,7 +123,7 @@
                                     <tr>
                                         <td>Created at</td>
                                         <td>
-                                            {{ $city->created_at }}
+                                            {{ $city->created_at->format('Y-m-d') }}
                                         </td>
                                     </tr>
                                     <tr>
@@ -191,6 +177,7 @@
                             </table>
                         </div>
                     </div>
+                    
                 </div>
 
                 <div class="card">
@@ -238,3 +225,8 @@
 
     </div>
 </div>
+
+@push('styles')
+<link href="{{ asset('primary/dist/css/main.css') }}" rel="stylesheet">
+<link href="{{ asset('primary/dist/css/pages/tab-page.css') }}" rel="stylesheet">
+@endpush

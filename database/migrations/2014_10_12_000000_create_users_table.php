@@ -19,12 +19,15 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('utype')->enum(['ADM','USR'])->default('USR');
             $table->string('theme')->default('skin-orange');
-            $table->string('description')->nullable();
+            $table->string('description',2048)->nullable();
             $table->bigInteger('phoneNo')->nullable();
-            $table->string('address')->nullable();
+            $table->string('address',2048)->nullable();
             $table->string('birthdate')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('youtube')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

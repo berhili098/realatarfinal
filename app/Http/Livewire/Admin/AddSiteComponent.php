@@ -111,9 +111,10 @@ class AddSiteComponent extends Component
         $this->name_fr = Str::of($this->name_fr)->upper();
         $this->description_en = Str::of($this->description_en)->ucfirst();
         $this->description_fr = Str::of($this->description_fr)->ucfirst();
+     
 
         $site = Site::create($valdiateData);
-
+     
         $site->update([
             'photo' => $imageName,
         ]);
@@ -126,6 +127,7 @@ class AddSiteComponent extends Component
                 $media_image->type = 'image';
                 $media_image->created_at = Carbon::now();
                 $media_image->updated_at = Carbon::now();
+                $media_image->lang='en';
                 $site->media()->save($media_image);
                 $image->storeAs('primary/assets/images/sites/media/images', $imageName);
             }
@@ -138,6 +140,7 @@ class AddSiteComponent extends Component
                 $media_audio->type = 'audio';
                 $media_audio->created_at = Carbon::now();
                 $media_audio->updated_at = Carbon::now();
+                $media_audio->lang='en';
                 $site->media()->save($media_audio);
                 $audio->storeAs('primary/assets/images/sites/media/audios', $audioName);
             }
@@ -150,6 +153,7 @@ class AddSiteComponent extends Component
                 $media_video->type = 'video';
                 $media_video->created_at = Carbon::now();
                 $media_video->updated_at = Carbon::now();
+                $media_video->lang='en';
 
                 $site->media()->save($media_video);
                 $video->storeAs('primary/assets/images/sites/media/videos', $videoName);

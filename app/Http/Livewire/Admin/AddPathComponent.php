@@ -13,53 +13,46 @@ use Illuminate\Support\Str;
 class AddPathComponent extends Component
 {
     use WithFileUploads;
-    public $photo,$videos,$name_ar,$name_fr,$name_en,$user_id,$selectedSites=[],$selectedSites2=[],$description_ar,$description_en,$description_fr,$duration,$length,$sites;
-    
-
+    public $photo,$videos,$name_ar,$name_fr,$name_en,$user_id,$sitesIds=[],$selectedSites2=[],$description_ar,$description_en,$description_fr,$duration,$length,$sites;
+    public $arraythird;
     protected $listeners = [
-         'getLatitudeForInput'
-    ];
-    //
-    public function getLatitudeForInput($value)
-    {
-        if(!is_null($value))
-            $this->selectedSites2 = $value;
-    }
-    
-    public function render()
-    {
-        $this->sites = Site::where('delete',0)->get();
-        $this->user_id=Auth::user()->id;
-        $title='Parcours'; 
-        return view('livewire.admin.add-path-component')->layout('layouts.master',compact('title'));
-    }
-
+        'store'
+   ];
 
     public function updated($fields){
         $this->validateOnly($fields,[
-            'name_ar'=>'required',
-            'name_fr'=>'required',
-            'name_en'=>'required',
+            'name_ar'=>'required|unique:paths',
+            'name_fr'=>'required|unique:paths',
+            'name_en'=>'required|unique:paths',
             'description_ar'=>'required',
             'description_fr'=>'required',
             'description_en'=>'required',
             'length'=>'required',
             'duration'=>'required',
+            'photo'=>'required',
+            'videos'=>'required',
         ]);
     }
 
-    public function store(){
-        dd($this->selectedSites2);
-        $validatedata= $this->validate([
-            'name_ar'=>'required',
-            'name_fr'=>'required',
-            'name_en'=>'required',
+
+    public function store($value){ 
+        $title='Add Path';
+        if(!is_null($value))
+        $this->selectedSites2=$value;
+                   $validatedata= $this->validate([
+            'name_ar'=>'required|unique:paths',
+            'name_fr'=>'required|unique:paths',
+            'name_en'=>'required|unique:paths',
             'description_ar'=>'required',
             'description_fr'=>'required',
             'description_en'=>'required',
             'length'=>'required',
             'duration'=>'required',
+            'photo'=>'required',
+            'videos'=>'required',
         ]);
+
+
         if($this->photo){
             $imageName = Carbon::now()->timestamp . Str::random(10) . '.' . $this->photo->extension();
             $this->photo->storeAs('primary/assets/images/paths/' , $imageName);
@@ -68,10 +61,10 @@ class AddPathComponent extends Component
         }
         if($this->videos){
             $videoName = Carbon::now()->timestamp . Str::random(10) . '.' .  $this->videos->extension();
-            $this->photo->storeAs('primary/assets/images/paths/' , $videoName);
+            $this->videos->storeAs('primary/assets/images/paths/' , $videoName);
         }
-
         
+
         $path=new Path();
         $path->name_ar=$this->name_ar;
         $path->name_fr=$this->name_fr;
@@ -85,5 +78,22 @@ class AddPathComponent extends Component
         $path->photo=$imageName;
         $path->video=$videoName;
         $path->save();
+        $path->sites()->attach($this->selectedSites2);
+        return redirect()->route('admin-path');
     }
+
+
+    public function change(){
+        $this->arraythird=$this->selectedSites2;
+    }
+
+    public function render()
+    {
+        $this->sites = Site::where('delete',0)->get();
+        $this->user_id=Auth::user()->id;
+        $title='Parcours'; 
+        
+        return view('livewire.admin.add-path-component')->layout('layouts.master',compact('title'));
+    }
+
 }

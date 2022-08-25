@@ -29,6 +29,15 @@ class User extends Authenticatable
         'password',
         'theme',
         'utype',
+        'description',
+        'photo',
+        'phoneNo',
+        'address',
+        'birthdate',
+        'youtube',
+        'facebook',
+        'twitter',
+
     ];
 
     /**
@@ -68,5 +77,9 @@ class User extends Authenticatable
     public function sites()
     {
         return $this->hasMany(Site::class);
+    }
+    public function path()
+    {
+        return $this->hasMany(Path::class);
     }
 }

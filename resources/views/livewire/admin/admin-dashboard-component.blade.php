@@ -104,7 +104,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($sites->sortByDesc('created_at')->take(5) as $site)
-                                    <tr  style="cursor: pointer;"
+                                    <tr class="data-vertical"  style="cursor: pointer;"
                                     onclick=" window.location='{{ route('admin-showsite',$site->id) }}'">
                                         <td>{{ $site->name_fr }}</td>
                                         <td> <img src="{{ asset('primary/assets/images/sites/'.$site->photo) }}" alt="iMac" width="80"> </td>
@@ -112,10 +112,7 @@
                                         <td>{{ $site->created_at }}</td>
                                         <td>{{ $site->openTime }}</td>
                                         <td>{{ $site->price }} MAD</td>
-                                        <td> <span class="label @if ($site->status == 1) label-success @else label-danger @endif label-success font-weight-100">{{ $site->status == 1 ? 'Actif' : 'Inactif' }}</span> </td>
-                                            
-                                    
-
+                                        <td> <span class="label @if ($site->status == 0) label-success @else label-danger @endif label-success font-weight-100">{{ $site->status == 0 ? 'Actif' : 'Inactif' }}</span> </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -135,7 +132,7 @@
         <!-- .row  -->
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="card">
+                <div class="card h-97">
                     <div class="card-body">
                         <div class="d-flex m-b-40 align-items-center">
                             <h5 class="card-title">CLIENTS STATS</h5>
@@ -152,7 +149,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="card">
+                <div class="card h-97">
                     <div class="card-body">
                         <h5 class="card-title">RECENT CITIES</h5>
                         @foreach ($cities->sortByDesc('created_at')->take(4) as $city)
@@ -161,7 +158,7 @@
                         <div class="d-flex no-block m-b-20 m-t-30">
                             <div class="p-r-15">
                                 <a href="#"><img src="{{ asset('primary/assets/images/cities/'.$city->photo) }}" 
-                                        alt="property" width="100"></a>
+                                        alt="property" width="100" height="100"></a>
                             </div>
                             <div>
                                 <h5 class="card-title m-b-5"><a href="#" class="link">{{$city->city_fr}}</a></h5>
@@ -183,6 +180,9 @@
     </div>
 </div>
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('primary/dist/css/main.css') }}">
+@endpush
 
 @push('scripts')
     <script src="{{ asset('primary/dist/js/dashboard1.js') }}"></script>

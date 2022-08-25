@@ -14,12 +14,11 @@
                 </div>
             </div>
         </div>
+        <form wire:submit.prevent="updateCity()">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-9">
                 <div class="card">
-                    <div class="card-header bg-info">
-                        <h4 class="m-b-0 text-white">Edit city</h4>
-                    </div>
+                  
                     <div class="card-body">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -31,30 +30,18 @@
                                 </ul>
                             </div>
                         @endif
-                        <form wire:submit.prevent="updateCity()">
+                      
                             <input type="hidden" wire:model="user_id">
                             <div class="form-body">
                                 <h3 class="card-title">City info </h3>
                                 <hr>
                                 <div class="row p-t-20">
-                                    <div class="col-md-4 offset-md-1   text-center ">
-                                        @if ($newphoto)
-                                            <img id="image-ville" src="{{ $newphoto->temporaryUrl() }}" width="100%" height="90%">
-                                        @else
-                                            <img id="image-ville"
-                                                src="{{ asset('primary/assets/images/cities/') }}/{{ $photo }}"
-                                                width="100%" height="90%">
-                                            @error('photo')
-                                                {{ $message }}
-                                            @enderror
-                                        @endif
-                                        <input type="file" id="uploadfile" class="custom-file-input" wire:model="newphoto">
-                                    </div>
-                                    <div class="col-md-7">
+                                
+                                    <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group">
-                                                    <label for="latitude">City latitude :</label>
+                                                    <label for="latitude">City latitude </label>
                                                     <input type="text" id="latitude" class="form-control"
                                                         wire:model.lazy="latitude">
                                                     @error('latitude')
@@ -64,7 +51,7 @@
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="form-group">
-                                                    <label for="longitude">City longitude :</label>
+                                                    <label for="longitude">City longitude </label>
                                                     <input type="text" class="form-control" id="longitude"
                                                         wire:model.lazy="longitude">
                                                     @error('longitude')
@@ -103,7 +90,7 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label for="city_en">City name :</label>
+                                                                <label for="city_en">City name </label>
                                                                 <input type="text" class="form-control" id="city_en"
                                                                     wire:model.lazy="city_en">
                                                                 @error('city_en')
@@ -115,7 +102,7 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label for="description_en">City description :</label>
+                                                                <label for="description_en">City description </label>
                                                                 <textarea id="description_en" rows="7" class="form-control" wire:model.lazy="description_en"></textarea>
                                                                 @error('description_en')
                                                                     <span class="text-danger">{{ $message }}</span>
@@ -132,7 +119,7 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label for="city_fr">Nom ville :</label>
+                                                                <label for="city_fr">Nom ville </label>
                                                                 <input type="text" class="form-control" id="city_fr"
                                                                     wire:model.lazy="city_fr">
                                                                 @error('city_fr')
@@ -144,7 +131,7 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label for="description_fr">Ville Description :</label>
+                                                                <label for="description_fr">Ville Description </label>
                                                                 <textarea id="description_fr" rows="7" class="form-control" wire:model.lazy="description_fr"></textarea>
                                                                 @error('description_fr')
                                                                     <span class="text-danger">{{ $message }}</span>
@@ -190,16 +177,56 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-actions float-right">
-                                <button type="submit" class="btn btn-success" id="btn-submit"> <i
-                                        class="fa fa-check"></i> Save</button>
-                                <a href="{{ route('admin-cities') }}" class="btn btn-inverse">Cancel</a>
-                            </div>
-                        </form>
+                
                     </div>
                 </div>
             </div>
+            <div class=" col-3">
+
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="row button-group">
+                            <div class="col-lg-6 col-md-4">
+                                <button class="btn waves-effect waves-light btn-block btn-success "><i
+                                        class="fa fa-save"></i>
+                                    Save</button>
+                            </div>
+                            <div class="col-lg-6 col-md-4">
+                                <a type="button" href="{{ route('admin-cities') }}"
+                                    class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="text-center">
+                            
+                                @if ($newphoto)
+                                    <img id="image-ville" src="{{ $newphoto->temporaryUrl() }}"   style="border-radius: 15px;max-height:300px; max-width:259px;">
+                                @else
+                                    <img id="image-ville"
+                                        src="{{ asset('primary/assets/images/cities/') }}/{{ $photo }}"
+                                        style="border-radius: 15px;max-height:300px; max-width:259px;">
+                                    @error('photo')
+                                        {{ $message }}
+                                    @enderror
+                                @endif
+                                <input type="file" id="uploadfile" class="custom-file-input d-none"  accept="image/*"  wire:model="newphoto">
+                             
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
+               
+    </form>
     </div>
 </div>
 
