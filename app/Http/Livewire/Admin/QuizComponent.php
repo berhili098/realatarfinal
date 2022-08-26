@@ -11,12 +11,28 @@ class QuizComponent extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $quiz_id;
     public $search;
-    public $quizanswer1;
-    public $quizanswer2;
-    public $quizanswer3;
-    public $quizanswer4;
+    public $question_en;
+    public $question_fr;
+    public $question_ar;
+    public $reponse1_en;
+    public $reponse2_en;
+    public $reponse3_en;
+    public $reponse4_en;
+    public $reponse1_fr;
+    public $reponse2_fr;
+    public $reponse3_fr;
+    public $reponse4_fr;
+    public $reponse1_ar;
+    public $reponse2_ar;
+    public $reponse3_ar;
+    public $reponse4_ar;
+    public $correcte_en;
+    public $correcte_fr;
+    public $correcte_ar;
+    public $site_id;
+    public $quiz_id;
+    public $name_fr; 
 
     public function mount()
     {
@@ -54,32 +70,27 @@ class QuizComponent extends Component
     }
 
     public function getAnswer($id)
-    {
-        $quiz = Quiz::find($id);
-        $this->quiz_sel = $quiz;
-
-        
-        if ($quiz->correcte_en == 1) {
-            $this->quizanswer1 = $quiz->reponse1_en;
-            $this->quizanswer2 = $quiz->reponse2_en;
-            $this->quizanswer3 = $quiz->reponse3_en;
-            $this->quizanswer4 = $quiz->reponse4_en;
-        }elseif ($quiz->correcte_en == 2) {
-            $this->quizanswer1 = $quiz->reponse2_en;
-            $this->quizanswer2 = $quiz->reponse1_en;
-            $this->quizanswer3 = $quiz->reponse3_en;
-            $this->quizanswer4 = $quiz->reponse4_en;
-        }elseif ($quiz->correcte_en == 3) {
-            $this->quizanswer1 = $quiz->reponse3_en;
-            $this->quizanswer2 = $quiz->reponse1_en;
-            $this->quizanswer3 = $quiz->reponse2_en;
-            $this->quizanswer4 = $quiz->reponse4_en;
-        }elseif ($quiz->correcte_en == 4) {
-            $this->quizanswer1 = $quiz->reponse4_en;
-            $this->quizanswer2 = $quiz->reponse1_en;
-            $this->quizanswer3 = $quiz->reponse2_en;
-            $this->quizanswer4 = $quiz->reponse3_en;
-        }
+    { $this->quiz_id=$id;
+        $quiz=Quiz::find($this->quiz_id);
+        $this->question_en= $quiz->question_en;
+        $this->question_fr= $quiz->question_fr;
+        $this->question_ar= $quiz->question_ar;
+        $this->reponse1_en= $quiz->reponse1_en;
+        $this->reponse2_en= $quiz->reponse2_en;
+        $this->reponse3_en= $quiz->reponse3_en;
+        $this->reponse4_en= $quiz->reponse4_en;
+        $this->reponse1_fr= $quiz->reponse1_fr;
+        $this->reponse2_fr= $quiz->reponse2_fr;
+        $this->reponse3_fr= $quiz->reponse3_fr;
+        $this->reponse4_fr= $quiz->reponse4_fr;
+        $this->reponse1_ar= $quiz->reponse1_ar;
+        $this->reponse2_ar= $quiz->reponse2_ar;
+        $this->reponse3_ar= $quiz->reponse3_ar;
+        $this->reponse4_ar= $quiz->reponse4_ar;
+        $this->correcte_en= $quiz->correcte_en;
+        $this->correcte_fr= $quiz->correcte_fr;
+        $this->correcte_ar= $quiz->correcte_ar;
+        $this->name_fr=$quiz->site->name_fr;
     }
 
     public function confirmDelete($quiz_id)
