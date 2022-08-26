@@ -1,50 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Styles -->
-        @livewireStyles
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
-
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-
-        @stack('modals')
-
-        @livewireScripts
-    </body>
-</html> --}}
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +27,7 @@
         rel="stylesheet">
     {{-- Nestable css --}}
     <link href="{{ asset('primary/assets/node_modules/nestable/nestable.css') }}" rel="stylesheet" type="text/css" />
-  
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -138,22 +91,28 @@
                         </li>
 
                         <li class="nav-small-cap pl-3"> MANAGE CONTENT </li>
-                        <li class="@if (request()->routeIs('admin-addcity')) {{ 'active' }} @elseif(request()->routeIs('admin-cities')) {{ 'active' }} @elseif(request()->routeIs('admin-editcity')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif"
-                            href="{{ route('admin-cities') }}">
-                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false">
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark {{ request()->routeIs('admin-addcity') ? 'active' : '' }} {{ request()->routeIs('admin-showcity') ? 'active' : '' }} {{ request()->routeIs('admin-editcity') ? 'active' : '' }} {{ request()->routeIs('admin-cities') ? 'active' : '' }} 
+                                {{ request()->routeIs('admin-sites') ? 'active' : '' }} {{ request()->routeIs('admin-addsite') ? 'active' : '' }} {{ request()->routeIs('admin-showsite') ? 'active' : '' }} {{ request()->routeIs('admin-editsite') ? 'active' : '' }}"
+                                 href="javascript:void(0)" aria-expanded="false">
                                 <i class="ti-align-right"></i><span class="hide-menu">Contenu</span>
                             </a>
                             <ul aria-expanded="@if (request()->routeIs('admin-addcity')) {{ 'true' }} @elseif(request()->routeIs('admin-cities')) {{ 'true' }} @elseif(request()->routeIs('admin-editcity')) {{ 'true' }} @elseif(request()->routeIs('admin-showcity')) {{ 'true' }} @elseif(request()->routeIs('admin-addsite')) {{ 'true' }} @elseif(request()->routeIs('admin-sites')) {{ 'true' }} @elseif(request()->routeIs('admin-editsite')) {{ 'true' }} @elseif(request()->routeIs('admin-showcity')) {{ 'true' }} @elseif(request()->routeIs('admin-addpath')) {{ 'true' }} @elseif(request()->routeIs('admin-path')) {{ 'true' }} @elseif(request()->routeIs('admin-editpath')) {{ 'true' }} @elseif(request()->routeIs('admin-showpath')) {{ 'true' }} @elseif(request()->routeIs('admin-addquiz')) {{ 'true' }} @elseif(request()->routeIs('admin-quiz')) {{ 'true' }} @elseif(request()->routeIs('admin-editquiz')) {{ 'true' }} @elseif(request()->routeIs('admin-showquiz')) {{ 'true' }} @endif"
                                 class="collapse @if (request()->routeIs('admin-addcity')) {{ 'in' }} @elseif(request()->routeIs('admin-cities')) {{ 'in' }} @elseif(request()->routeIs('admin-editcity')) {{ 'in' }} @elseif(request()->routeIs('admin-showcity')) {{ 'in' }} @elseif(request()->routeIs('admin-addsite')) {{ 'in' }} @elseif(request()->routeIs('admin-sites')) {{ 'in' }} @elseif(request()->routeIs('admin-editsite')) {{ 'in' }} @elseif(request()->routeIs('admin-showcity')) {{ 'in' }} @elseif(request()->routeIs('admin-addpath')) {{ 'in' }} @elseif(request()->routeIs('admin-path')) {{ 'in' }} @elseif(request()->routeIs('admin-editpath')) {{ 'in' }} @elseif(request()->routeIs('admin-showpath')) {{ 'in' }}  @elseif(request()->routeIs('admin-addquiz')) {{ 'in' }} @elseif(request()->routeIs('admin-quiz')) {{ 'in' }} @elseif(request()->routeIs('admin-editquiz')) {{ 'in' }} @elseif(request()->routeIs('admin-showquiz')) {{ 'in' }} @endif">
-                                <li><a class="@if (request()->routeIs('admin-addcity')) {{ 'active' }} @elseif(request()->routeIs('admin-cities')) {{ 'active' }} @elseif(request()->routeIs('admin-editcity')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif"
-                                        href="{{ route('admin-cities') }}">Villes</a></li>
-                                <li><a class="@if (request()->routeIs('admin-addsite')) {{ 'active' }} @elseif(request()->routeIs('admin-sites')) {{ 'active' }} @elseif(request()->routeIs('admin-editsite')) {{ 'active' }} @elseif(request()->routeIs('admin-showcity')) {{ 'active' }} @endif"
-                                        href="{{ route('admin-sites') }}">Repéres</a></li>
-                                <li><a  class="@if (request()->routeIs('admin-addpath')) {{ 'active' }} @elseif(request()->routeIs('admin-path')) {{ 'active' }} @elseif(request()->routeIs('admin-editpath')) {{ 'active' }} @elseif(request()->routeIs('admin-showpath')) {{ 'active' }} @endif"    
-                                     href="{{ route('admin-path') }}">Parcours</a></li>
-                                <li><a  class="@if (request()->routeIs('admin-addquiz')) {{ 'active' }} @elseif(request()->routeIs('admin-quiz')) {{ 'active' }} @elseif(request()->routeIs('admin-editquiz')) {{ 'active' }} @elseif(request()->routeIs('admin-showquiz')) {{ 'active' }} @endif"   
-                                    href="{{ route('admin-quiz') }}">Quiz</a></li>
+                                <li>
+                                    <a class="{{ request()->routeIs('admin-addcity') ? 'active' : '' }} {{ request()->routeIs('admin-showcity') ? 'active' : '' }} {{ request()->routeIs('admin-editcity') ? 'active' : '' }} {{ request()->routeIs('admin-cities') ? 'active' : '' }} "
+                                        href="{{ route('admin-cities') }}">Villes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="{{ request()->routeIs('admin-sites') ? 'active' : '' }} {{ request()->routeIs('admin-addsite') ? 'active' : '' }} {{ request()->routeIs('admin-showsite') ? 'active' : '' }} {{ request()->routeIs('admin-editsite') ? 'active' : '' }}"
+                                        href="{{ route('admin-sites') }}">Repéres
+                                    </a>
+                                </li>
+                                <li><a class="@if (request()->routeIs('admin-addpath')) {{ 'active' }} @elseif(request()->routeIs('admin-path')) {{ 'active' }} @elseif(request()->routeIs('admin-editpath')) {{ 'active' }} @elseif(request()->routeIs('admin-showpath')) {{ 'active' }} @endif"
+                                        href="{{ route('admin-path') }}">Parcours</a></li>
+                                <li><a class="@if (request()->routeIs('admin-addquiz')) {{ 'active' }} @elseif(request()->routeIs('admin-quiz')) {{ 'active' }} @elseif(request()->routeIs('admin-editquiz')) {{ 'active' }} @elseif(request()->routeIs('admin-showquiz')) {{ 'active' }} @endif"
+                                        href="{{ route('admin-quiz') }}">Quiz</a></li>
                             </ul>
                         </li>
 
@@ -375,7 +334,7 @@
     <script src="{{ asset('primary/assets/node_modules/switchery/dist/switchery.min.js') }}"></script>
     <script src="{{ asset('primary/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 
-   
+
 
 
 

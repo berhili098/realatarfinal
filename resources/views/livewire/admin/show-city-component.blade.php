@@ -32,26 +32,13 @@
                         <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
                                     <img class="img-responsive"
                                         src="{{ asset('primary/assets/images/cities') }}/{{ $city->photo }}"
-                                        alt="First slide">
+                                        title="{{ $city->city_en }}" alt="{{ $city->city_en }}">
                                 </div>
-                                <div class="carousel-item">
-                                    <img class="img-responsive"
-                                        src="{{ asset('primary/assets/images/cities') }}/{{ $city->photo }}"
-                                        alt="First slide">
-                                </div>
-                                <div class="carousel-item ">
-                                    <img class="img-responsive"
-                                        src="{{ asset('primary/assets/images/cities') }}/{{ $city->photo }}"
-                                        alt="First slide">
-                                </div>
-
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button"
                                 data-slide="prev">
