@@ -38,7 +38,7 @@
    
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-2">
+                            <div class="col-sm-6 col-md-3">
                                 <div class="form-group has-info">
                                     <select class="form-control custom-select" wire:model="searchCity">
                                         <option value="" selected>Cities</option>

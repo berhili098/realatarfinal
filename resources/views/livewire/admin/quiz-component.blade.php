@@ -49,12 +49,12 @@
                                     <thead>
                                         <tr>
                                             <th>Question</th>
-                                            <th>Correction</th>
+                                            <th>Answers</th>
                                             <th>Repere</th>
                                             <th>Created by</th>
                                             <th>Created at</th>
                                             <th>Status</th>
-                                            <th>Actions</th>
+                                            <th style="width: 10%">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -62,36 +62,35 @@
 
                                             <tr class="data-vertical">
                                                 <td>{{ $quiz->question_en }}</td>
-                                                <td  style="vertical-align : middle; text-align:center">
+                                                <td  class="text-center">
                                                     <a  data-toggle="modal" data-target="#show-answer-modal"  href="#" wire:click.prevent="getAnswer({{ $quiz->id }})" class="text-info">
-                                                        <i class="ti-bookmark-alt" title="show correct answer"></i>
+                                                        <i class="ti-bookmark-alt fa-customized" title="show correct answer"></i>
                                                     </a>
                                                 </td>
                                                 <td><a href="{{ route('admin-showsite',$quiz->site->id) }}">{{ $quiz->site->name_en}}</a></td>
                                                 <td>{{ $quiz->user->name }}</td>
                                                 <td>{{ $quiz->created_at->format('Y-m-d') }}</td>
-                                                <td>
+                                                <td class="text-center ">
                                                     <a href="#"
                                                         wire:click.prevent="changeStatus({{ $quiz->id }})">
-                                                        <i class="fas {{ $quiz->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
+                                                        <i class="fas {{ $quiz->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-customized"
                                                             title="{{ $quiz->status == 0 ? 'turn off' : 'turn on' }}"></i>
                                                     </a>
 
                                                 </td>
-                                                <td class="d-flex">
+                                                <td >
                                                     <a href="{{ route('admin-showquiz',$quiz->id) }}"
-                                                        class="text-dark p-r-10" data-toggle="tooltip" title="Show details">
-                                                        <i class="ti-eye fa-2x"></i>
+                                                        class="text-dark" data-toggle="tooltip" title="Show details">
+                                                        <i class="ti-eye fa-customized"></i> 
                                                     </a>
                                                     <a href="{{ route('admin-editquiz',$quiz->id) }}"
-                                                        class="text-dark p-r-10" data-toggle="tooltip" title="Edit">
-                                                        <i class="ti-marker-alt fa-2x"></i>
+                                                        class="text-dark " data-toggle="tooltip" title="Edit">
+                                                        <i class="ti-marker-alt fa-customized"></i> 
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#delete-confirmation-modal"  class="text-dark" title="Delete"
                                                         data-toggle="tooltip" wire:click.prevent="confirmDelete({{ $quiz->id }})">
-                                                        <i class="ti-trash fa-2x" ></i>
+                                                        <i class="ti-trash fa-customized" ></i> 
                                                     </a>
-
                                                 </td>
                                             </tr>
                                         @endforeach

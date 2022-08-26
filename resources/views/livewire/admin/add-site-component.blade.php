@@ -19,7 +19,6 @@
             <form class="form-material" wire:submit.prevent="storeSite()">
                 <div class="row">
                     <div class="col-8">
-
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">General Info </h4>
@@ -169,7 +168,6 @@
                             <div class="card-body">
                                 <h4 class="card-title">Additional info</h4>
                                 <div class="row">
-                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price">Price :</label>

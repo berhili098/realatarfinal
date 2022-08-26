@@ -20,7 +20,6 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="card">
-
                         <div class="card-body">
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -341,7 +340,33 @@
                                                     <section lang="ar" class="text-right">
 
                                                         <div class="row">
+<<<<<<< HEAD
                                                       
+=======
+                                                            <div class="col-md-6">
+                                                                <label for="reponse1_ar">الجواب 1</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control text-right"  placeholder="أدخل  الجواب 1 هنا" wire:model="reponse1_ar"
+                                                                        aria-label="Text input with radio button">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <div class="custom-control custom-radio">
+                                                                                <input type="radio" id="correcte_ar"
+                                                                                    name="correcte_ar"
+                                                                                    class="custom-control-input "
+                                                                                    value="1"
+                                                                                    wire:model="correcte_ar">
+                                                                                <label class="custom-control-label"
+                                                                                    for="correcte_ar"></label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+
+
+                                                            </div>
+>>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
                                                             <div class="col-md-6">
                                                                 <label for="reponse2_en">الجواب 2</label>
                                                                 <div class="input-group">
@@ -394,7 +419,39 @@
                                                         </div>
                                                         <br>
                                                         <div class="row">
+<<<<<<< HEAD
                                                            
+=======
+                                                            <div class="col-md-6">
+                                                                <label for="reponse3_en">الجواب 3</label>
+                                                                
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control text-right"
+                                                                        placeholder="أدخل  الجواب 3 هنا"
+                                                                        wire:model="reponse3_ar"
+                                                                        aria-label="Text input with radio button">
+                                                                    <div class="input-group-prepend">
+                                                                        <div class="input-group-text">
+                                                                            <div class="custom-control custom-radio">
+                                                                                <input type="radio"
+                                                                                    id="correcte3_ar"
+                                                                                    name="correcte_ar"
+                                                                                    class="custom-control-input"
+                                                                                    value="3"
+                                                                                    wire:model="correcte_ar">
+                                                                                <label class="custom-control-label"
+                                                                                    for="correcte3_ar"></label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+
+
+                                                                </div>
+
+
+                                                            </div>
+>>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
                                                             <div class="col-md-6">
                                                                 <label for="reponse4_en">الجواب 4</label>
                                                                 
@@ -468,6 +525,7 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
                 </div>        
                 <div class=" col-3">
                     <div class="text-center">
@@ -476,6 +534,10 @@
                     
                     </div> 
                     <br>
+=======
+                </div>
+                <div class=" col-3">
+>>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
                     <div class="card">
                         <div class="card-body text-center">
                             <div class="row button-group">
@@ -503,17 +565,16 @@
 </div>
 
 
-@push('styles')
-    <link href="{{ asset('primary/dist/css/pages/stylish-tooltip.css') }}" rel="stylesheet">
-@endpush
-
 @push('scripts')
     <script>
         $(document).ready(function() {
             var langue = 0;
+<<<<<<< HEAD
 
 
         
+=======
+>>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
             $('#question_fr').hide();
             $('#question_ar').hide();
             $('#label_fr').hide();

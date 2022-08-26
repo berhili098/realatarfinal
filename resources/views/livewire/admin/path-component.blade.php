@@ -50,11 +50,11 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Photo</th>
-                                            <th>Sites</th>
+                                            <th class="text-center">Sites</th>
                                             <th>Created by</th>
                                             <th>Created at</th>
                                             <th>Status</th>
-                                            <th>Actions</th>
+                                            <th >Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,20 +65,24 @@
                                                     <img src="{{ asset('primary/assets/images/paths') }}/{{ $path->photo }}"
                                                         width="70">
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
+
                                                     @if (   count($pathsite->where('path_id',$path->id))  == 0)
-                                                        <a href="{{ route('admin-addsite',$path->id) }}"><i class="icon-plus text-info fa-2x"></i></a>
+                                                        <a href="{{ route('admin-addsite',$path->id) }}"><i class="icon-plus text-info fa-customized"></i></a>
                                                         <br>
                                                     @else
-                                                        <span>{{ count($pathsite->where('path_id',$path->id)) }}</span>
+                                                        <a href="#" data-toggle="modal" data-target="#show-sites-modal" title="{{ count($pathsite->where('path_id',$path->id)) }} site(s)." wire:click.prevent="showSites({{ $path->id }})">
+                                                            <i class="ti-direction-alt fa-customized"></i>
+                                                        </a>
                                                     @endif
                                                 </td>
                                                 <td>{{ $path->user->name }}</td>
                                                 <td>{{ $path->created_at->format('Y-m-d')  }}</td>
                                                 <td>
+                                                    
                                                     <a href="#"
                                                         wire:click.prevent="changeStatus({{ $path->id }})">
-                                                        <i class="fas {{ $path->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-2x"
+                                                        <i class="fas {{ $path->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-customized"
                                                             title="{{ $path->status == 0 ? 'turn off' : 'turn on' }}"></i>
                                                     </a>
 
@@ -86,15 +90,15 @@
                                                 <td>
                                                     <a href="{{ route('admin-showpath',$path->id) }}"
                                                         class="text-dark p-r-10" data-toggle="tooltip" title="Show details">
-                                                        <i class="ti-eye fa-2x"></i>
+                                                        <i class="ti-eye fa-customized"></i>
                                                     </a>
                                                     <a  href="{{ route('admin-editpath',$path->id) }}"
                                                         class="text-dark p-r-10" data-toggle="tooltip" title="Edit">
-                                                        <i class="ti-marker-alt fa-2x"></i>
+                                                        <i class="ti-marker-alt fa-customized"></i>
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#delete-confirmation-modal"  class="text-dark" title="Delete"
                                                         data-toggle="tooltip"  wire:click.prevent="confirmDelete({{ $path->id }})" >
-                                                        <i class="ti-trash fa-2x" ></i>
+                                                        <i class="ti-trash fa-customized" ></i>
                                                     </a>
 
                                                 </td>
@@ -117,17 +121,40 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title text-info"><i class="fa fa-exclamation-circle"></i> Delete confirmation</h3>
+                    <h3 class="modal-title text-danger"><i class="fa fa-exclamation-circle"></i> Delete confirmation</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
-                    <div class="alert alert-info">
+                    <div class="alert alert-danger">
                         Are you sure you wanna delete all the record for the path   
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger waves-effect waves-light" wire:click.prevent="deletePath()">confrim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div wire:ignore.self id="show-sites-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-info"><i class="ti-flag-alt-2"></i> Path sites</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        
+                        @foreach($sites as $key=>$site)
+                            <p>     <i class="{{ count($sites) == $key+1 ? 'ti-cup' : 'ti-flag' }}"></i> .  {{ $site->name_en }} </p>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
