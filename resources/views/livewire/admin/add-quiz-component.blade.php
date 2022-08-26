@@ -339,7 +339,7 @@
                                                     <section lang="ar" class="text-right">
 
                                                         <div class="row">
-                                                            <<<<<<< HEAD=======<div class="col-md-6">
+                                                       <div class="col-md-6">
                                                                 <label for="reponse1_ar">الجواب 1</label>
                                                                 <div class="input-group">
                                                                     <input type="text"
@@ -419,7 +419,7 @@
                                                 </div>
                                                 <br>
                                                 <div class="row">
-                                                    <<<<<<< HEAD=======<div class="col-md-6">
+                                                   <div class="col-md-6">
                                                         <label for="reponse3_en">الجواب 3</label>
 
                                                         <div class="input-group">
@@ -521,12 +521,11 @@
             <div class="card-body">
                 <div class="text-center">
                     <img src="{{ asset('primary/assets/images/clockk.png') }}"
-                        style="object-fit: cover !important; max-height:250" width="300" height="245" alt="">
+                        style=" max-height:263px"  alt="">
         
                 </div>
             </div>
-        </div>
-        <br>
+        </div> 
 
 
         <div class="card">
