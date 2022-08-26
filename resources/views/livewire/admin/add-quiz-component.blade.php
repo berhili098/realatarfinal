@@ -1,5 +1,3 @@
-
-
 <div>
     <div class="container-fluid">
         <div class="row page-titles">
@@ -91,10 +89,10 @@
                                                     </div>
                                                 </div> --}}
                                                 <div id='enquest' class="col-sm-6 col-md-6 mt-3">
-                                                    <div class="form-group text-right" class="text-right" wire:ignore >
+                                                    <div class="form-group text-right" class="text-right" wire:ignore>
                                                         <label id='label_en' for=""> Question</label>
                                                         <label id="label_fr" for=""> Question</label>
-                                                        <label id="label_ar" for="city_ar" > السؤال </label>
+                                                        <label id="label_ar" for="city_ar"> السؤال </label>
                                                         <div class="input-group mb-3">
                                                             <input type="text" class="form-control" id="question_en"
                                                                 wire:model="question_en"
@@ -102,8 +100,9 @@
                                                             <input type="text" class="form-control" id="question_fr"
                                                                 wire:model="question_fr"
                                                                 placeholder="Entrez la question ici ">
-                                                            <input type="text" class="form-control text-right" id="question_ar"
-                                                                wire:model="question_ar" placeholder="أدخل  السؤال هنا">
+                                                            <input type="text" class="form-control text-right"
+                                                                id="question_ar" wire:model="question_ar"
+                                                                placeholder="أدخل  السؤال هنا">
                                                             <div class="input-group-append">
                                                                 <a style="border-color: grey" id="btn-active-tab"
                                                                     wire:ignore type="button"> <i id="flag"
@@ -340,13 +339,13 @@
                                                     <section lang="ar" class="text-right">
 
                                                         <div class="row">
-<<<<<<< HEAD
-                                                      
-=======
-                                                            <div class="col-md-6">
+                                                            <<<<<<< HEAD=======<div class="col-md-6">
                                                                 <label for="reponse1_ar">الجواب 1</label>
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control text-right"  placeholder="أدخل  الجواب 1 هنا" wire:model="reponse1_ar"
+                                                                    <input type="text"
+                                                                        class="form-control text-right"
+                                                                        placeholder="أدخل  الجواب 1 هنا"
+                                                                        wire:model="reponse1_ar"
                                                                         aria-label="Text input with radio button">
                                                                     <div class="input-group-prepend">
                                                                         <div class="input-group-text">
@@ -361,207 +360,199 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    
-                                                                </div>
-
-
-                                                            </div>
->>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
-                                                            <div class="col-md-6">
-                                                                <label for="reponse2_en">الجواب 2</label>
-                                                                <div class="input-group">
-                                                                    <input type="text"
-                                                                        placeholder="أدخل  الجواب 2 هنا"
-                                                                        wire:model="reponse2_ar" class="form-control text-right"
-                                                                        aria-label="Text input with radio button">
-
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <div class="custom-control custom-radio">
-                                                                                <input type="radio"
-                                                                                    id="correcte2_ar"
-                                                                                    name="correcte_ar"
-                                                                                    class="custom-control-input"
-                                                                                    value="2"
-                                                                                    wire:model="correcte_ar">
-                                                                                <label class="custom-control-label"
-                                                                                    for="correcte2_ar"></label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    
 
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="reponse1_ar">الجواب 1</label>
-                                                                <div class="input-group">
-                                                                    <input type="text" class="form-control text-right"  placeholder="أدخل  الجواب 1 هنا" wire:model="reponse1_ar"
-                                                                        aria-label="Text input with radio button">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <div class="custom-control custom-radio">
-                                                                                <input type="radio" id="correcte_ar"
-                                                                                    name="correcte_ar"
-                                                                                    class="custom-control-input "
-                                                                                    value="1"
-                                                                                    wire:model="correcte_ar">
-                                                                                <label class="custom-control-label"
-                                                                                    for="correcte_ar"></label>
-                                                                            </div>
+
+
+                                                        </div>
+                                                        >>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
+                                                        <div class="col-md-6">
+                                                            <label for="reponse2_en">الجواب 2</label>
+                                                            <div class="input-group">
+                                                                <input type="text" placeholder="أدخل  الجواب 2 هنا"
+                                                                    wire:model="reponse2_ar"
+                                                                    class="form-control text-right"
+                                                                    aria-label="Text input with radio button">
+
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="correcte2_ar"
+                                                                                name="correcte_ar"
+                                                                                class="custom-control-input"
+                                                                                value="2"
+                                                                                wire:model="correcte_ar">
+                                                                            <label class="custom-control-label"
+                                                                                for="correcte2_ar"></label>
                                                                         </div>
                                                                     </div>
-                                                                    
                                                                 </div>
 
 
                                                             </div>
                                                         </div>
-                                                        <br>
-                                                        <div class="row">
-<<<<<<< HEAD
-                                                           
-=======
-                                                            <div class="col-md-6">
-                                                                <label for="reponse3_en">الجواب 3</label>
-                                                                
-                                                                <div class="input-group">
-                                                                    <input type="text" class="form-control text-right"
-                                                                        placeholder="أدخل  الجواب 3 هنا"
-                                                                        wire:model="reponse3_ar"
-                                                                        aria-label="Text input with radio button">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <div class="custom-control custom-radio">
-                                                                                <input type="radio"
-                                                                                    id="correcte3_ar"
-                                                                                    name="correcte_ar"
-                                                                                    class="custom-control-input"
-                                                                                    value="3"
-                                                                                    wire:model="correcte_ar">
-                                                                                <label class="custom-control-label"
-                                                                                    for="correcte3_ar"></label>
-                                                                            </div>
+                                                        <div class="col-md-6">
+                                                            <label for="reponse1_ar">الجواب 1</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control text-right"
+                                                                    placeholder="أدخل  الجواب 1 هنا"
+                                                                    wire:model="reponse1_ar"
+                                                                    aria-label="Text input with radio button">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="correcte_ar"
+                                                                                name="correcte_ar"
+                                                                                class="custom-control-input "
+                                                                                value="1"
+                                                                                wire:model="correcte_ar">
+                                                                            <label class="custom-control-label"
+                                                                                for="correcte_ar"></label>
                                                                         </div>
                                                                     </div>
-                                                                    
-
-
                                                                 </div>
-
 
                                                             </div>
->>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
-                                                            <div class="col-md-6">
-                                                                <label for="reponse4_en">الجواب 4</label>
-                                                                
-                                                                <div class="input-group">
-                                                                    <input type="text"
-                                                                        placeholder="أدخل  الجواب 4 هنا"
-                                                                        wire:model="reponse4_ar" class="form-control text-right"
-                                                                        aria-label="Text input with radio button">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <div class="custom-control custom-radio">
-                                                                                <input type="radio"
-                                                                                    id="correcte4_ar"
-                                                                                    name="correcte_ar"
-                                                                                    class="custom-control-input"
-                                                                                    value="4"
-                                                                                    wire:model="correcte_ar">
-                                                                                <label class="custom-control-label"
-                                                                                    for="correcte4_ar"></label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    
 
+
+                                                        </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <<<<<<< HEAD=======<div class="col-md-6">
+                                                        <label for="reponse3_en">الجواب 3</label>
+
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control text-right"
+                                                                placeholder="أدخل  الجواب 3 هنا"
+                                                                wire:model="reponse3_ar"
+                                                                aria-label="Text input with radio button">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text">
+                                                                    <div class="custom-control custom-radio">
+                                                                        <input type="radio" id="correcte3_ar"
+                                                                            name="correcte_ar"
+                                                                            class="custom-control-input"
+                                                                            value="3" wire:model="correcte_ar">
+                                                                        <label class="custom-control-label"
+                                                                            for="correcte3_ar"></label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <label for="reponse3_en">الجواب 3</label>
-                                                                
-                                                                <div class="input-group">
-                                                                    <input type="text" class="form-control text-right"
-                                                                        placeholder="أدخل  الجواب 3 هنا"
-                                                                        wire:model="reponse3_ar"
-                                                                        aria-label="Text input with radio button">
-                                                                    <div class="input-group-prepend">
-                                                                        <div class="input-group-text">
-                                                                            <div class="custom-control custom-radio">
-                                                                                <input type="radio"
-                                                                                    id="correcte3_ar"
-                                                                                    name="correcte_ar"
-                                                                                    class="custom-control-input"
-                                                                                    value="3"
-                                                                                    wire:model="correcte_ar">
-                                                                                <label class="custom-control-label"
-                                                                                    for="correcte3_ar"></label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    
 
 
+
+                                                        </div>
+
+
+                                                </div>
+                                                >>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
+                                                <div class="col-md-6">
+                                                    <label for="reponse4_en">الجواب 4</label>
+
+                                                    <div class="input-group">
+                                                        <input type="text" placeholder="أدخل  الجواب 4 هنا"
+                                                            wire:model="reponse4_ar" class="form-control text-right"
+                                                            aria-label="Text input with radio button">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <div class="custom-control custom-radio">
+                                                                    <input type="radio" id="correcte4_ar"
+                                                                        name="correcte_ar"
+                                                                        class="custom-control-input" value="4"
+                                                                        wire:model="correcte_ar">
+                                                                    <label class="custom-control-label"
+                                                                        for="correcte4_ar"></label>
                                                                 </div>
-
-
                                                             </div>
                                                         </div>
-                                                    </section>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="reponse3_en">الجواب 3</label>
+
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control text-right"
+                                                            placeholder="أدخل  الجواب 3 هنا" wire:model="reponse3_ar"
+                                                            aria-label="Text input with radio button">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <div class="custom-control custom-radio">
+                                                                    <input type="radio" id="correcte3_ar"
+                                                                        name="correcte_ar"
+                                                                        class="custom-control-input" value="3"
+                                                                        wire:model="correcte_ar">
+                                                                    <label class="custom-control-label"
+                                                                        for="correcte3_ar"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+
+
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-1">
-
+                                            </section>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-1">
 
+                                </div>
                             </div>
-                            <br>
-
-
                         </div>
-                    </div>
 
-<<<<<<< HEAD
-                </div>        
-                <div class=" col-3">
-                    <div class="text-center">
-                        <img src="{{ asset('primary/assets/images/clockk.png') }}" style="object-fit: cover !important; max-height:299"
-                    width="300" height="299" alt=""> 
-                    
-                    </div> 
+                    </div>
                     <br>
-=======
-                </div>
-                <div class=" col-3">
->>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="row button-group">
-                                <div class="col-lg-6 col-md-4">
-                                    <button class="btn waves-effect waves-light btn-block btn-success "><i
-                                            class="fa fa-save"></i> Save</button>
-                                </div>
-                                <div class="col-lg-6 col-md-4">
-                                    <a type="button" href="{{ route('admin-cities') }}"
-                                        class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
-                    
-    
-                  
+
                 </div>
             </div>
 
-        </form>
 
     </div>
+    <div class=" col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <img src="{{ asset('primary/assets/images/clockk.png') }}"
+                        style="object-fit: cover !important; max-height:250" width="300" height="245" alt="">
+        
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="card">
+            <div class="card-body text-center">
+                <div class="row button-group">
+                    <div class="col-lg-6 col-md-4">
+                        <button class="btn waves-effect waves-light btn-block btn-success "><i class="fa fa-save"></i>
+                            Save</button>
+                    </div>
+                    <div class="col-lg-6 col-md-4">
+                        <a type="button" href="{{ route('admin-cities') }}"
+                            class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+</form>
+
+</div>
 </div>
 
 
@@ -569,12 +560,7 @@
     <script>
         $(document).ready(function() {
             var langue = 0;
-<<<<<<< HEAD
 
-
-        
-=======
->>>>>>> 6fe99957709a00c455b7c2deb20a0ebad56d26a1
             $('#question_fr').hide();
             $('#question_ar').hide();
             $('#label_fr').hide();
