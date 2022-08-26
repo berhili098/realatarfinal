@@ -84,7 +84,7 @@ class CitiesConpoment extends Component
             ->orwhere('description_ar','like',"%{$this->search}%")
             ->orwhere('description_fr','like',"%{$this->search}%")
             ->orwhere('description_en','like',"%{$this->search}%");
-        })->paginate(6);
+        })->orderBy('id','DESC')->paginate(6);
         
         $countsrecord = City::where('delete',0)->where(function($query){
             $query->where('city_ar','like',"%{$this->search}%")

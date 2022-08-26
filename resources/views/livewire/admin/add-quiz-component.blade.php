@@ -536,7 +536,7 @@
                             Save</button>
                     </div>
                     <div class="col-lg-6 col-md-4">
-                        <a type="button" href="{{ route('admin-cities') }}"
+                        <a type="button" href="{{ route('admin-quiz') }}"
                             class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
                     </div>
                 </div>

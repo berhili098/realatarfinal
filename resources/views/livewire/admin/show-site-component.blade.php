@@ -134,7 +134,7 @@
                                     <tr>
                                         <td>Created at</td>
                                         <td>
-                                            {{ $site->created_at }}
+                                            {{ $site->created_at->format('Y-m-d') }}
                                         </td>
                                     </tr>
                                     

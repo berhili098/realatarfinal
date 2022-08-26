@@ -78,7 +78,7 @@
                                                     @endif
                                                 </td>
                                                 <td>{{ $city->user->name }}</td>
-                                                <td>{{ $city->created_at }}</td>
+                                                <td>{{ $city->created_at->format('Y-m-d') }}</td>
                                                 <td>
                                                     <a href="#"
                                                         wire:click.prevent="changeStatus({{ $city->id }})">
