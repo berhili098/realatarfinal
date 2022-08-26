@@ -70,9 +70,9 @@
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div> <small class="text-muted p-t-30 db">Social Profile</small>
                     <br/>
-                    <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>
-                    <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
-                    <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
+                 @if(Auth::user()->facebook)   <a href="{{ Auth::user()->facebook }}" target="_blank" class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></a>@endif
+                 @if(Auth::user()->twitter)   <a href="{{ Auth::user()->twitter }}"  target="_blank" class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></a>@endif
+                 @if(Auth::user()->youtube)   <a href="{{ Auth::user()->youtube }}" target="_blank" class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></a>@endif
 
                 </div>
             </div>
@@ -189,6 +189,27 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-md-12">Facebook</label>
+                                    <div class="col-md-12">
+                                        <input type="text" placeholder="https://web.facebook.com/xxxx" wire:model='facebook'
+                                            class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Twitter</label>
+                                    <div class="col-md-12">
+                                        <input type="text" placeholder="https://twitter.com/xxxx" wire:model='twitter'
+                                            class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Youtube</label>
+                                    <div class="col-md-12">
+                                        <input type="text" placeholder="https://www.youtube.com/channel/xxxx" wire:model='youtube'
+                                            class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-md-12">Address</label>
                                     <div class="col-md-12">
                                         <textarea rows="5" class="form-control form-control-line" wire:model='address'></textarea>
@@ -227,76 +248,7 @@
     <!-- ============================================================== -->
     <!-- Right sidebar -->
     <!-- ============================================================== -->
-    <!-- .right-sidebar -->
-    <div class="right-sidebar">
-        <div class="slimscrollright">
-            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
-            <div class="r-panel-body">
-                <ul id="themecolors" class="m-t-20">
-                    <li><b>With Light sidebar</b></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme working">4</a></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
-                    <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-default-dark" class="default-dark-theme ">7</a>
-                    </li>
-                    <li><a href="javascript:void(0)" data-skin="skin-green-dark" class="green-dark-theme">8</a></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-red-dark" class="red-dark-theme">9</a></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-blue-dark" class="blue-dark-theme">10</a></li>
-                    <li><a href="javascript:void(0)" data-skin="skin-purple-dark" class="purple-dark-theme">11</a>
-                    </li>
-                    <li><a href="javascript:void(0)" data-skin="skin-megna-dark" class="megna-dark-theme ">12</a>
-                    </li>
-                </ul>
-                <ul class="m-t-20 chatonline">
-                    <li><b>Chat option</b></li>
-                    <li>
-                        <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img"
-                                class="img-circle"> <span>Varun Dhavan <small
-                                    class="text-success">online</small></span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img"
-                                class="img-circle"> <span>Genelia Deshmukh <small
-                                    class="text-warning">Away</small></span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img"
-                                class="img-circle"> <span>Ritesh Deshmukh <small
-                                    class="text-danger">Busy</small></span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img"
-                                class="img-circle"> <span>Arijit Sinh <small
-                                    class="text-muted">Offline</small></span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img"
-                                class="img-circle"> <span>Govinda Star <small
-                                    class="text-success">online</small></span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img"
-                                class="img-circle"> <span>John Abraham<small
-                                    class="text-success">online</small></span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img"
-                                class="img-circle"> <span>Hritik Roshan<small
-                                    class="text-success">online</small></span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img"
-                                class="img-circle"> <span>Pwandeep rajan <small
-                                    class="text-success">online</small></span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+   
     <!-- ============================================================== -->
     <!-- End Right sidebar -->
     <!-- ============================================================== -->

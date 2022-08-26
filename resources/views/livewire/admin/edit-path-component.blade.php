@@ -170,7 +170,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="sites">All sites</label>
-                                            <select id="sites" style="width: 100%" size="4" wire:ignore>
+                                            <select class="form-control" id="sites" style="width: 100%" size="4" wire:ignore>
                                                 @foreach ($sites->sortBy('name_en') as $site)
                                                     <option value="{{ $site->id }}">{{ $site->name_en }}</option>
                                                 @endforeach
@@ -181,7 +181,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="sites2">Selected Sites</label>
-                                            <select id="sites2" style="width: 100%" size="4" multiple
+                                            <select class="form-control" id="sites2" style="width: 100%" size="4" multiple
                                                 wire:change="change" wire:ignore>
                                                 @foreach ($selectedSites2 as $key => $site)
                                                     <option value="{{ $site }}"> {{ $key + 1 }} -
@@ -205,7 +205,7 @@
                                                 class="fa fa-save"></i> Save</button>
                                     </div>
                                     <div class="col-lg-6 col-md-4">
-                                        <a type="button" href="{{ route('admin-sites') }}"
+                                        <a type="button" href="{{ route('admin-path') }}"
                                             class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
                                     </div>
                                 </div>

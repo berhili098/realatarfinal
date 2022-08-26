@@ -111,7 +111,7 @@
                                                             id="question_ar" wire:model="question_ar"
                                                             placeholder="أدخل  السؤال هنا">
                                                             <div class="input-group-append">
-                                                                <button class="btn btn-info" id="btn-active-tab" wire:ignore type="button">    <i id="flag" class="flag-icon flag-icon-gb fa-1x" style="height: 15px;width:30px;"></i></button>
+                                                                <a   id="btn-active-tab" wire:ignore type="button">    <i id="flag" class="flag-icon flag-icon-gb " style="border-radius:0 5px 5px  0; font-size:38px"></i></a>
                                                             </div>
                                                            
                                                         </div>
@@ -340,7 +340,7 @@
                                                 {{-- Arabic Tab --}}
                                                 <div class="tab-pane " id="arabicTab" role="tabpanel"
                                                     wire:ignore.self>
-                                                    <section lang="ar">
+                                                    <section lang="ar" >
                                                       
                                                         <div class="row">
                                                             <div class="col-md-6">
@@ -477,7 +477,7 @@
                                             class="fa fa-save"></i> Save</button>
                                 </div>
                                 <div class="col-lg-6 col-md-4">
-                                    <a type="button" href="{{ route('admin-cities') }}"
+                                    <a type="button" href="{{ route('admin-quiz') }}"
                                         class="btn waves-effect waves-light btn-block btn-danger">Cancel</a>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+ 
 use App\Models\Site;
 use Illuminate\Database\Seeder;
 
@@ -35,6 +35,8 @@ class SiteTableSeeder extends Seeder
                 'latitude'=> $faker_fr->latitude,
                 'city_id'=> $faker_fr->numberBetween(1,20),
             ]);
+          
         }
+
     }
 }

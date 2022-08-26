@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             CitiesTableSeeder::class,
             SiteTableSeeder::class,
-            QuizTableSeeder::class,
+            QuizTableSeeder::class, 
+            MediaTableSeeder::class,
+
         ]);
     }
 }

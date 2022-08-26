@@ -15,6 +15,7 @@ class ProfileComponent extends Component
     use PasswordValidationRules;
 
 public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id;
+public $facebook,$twitter,$youtube;
 
     public function mount(){
         $users = User::find(Auth::user()->id);
@@ -26,6 +27,10 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
         $this->birthdate=$users->birthdate;
         $this->address=$users->address;
         $this->password=$users->password;
+        $this->facebook=$users->facebook;
+        $this->twitter=$users->twitter;
+        $this->youtube=$users->youtube;
+
     }
 
     public function updated($fields){
@@ -37,7 +42,10 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
             'description'=>'required',
             'phoneNo'=>'required',
             'password'=>'required|min:8',
-            'address'=>'required'
+            'address'=>'required',
+            'facebook'=>'url',
+            'twitter'=>'url',
+            'youtube'=>'url'
         ]);
     }
     
@@ -47,13 +55,6 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
         $users = User::find(Auth::user()->id);
         $sites=Site::where('user_id',Auth::user()->id)->get();
         $cities=City::where('user_id',Auth::user()->id)->get();
-        
-        
-   
-       
-
-    
- 
    
     $all = $cities->merge($sites)->sortByDesc('created_at');
  foreach ($all as $key => $value) {
@@ -78,7 +79,10 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
             'description'=>'required',
             'phoneNo'=>'required',
             'password'=>'required|min:8',
-            'address'=>'required'
+            'address'=>'required',
+            'facebook'=>'url',
+            'twitter'=>'url',
+            'youtube'=>'url'
 
         ]);
 
@@ -87,6 +91,9 @@ public $name,$email,$password,$phoneNo,$description,$birthdate,$address,$user_id
             $user->update(
                 ['name'=>$this->name,
                 'email'=>$this->email, 
+                'facebook'=>$this->facebook,
+                'twitter'=>$this->twitter,
+                'youtube'=>$this->youtube,
             
             ]);
             $user->description=$this->description;
