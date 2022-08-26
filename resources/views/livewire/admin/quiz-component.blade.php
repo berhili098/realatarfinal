@@ -64,7 +64,7 @@
                                                 <td>{{ $quiz->question_en }}</td>
                                                 <td  class="text-center">
                                                     <a  data-toggle="modal" data-target="#show-answer-modal"  href="#" wire:click.prevent="getAnswer({{ $quiz->id }})" class="text-info">
-                                                        <i class="ti-bookmark-alt" title="show correct answer"></i>
+                                                        <i class="ti-bookmark-alt fa-customized" title="show correct answer"></i>
                                                     </a>
                                                 </td>
                                                 <td><a href="{{ route('admin-showsite',$quiz->site->id) }}">{{ $quiz->site->name_en}}</a></td>
