@@ -51,7 +51,7 @@
                                     <div class="tab-pane  active" id="englishTab" role="tabpanel" wire:ignore.self>
                                         <section>
                                             <div class="row">
-                                                <div class="col-md-7">
+                                                <div class="col-md-11">
                                                     <div class="form-group">
                                                         <label for="name_en">Path name </label>
                                                         <input type="text" class="form-control" id="name_en"
@@ -62,7 +62,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-5">
+                                                <div class="col-md-1">
                                                     <div class="form-group text-right">
                                                         <label for=""> </label>
                                                         <button class="btn align-middle" id="faker" wire:ignore
@@ -92,7 +92,7 @@
                                     <div class="tab-pane  " id="frenchTab" role="tabpanel" wire:ignore.self>
                                         <section>
                                             <div class="row">
-                                                <div class="col-md-7">
+                                                <div class="col-md-11">
                                                     <div class="form-group">
                                                         <label for="name_fr">Nom Parcours </label>
                                                         <input type="text" class="form-control" id="name_fr"
@@ -102,7 +102,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5">
+                                                <div class="col-md-1">
                                                     <div class="form-group text-right">
                                                         <label for=""> </label>
                                                         <button class="btn align-middle" id="faker2" wire:ignore
@@ -133,7 +133,7 @@
                                     <div class="tab-pane  " id="arabicTab" role="tabpanel" wire:ignore.self>
                                         <section class="text-right" dir="rtl" lang="ar">
                                             <div class="row ">
-                                                <div class="col-md-7">
+                                                <div class="col-md-11">
                                                     <div class="form-group">
                                                         <label for="name_ar">اسم مسار</label>
                                                         <input type="text" class="form-control" id="name_ar"
@@ -143,7 +143,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5">
+                                                <div class="col-md-1">
                                                     <div class="form-group text-left">
                                                         <label for=""> </label>
                                                         <button class="btn align-middle" id="faker3" wire:ignore
@@ -309,15 +309,15 @@
         $(document).ready(function() {
             var langue = 0;
 
-            $('#faker').click(function() {
-                $('#btn-active-tab').click();
-            });
-            $('#faker2').click(function() {
-                $('#btn-active-tab').click();
-            });
-            $('#faker3').click(function() {
-                $('#btn-active-tab').click();
-            });
+                $('#faker').click(function() {
+                    $('#btn-active-tab').click();
+                });
+                $('#faker2').click(function() {
+                    $('#btn-active-tab').click();
+                });
+                $('#faker3').click(function() {
+                    $('#btn-active-tab').click();
+                });
             $("#image-ville").click(function() {
                 $('#uploadfile').click();
             });

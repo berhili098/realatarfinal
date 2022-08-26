@@ -36,7 +36,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="row p-t-40">
+                                <div class="row p-t-40 d-none">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for=""> </label>
@@ -48,13 +48,14 @@
                                         </div>
                                     </div>
                                 </div>
-
+<br>
+<br>    
                                 <div class="tab-content tabcontent-border ">
                                     {{-- english Tab --}}
                                     <div class="tab-pane  active" id="englishTab" role="tabpanel" wire:ignore.self>
                                         <section>
                                             <div class="row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-11">
                                                     <div class="form-group">
                                                         <label for="name_en">Path name </label>
                                                         <input type="text" class="form-control" id="name_en"
@@ -63,6 +64,18 @@
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <div class="form-group text-right">
+                                                        <label for=""> </label>
+                                                        <button class="btn align-middle" id="faker" wire:ignore
+                                                            type="button">
+                                                            <i class="flag-icon flag-icon-gb fa-2x"></i>
+                                                        </button>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -83,7 +96,7 @@
                                     <div class="tab-pane  " id="frenchTab" role="tabpanel" wire:ignore.self>
                                         <section>
                                             <div class="row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-11">
                                                     <div class="form-group">
                                                         <label for="name_fr">Nom Parcours </label>
                                                         <input type="text" class="form-control" id="name_fr"
@@ -92,6 +105,17 @@
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form-group text-right">
+                                                        <label for=""> </label>
+                                                        <button class="btn align-middle" id="faker2" wire:ignore
+                                                            type="button">
+                                                            <i class="flag-icon flag-icon-fr fa-2x"></i>
+                                                        </button>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -110,10 +134,10 @@
                                     </div>
 
                                     {{-- Arabic Tab --}}
-                                    <div class="tab-pane " id="arabicTab" role="tabpanel" wire:ignore.self>
+                                    <div class="tab-pane  " id="arabicTab" role="tabpanel" wire:ignore.self>
                                         <section class="text-right" dir="rtl" lang="ar">
                                             <div class="row ">
-                                                <div class="col-md-12">
+                                                <div class="col-md-11">
                                                     <div class="form-group">
                                                         <label for="name_ar">اسم مسار</label>
                                                         <input type="text" class="form-control" id="name_ar"
@@ -122,6 +146,17 @@
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form-group text-left">
+                                                        <label for=""> </label>
+                                                        <button class="btn align-middle" id="faker3" wire:ignore
+                                                            type="button">
+                                                            <i class="flag-icon flag-icon-ma fa-2x"></i>
+                                                        </button>
+
+                                                    </div>
+
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -300,7 +335,15 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-
+            $('#faker').click(function() {
+                $('#btn-active-tab').click();
+            });
+            $('#faker2').click(function() {
+                $('#btn-active-tab').click();
+            });
+            $('#faker3').click(function() {
+                $('#btn-active-tab').click();
+            });
             $('#videoupload').on('change', function() {
                 $('#videot').hide();
             });
