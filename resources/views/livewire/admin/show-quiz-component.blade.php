@@ -17,8 +17,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header bg-info">
-                        <h4 class="m-b-0 text-white">Show Quiz</h4>
+                    <div class="card-header bg-white ">
+                        <h4 class="m-b-0">Show Quiz</h4>
                     </div>
                     <div class="card-body">
                         @if ($errors->any())

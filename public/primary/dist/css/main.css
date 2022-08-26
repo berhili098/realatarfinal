@@ -11,11 +11,12 @@
 {
     vertical-align: middle!important;
 }
+ 
 
 #image-ville:hover {
     cursor: pointer;
 }
 
 .fa-customized{
-    font-size: 1.7em;
+    font-size: 1.6em;
 }

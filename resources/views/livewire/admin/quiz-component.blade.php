@@ -49,22 +49,22 @@
                                     <thead>
                                         <tr>
                                             <th>Question</th>
-                                            <th>Answers</th>
+                                            <th class="text-center">Answers</th>
                                             <th>Repere</th>
                                             <th>Created by</th>
                                             <th>Created at</th>
-                                            <th>Status</th>
+                                            <th class="text-center">Status</th>
                                             <th style="width: 10%">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($quizzes as $quiz)
 
-                                            <tr class="data-vertical">
+                                            <tr class="data-vertical ">
                                                 <td>{{ $quiz->question_en }}</td>
-                                                <td  class="text-center">
-                                                    <a  data-toggle="modal" data-target="#show-answer-modal"  href="#" wire:click.prevent="getAnswer({{ $quiz->id }})" class="text-info">
-                                                        <i class="ti-bookmark-alt fa-customized" title="show correct answer"></i>
+                                                <td  class="text-center  ">
+                                                    <a  id="answersmodal" data-toggle="modal" data-target="#show-answer-modal"  href="#" wire:click.prevent="getAnswer({{ $quiz->id }})" class="text-info ">
+                                                        <i class="ti-bookmark-alt fa-customized " title="show correct answer"></i>
                                                     </a>
                                                 </td>
                                                 <td><a href="{{ route('admin-showsite',$quiz->site->id) }}">{{ $quiz->site->name_en}}</a></td>
@@ -73,7 +73,7 @@
                                                 <td class="text-center ">
                                                     <a href="#"
                                                         wire:click.prevent="changeStatus({{ $quiz->id }})">
-                                                        <i class="fas {{ $quiz->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-customized"
+                                                        <i class=" fas   {{ $quiz->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-customized"
                                                             title="{{ $quiz->status == 0 ? 'turn off' : 'turn on' }}"></i>
                                                     </a>
 
@@ -129,13 +129,25 @@
 
 
     <div wire:ignore.self id="show-answer-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      
+       
         <div class="modal-dialog">
-            <div class="modal-content">
+
+            <div   class="  modal-content">
+
+
                 <div class="modal-header">
                     <h3 class="modal-title text-info"><i class="fa fa-exclamation-circle"></i> Correct Answer</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
-                <div class="modal-body">
+
+                <div id="modalnon2"  class=" text-center modal-body">
+                    <div class="spinner-grow text-info " role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+
+                </div>
+                <div id="modalnon"  class=" d-none modal-body">
                     <h6>correct answer : </h6>
                     <div class="alert alert-info">
                         <p>1. {{ $quizanswer1 }}</p>
@@ -149,7 +161,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger waves-effect waves-light" wire:click.prevent="deleteQuiz()">confrim</button>
+                    <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">confrim</button>
                 </div>
             </div>
         </div>
@@ -166,6 +178,15 @@
             window.livewire.on('cityDeleted',function(){
                 $("#delete-confirmation-modal").modal('hide');
             });
+            $(document).ready(function(){
+            $('a').click(function(){
+                setTimeout(function(){
+          $('#modalnon').removeClass('d-none');
+          $('#modalnon2').addClass('d-none');
+      }, 1000);
+            });
+            });
+      
         </script>
     @endpush
 

@@ -53,7 +53,7 @@
                                             <th class="text-center">Sites</th>
                                             <th>Created by</th>
                                             <th>Created at</th>
-                                            <th>Status</th>
+                                            <th class="text-center">Status</th>
                                             <th >Actions</th>
                                         </tr>
                                     </thead>
@@ -78,11 +78,11 @@
                                                 </td>
                                                 <td>{{ $path->user->name }}</td>
                                                 <td>{{ $path->created_at->format('Y-m-d')  }}</td>
-                                                <td>
+                                                <td class="text-center" >
                                                     
                                                     <a href="#"
                                                         wire:click.prevent="changeStatus({{ $path->id }})">
-                                                        <i class="fas {{ $path->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-customized"
+                                                        <i class="  fas {{ $path->status == 0 ? 'fa-toggle-on text-success' : 'fa-toggle-off text-danger' }} fa-customized"
                                                             title="{{ $path->status == 0 ? 'turn off' : 'turn on' }}"></i>
                                                     </a>
 
@@ -145,7 +145,13 @@
                     <h3 class="modal-title text-info"><i class="ti-flag-alt-2"></i> Path sites</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
-                <div class="modal-body">
+                <div id="modalnon2"  class=" text-center modal-body">
+                    <div class="spinner-grow text-info " role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+
+                </div>
+                <div id="modalnon"  class=" d-none modal-body">
                     <div class="alert alert-info">
                         
                         @foreach($sites as $key=>$site)
@@ -170,6 +176,14 @@
         <script>
             window.livewire.on('cityDeleted',function(){
                 $("#delete-confirmation-modal").modal('hide');
+            });
+            $(document).ready(function(){
+            $('a').click(function(){
+                setTimeout(function(){
+          $('#modalnon').removeClass('d-none');
+          $('#modalnon2').addClass('d-none');
+      }, 1000);
+            });
             });
         </script>
     @endpush

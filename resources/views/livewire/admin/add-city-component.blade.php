@@ -229,19 +229,19 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <div class="col-md-4 offset-md-1  d-flex align-items-center text-center ">
+                                <div class=" text-center ">
                                     @if ($photo)
                                         <img id="image-ville" src="{{ $photo->temporaryUrl() }}"
-                                            style="border-radius: 15px ;max-height:300px ; max-width:300px">
+                                        style="border-radius: 15px;max-height:300px; max-width:259px;">
                                     @else
                                         <img id="image-ville"
                                             src="{{ asset('primary/assets/images/cities/No_Image_Available.jpg') }}"
-                                            style="border-radius: 15px;max-height:300px; max-width:300px">
+                                            style="border-radius: 15px;max-height:300px; max-width:259px;">
                                         @error('photo')
                                             {{ $message }}
                                         @enderror
                                     @endif
-                                    <input type="file" id="uploadfile" class="custom-file-input" wire:model="photo"
+                                    <input type="file" id="uploadfile" class="custom-file-input d-none" wire:model="photo"
                                         accept="image/*">
                                 </div>
                             </div>
