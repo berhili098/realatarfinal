@@ -86,9 +86,12 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+        @if (count($countrecord)>0)
+            
+        
         <div class="row el-element-overlay">
    
-            @foreach ($sites->sortByDesc('created_at') as $site)
+            @foreach ($sites as $site)
                 <div class="col-lg-4 col-md-6">
    
                     <div class="card">
@@ -186,6 +189,14 @@
        <div class="justify-content-between color-success ">
         {{ $sites->links('livewire-pagination') }}
     </div>
+       @endif
+@else
+<div class="text-center">
+    <p class="text-danger">0 record found.</p>
+    <a href="{{ route('admin-addsite') }}" class="btn btn-info btn-circle">
+        <i class="fa fa-plus"></i>
+    </a>
+</div>
        @endif
     </div>
    

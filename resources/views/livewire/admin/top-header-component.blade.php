@@ -144,7 +144,7 @@
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown u-pro">
                         <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{asset('primary/assets/images/users/'.Auth::user()->photo)}}" alt="user" class="">
+                            <img src="{{asset('primary/assets/images/users/'.Auth::user()->photo)}}" alt="user" class="" width="30" height="30" >
                             <span class="hidden-md-down">{{ Str::of(Auth::user()->name)->before(' ') }} &nbsp;<i class="fa fa-angle-down"></i></span> 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">

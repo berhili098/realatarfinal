@@ -56,7 +56,7 @@ class SitesComponent extends Component
                         ->orWhere("latitude", "like", "%{$this->searchWord}%");
                 }
             );
-    })->paginate(6);
+    })->orderBy('id', 'DESC')->paginate(6);
     $countrecord = Site::where(function ($query) {
         $query->where("status", "like", $this->searchStatus != '' ? "{$this->searchStatus}" : "%")
             ->where("user_id", "like", $this->searchUser != '' ? "{$this->searchUser}" : "%")
@@ -69,7 +69,7 @@ class SitesComponent extends Component
                         ->orWhere("latitude", "like", "%{$this->searchWord}%");
                 }
             );
-    })->get();
+    })->orderBy('id', 'DESC')->get();
 
 
 }else{
@@ -85,7 +85,7 @@ class SitesComponent extends Component
                             ->orWhere("latitude", "like", "%{$this->searchWord}%");
                     }
                 );
-        })->paginate(6);
+        })->orderBy('id', 'DESC')->paginate(6);
 
 
         $countrecord = Site::where(function ($query) {
@@ -100,7 +100,7 @@ class SitesComponent extends Component
                             ->orWhere("latitude", "like", "%{$this->searchWord}%");
                     }
                 );
-        })->get();
+        })->orderBy('id', 'DESC')->get();
         
     }
 

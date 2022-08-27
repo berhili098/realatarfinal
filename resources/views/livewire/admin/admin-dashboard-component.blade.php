@@ -135,7 +135,7 @@
         <!-- .row  -->
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="card">
+                <div class="card" style="min-height:97%" >
                     <div class="card-body">
                         <div class="d-flex m-b-40 align-items-center">
                             <h5 class="card-title">CLIENTS STATS</h5>
@@ -152,7 +152,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="card">
+                <div class="card" style="min-height: 97%">
                     <div class="card-body">
                         <h5 class="card-title">RECENT CITIES</h5>
                         @foreach ($cities->sortByDesc('created_at')->take(4) as $city)
