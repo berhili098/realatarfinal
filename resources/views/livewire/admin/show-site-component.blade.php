@@ -257,3 +257,8 @@
 
     </div>
 </div>
+
+
+@push('styles')
+    <link href="{{ asset('primary/dist/css/pages/tab-page.css') }}" rel="stylesheet">
+@endpush

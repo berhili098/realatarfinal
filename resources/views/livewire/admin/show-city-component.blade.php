@@ -27,7 +27,7 @@
         <!-- .row -->
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <div class="card h-100" >
+                <div class="card h-97" >
                     <div class="card-body">
                         <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
@@ -104,7 +104,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="row">
@@ -178,6 +177,7 @@
                             </table>
                         </div>
                     </div>
+                    
                 </div>
 
                 <div class="card">
@@ -225,3 +225,8 @@
 
     </div>
 </div>
+
+@push('styles')
+<link href="{{ asset('primary/dist/css/main.css') }}" rel="stylesheet">
+<link href="{{ asset('primary/dist/css/pages/tab-page.css') }}" rel="stylesheet">
+@endpush

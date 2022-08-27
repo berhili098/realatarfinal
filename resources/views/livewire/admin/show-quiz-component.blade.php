@@ -417,7 +417,8 @@
 
 
 @push('styles')
-    <link href="{{ asset('primary/dist/css/pages/stylish-tooltip.css') }}" rel="stylesheet">
+    <link href="{{ asset('primary/dist/css/pages/tab-page.css') }}" rel="stylesheet">
+    <link href="{{ asset('primary/dist/css/main.css') }}" rel="stylesheet">
 @endpush
 
 @push('scripts')
