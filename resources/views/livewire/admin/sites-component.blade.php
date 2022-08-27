@@ -129,7 +129,7 @@
                                 <div style="cursor: pointer;"
                                     onclick=" window.location='{{ route('admin-showsite', $site->id) }}'"
                                     class="card-body bg-light p-t-40 p-b-40 " style="top:0px">
-                                    <h4 class="card-title">{{ $site->name_fr }}</h4>
+                                    <h5 class="card-title">{{ $site->name_fr }}</h5>
                                     <h4 class="text-primary float-left">
                                         {{ $site->price == 0 ? 'Free' : $site->price.' MAD' }}
                                     </h4>
