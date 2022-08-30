@@ -1,0 +1,31 @@
+.background-trs {
+    color: #ffffff !important;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5)!important;
+}
+
+.spacing{
+    height:70px;
+}
+.data-vertical td
+{
+    vertical-align: middle!important;
+}
+ 
+
+#image-ville:hover {
+    cursor: pointer;
+}
+
+.fa-customized{
+    font-size: 1.6em;
+}
+
+.h-97
+{
+    height: 97% !important;;
+}
+.h-92
+{
+    height: 92% !important;;
+}

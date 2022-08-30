@@ -19,7 +19,6 @@
             <form class="form-material">
                 <div class="row">
                     <div class="col-8">
-
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">General Info </h4>
@@ -211,7 +210,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="sites2">Selected sites</label>
+                                            <label class="d-none" id="lbl" for="sites2">Selected sites</label>
                                             <select class="form-control d-none" id="sites2" style="width: 100%"
                                                 size="4" multiple wire:change="change" wire:ignore>
 
@@ -243,16 +242,17 @@
                             <div class="card-body">
                                 <h4 class="card-title"><i class=" ti-image"></i> Default Image Site</h4>
                                 @if ($photo)
-                                    <img id="image-ville" src="{{ $photo->temporaryUrl() }}" width="100%"
-                                        style="border-radius: 15px" height="90%">
+                                    <img id="image-ville" src="{{ $photo->temporaryUrl() }}" 
+                                    width="100%"  style="border-radius: 15px" height="90%">
                                 @else
                                     <img id="image-ville"
                                         src="{{ asset('primary/assets/images/cities/No_Image_Available.jpg') }}"
                                         style="border-radius: 15px" width="100%" height="90%">
+                                        @endif
                                     @error('photo')
                                         {{ $message }}
                                     @enderror
-                                @endif
+                             
                                 <div wire:loading wire:target="photo">Uploading...</div>
                                 <input type="file" id="uploadfile" class="custom-file-input" wire:model="photo"
                                     accept="image/*">
@@ -301,23 +301,21 @@
 
 
 
-@push('styles')
-@endpush
-
+ 
 @push('scripts')
     <script>
         $(document).ready(function() {
             var langue = 0;
 
-                $('#faker').click(function() {
-                    $('#btn-active-tab').click();
-                });
-                $('#faker2').click(function() {
-                    $('#btn-active-tab').click();
-                });
-                $('#faker3').click(function() {
-                    $('#btn-active-tab').click();
-                });
+            $('#faker').click(function() {
+                $('#btn-active-tab').click();
+            });
+            $('#faker2').click(function() {
+                $('#btn-active-tab').click();
+            });
+            $('#faker3').click(function() {
+                $('#btn-active-tab').click();
+            });
             $("#image-ville").click(function() {
                 $('#uploadfile').click();
             });
@@ -354,9 +352,6 @@
         });
     </script>
     <script>
-
-        
-
         $("#sites").dblclick(function() {
             var index = 1;
             var itemText = $('#sites option:selected').text();
@@ -383,7 +378,7 @@
                 index++;
             });
             var countoption = $('#sites2 option').length;
-            if( countoption === 0 ) {
+            if (countoption === 0) {
                 $('#sites2').addClass('d-none');
             }
         });
@@ -397,12 +392,13 @@
             // console.log(test);
             Livewire.emit('store', test);
         });
-        
+
 
         $("#sites2").bind("DOMSubtreeModified", function() {
             var countoption = $('#sites2 option').length;
             if (countoption > 0) {
                 $('#sites2').removeClass('d-none');
+                $('#lbl').removeClass('d-none');
             }
         });
     </script>

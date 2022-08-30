@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Permission;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -15,13 +16,15 @@ class AddUser extends Component
     public $facebook;
     public $youtube;
     public $birthdate;
+    public $utype;
 
 
 
     public function render()
     {
+        $permissions=Permission::all();
         $title = "Add User";
-        return view('livewire.admin.add-user')->layout('layouts.master', compact('title'));
+        return view('livewire.admin.add-user',compact('permissions'))->layout('layouts.master', compact('title'));
     }
 
 
