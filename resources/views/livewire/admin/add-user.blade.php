@@ -299,7 +299,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label  id="lbl" for="email">Selected Permissions</label>
+                                                    <label class="d-none" id="lbl" for="email">Selected Permissions</label>
                                                     <div class="input-group mb-3">
 
                                                         <select class="form-control d-none" id="permissions2"
@@ -402,8 +402,9 @@
         $("#permissions2").bind("DOMSubtreeModified", function() {
             var countoption = $('#permissions2 option').length;
             if (countoption > 0) {
-                $('#permissions2').removeClass('d-none'); 
-            }
+                $('#permissions2').removeClass('d-none');
+                $('#lbl').removeClass('d-none');}
+            
         });
         });
     </script>
