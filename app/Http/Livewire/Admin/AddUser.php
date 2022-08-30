@@ -17,8 +17,16 @@ class AddUser extends Component
     public $youtube;
     public $birthdate;
     public $utype;
-
-
+    public $arraythird;
+    public $selectedPermissions = [];
+    public $selectedPermissions2 = [];
+    protected $listeners = [
+        'store'
+    ];
+    public function change()
+    {
+        $this->arraythird = $this->selectedPermissions2;
+    }
 
     public function render()
     {

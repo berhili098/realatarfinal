@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <form wire:submit.prevent="storeCity()">
+        <form >
             <div class="row">
                 <div class="col-lg-9">
                     <div class="card">
@@ -230,7 +230,7 @@
                         <div class="card-body text-center">
                             <div class="row button-group">
                                 <div class="col-lg-6 col-md-4">
-                                    <button class="btn waves-effect waves-light btn-block btn-success "><i
+                                    <button id="btn-submit" class="btn waves-effect waves-light btn-block btn-success "><i
                                             class="fa fa-save"></i>
                                         Save</button>
                                 </div>
@@ -299,7 +299,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="d-none" for="email">Selected Permissions</label>
+                                                    <label  id="lbl" for="email">Selected Permissions</label>
                                                     <div class="input-group mb-3">
 
                                                         <select class="form-control d-none" id="permissions2"
@@ -402,7 +402,7 @@
         $("#permissions2").bind("DOMSubtreeModified", function() {
             var countoption = $('#permissions2 option').length;
             if (countoption > 0) {
-                $('#permissions2').removeClass('d-none');
+                $('#permissions2').removeClass('d-none'); 
             }
         });
         });
