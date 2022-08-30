@@ -18,8 +18,8 @@ class SitesController extends Controller
      */
     public function getHomeSites()
     {
-        $sites = Site::where('status', '=', 1)->get()->take(4);
-        $totalSites = Site::where('status', '=', 1)->count();
+        $sites = Site::where('status', '=', 0)->get()->take(4);
+        $totalSites = Site::where('status', '=', 0)->count();
         foreach ($sites as $site) {
             $site->media;
         }
@@ -28,8 +28,8 @@ class SitesController extends Controller
 
     public function getAllSites()
     {
-        $sites = Site::where('status', '=', 1)->get();
-        $totalSites = Site::where('status', '=', 1)->count();
+        $sites = Site::where('status', '=', 0)->get();
+        $totalSites = Site::where('status', '=', 0)->count();
         foreach($sites as $site){
             $site->saveds;
         }

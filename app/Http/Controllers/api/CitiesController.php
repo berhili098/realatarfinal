@@ -16,7 +16,7 @@ class CitiesController extends Controller
 
     public function index(Request $request)
     {
-        $cities = City::where('status', '=', 1)->where('delete','=', 0)->get();
+        $cities = City::where('status', '=', 0)->where('delete','=', 0)->get();
         return response(["cities" => $cities, 'total' => $cities->count()], 200);
     }
 
